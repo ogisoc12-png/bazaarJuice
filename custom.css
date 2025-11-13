@@ -1,0 +1,27 @@
+.navbar-custom {
+  background-color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem 1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff8c00, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-custom .nav-link {
+  color: #222;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #ff8c00;
+  border-bottom: 2px solid #ff8c00;
+}
