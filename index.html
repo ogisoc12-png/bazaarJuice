@@ -281,7 +281,8 @@
         /* --- */
         background-color: #e5e4ea;
         border-radius: 16px;
-        padding: 20px;
+        /* 1. 🌟 FIX: Increased padding for bigger card size */
+        padding: 30px; 
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         height: 100%;
@@ -339,16 +340,18 @@
       }
 
       .menu-item-content p {
-        color: #666;
+        /* 3. 🌟 FIX: Change ingredient text color to orange and set weight */
+        color: var(--color-primary-action); 
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 600; /* Made text bolder */
         margin: 3px 0;
       }
 
       .menu-item-content .price-tag {
         font-weight: 700;
         color: var(--color-accent-purple); /* Ensure price stands out */
-        font-size: 1.1rem;
+        /* 2. 🌟 FIX: Increased price font size */
+        font-size: 1.3rem;
       }
 
       /* Bootstrap Column Spacing */
@@ -359,9 +362,9 @@
       /* --- MOBILE OPTIMIZATION for COMPACT VIEW (NEW FIX) --- */
       /* This media query applies to screens up to 767px (Bootstrap 'md' breakpoint) */
       @media (max-width: 767px) {
-        /* Reduce overall item padding and margin to fit two per row better */
+        /* Reduce overall item padding and margin to fit single column better on mobile */
         .menu-item {
-          padding: 0.8rem;
+          padding: 1.2rem; /* Adjusted for better mobile padding */
           margin-bottom: 1rem !important;
         }
 
@@ -376,21 +379,21 @@
           font-size: 0.9rem;
         }
 
-        /* Reduce font size for the ingredient list (p) */
+        /* Reduce font size for the ingredient list (p) on mobile */
         .menu-item-content p {
-          font-size: 0.7rem; /* Smaller ingredient font */
+          font-size: 0.9rem; /* Slightly increased for better mobile readability */
           margin: 2px 0;
         }
 
-        /* Ensure price tag is readable but compact */
+        /* Ensure price tag is readable but compact on mobile */
         .menu-item-content .price-tag {
-          font-size: 0.9rem;
+          font-size: 1rem; /* Slightly increased for better mobile readability */
         }
 
         /* Shrink the image wrapper for mobile */
         .menu-item-image-wrapper {
-          width: 70px; /* Smaller size */
-          height: 70px;
+          width: 80px; /* Slightly increased for better mobile look */
+          height: 80px;
           margin-left: 10px;
         }
 
