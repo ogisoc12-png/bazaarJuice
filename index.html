@@ -18,6 +18,7 @@
     />
 
     <style>
+      /* --- PASTE ALL CORRECTED CSS FROM SECTION 2 HERE --- */
       /* 🎨 BRAND-SPECIFIC VARIABLES (SEMANTIC NAMES) */
       :root {
         /* --- PRIMARY ACTION & BRAND COLORS (ORANGE/PURPLE) --- */
@@ -251,26 +252,23 @@
         background-color: var(--color-bg-secondary); /* #f0e5ff */
       }
 
-      /* 2. Soft Peach/Orange for Classic Juices */
-      #classic-juices-section {
+      /* 2. Soft Peach/Orange for Classic Juices (Now BYE DOC BOOSTS) */
+      #bye-doc-section {
         background-color: var(--color-bg-neutral); /* #fff4eb */
       }
 
-      /* 3. Soft Mint/Green for Ready-to-Go */
+      /* 3. Soft Mint/Green for Ready-to-Go (DELETED, but keeping color vars) */
       #ready-to-go-section {
         background-color: var(--color-bg-accent-light); /* #e8f5e9 */
         margin-bottom: 0 !important;
       }
 
       /* Keep colors for headings matching the section theme */
-      #classic-juices-section h3 {
+      #bye-doc-section h3 {
         color: var(--color-text-primary); /* Dark Purple */
       }
       #signature-blends-section h3 {
         color: var(--color-primary-action); /* Strong Orange */
-      }
-      #ready-to-go-section h3 {
-        color: #191970; /* Bolder Navy/Indigo */
       }
 
       /* Menu Item Card Base Style */
@@ -303,7 +301,7 @@
         margin-left: 15px; /* Space between text and image */
         flex-shrink: 0; /* Prevents image from shrinking */
       }
-      
+
       .menu-item img {
         width: 100%;
         height: 100%;
@@ -328,7 +326,7 @@
         padding-left: 35px;
         display: inline-block;
       }
-      
+
       .drink-number {
         position: absolute;
         left: 0;
@@ -340,7 +338,6 @@
         text-shadow: 0 0 2px rgba(255, 102, 0, 0.5);
       }
 
-
       .menu-item-content p {
         color: #666;
         font-size: 1rem;
@@ -348,26 +345,66 @@
         margin: 3px 0;
       }
 
+      .menu-item-content .price-tag {
+        font-weight: 700;
+        color: var(--color-accent-purple); /* Ensure price stands out */
+        font-size: 1.1rem;
+      }
+
       /* Bootstrap Column Spacing */
       .row > [class*="col-"] {
         margin-bottom: 30px;
       }
 
-      /* MOBILE OPTIMIZATION for one item per line (col-12) */
-      @media (max-width: 767.98px) {
-        .menu-item-image-wrapper {
-            width: 100px;
-            height: 100px;
+      /* --- MOBILE OPTIMIZATION for COMPACT VIEW (NEW FIX) --- */
+      @media (max-width: 767px) {
+        /* Reduce overall item padding and margin to fit two per row better */
+        .menu-item {
+          padding: 0.8rem;
+          margin-bottom: 1rem !important;
         }
+
+        /* Reduce font size for the drink name (h5) */
         .menu-item-content h5 {
-            font-size: 1.1rem;
+          font-size: 1.1rem; /* Smaller heading size */
+          padding-left: 30px; /* Adjust padding for smaller number */
         }
+
+        /* Shrink the number prefix */
+        .drink-number {
+          font-size: 0.9rem;
+        }
+
+        /* Reduce font size for the ingredient list (p) */
         .menu-item-content p {
-            font-size: 0.9rem;
+          font-size: 0.7rem; /* Smaller ingredient font */
+          margin: 2px 0;
+        }
+
+        /* Ensure price tag is readable but compact */
+        .menu-item-content .price-tag {
+          font-size: 0.9rem;
+        }
+
+        /* Shrink the image wrapper for mobile */
+        .menu-item-image-wrapper {
+          width: 70px; /* Smaller size */
+          height: 70px;
+          margin-left: 10px;
+        }
+
+        /* Tighten the spacing for add-on badges */
+        .add-on-badges-container .badge {
+          font-size: 0.75rem !important; /* Smaller text for badges */
+          padding: 0.4rem 0.6rem !important; /* Smaller padding */
+          margin: 0.2rem !important; /* Smaller margin between badges */
         }
       }
 
-      /* --- BOOSTERS & ADD-ONS STYLES --- */
+      /* ----------------------------------------------------------- */
+      /* *** BOOSTERS & ADD-ONS STYLES *** */
+      /* ----------------------------------------------------------- */
+
       #boosters-section {
         padding-top: 60px !important;
         padding-bottom: 60px !important;
@@ -510,9 +547,8 @@
       }
       .navbar-toggler-icon {
         /* Sets the three lines of the icon to white */
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e");
       }
-
     </style>
   </head>
   <body>
@@ -537,10 +573,10 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#menu-signature">SIGNATURE BLENDS</a>
+              <a class="nav-link" href="#menu-signature">SIGNATURE JUICES</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#menu-fresh">CLASSIC JUICES</a>
+              <a class="nav-link" href="#menu-byedoc">CLASSIC BOOSTS</a>
             </li>
 
             <li class="nav-item">
@@ -573,7 +609,7 @@
             Your Daily Boost of Freshness. Crafted with Nature's Best for a
             Radiant You.
           </p>
-          <a href="#menu-fresh" class="cta-button">
+          <a href="#menu-signature" class="cta-button">
             Menu
             <i class="fas fa-arrow-down"></i>
           </a>
@@ -584,32 +620,16 @@
     <section id="menu" class="py-5">
       <div class="menu-section" id="signature-blends-section">
         <div class="container">
-          <h3 id="menu-signature" class="text-center mb-3">SIGNATURE BLENDS</h3>
+          <h3 id="menu-signature" class="text-center mb-3">SIGNATURE JUICES</h3>
           <p class="text-center mb-5 text-muted">
-            (Our premium, high-powered blends - $12.00)
+            (Our premium, high-powered organic blends - $12.00)
           </p>
           <div class="row">
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
                   <h5><span class="drink-number">#1</span> VITAL SPLASH</h5>
-                  <p>
-                    Ginger, Lemon, Spinach, Apple, Olive Oil & Vita Coco Coconut
-                    Water.
-                  </p>
-                  <p class="price-tag">$12.00</p>
-                </div>
-                <div class="menu-item-image-wrapper">
-                  <img src="src/public/green.png" alt="green juice bottle" />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-6 mb-4">
-              <div class="menu-item">
-                <div class="menu-item-content">
-                  <h5><span class="drink-number">#2</span> SUNSHINE BOOST</h5>
-                  <p>Ginger, Lemon, Turmeric, Carrot, Apple & Olive Oil.</p>
+                  <p>Carrot, Turmeric, Ginger, Lemon, Apple.</p>
                   <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
@@ -618,11 +638,39 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#3</span> GREEN ENERGY</h5>
-                  <p>Avocado, Lemon, Spinach, Kiwi, Apple & Ice.</p>
+                  <h5><span class="drink-number">#2</span> SUNSHINE BOOST</h5>
+                  <p>Kale, Ginger, Cucumber, Spinach, Apple.</p>
+                  <p class="price-tag">$12.00</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/green.png" alt="green juice bottle" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-6 mb-4">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5><span class="drink-number">#3</span> VITAL GLOW</h5>
+                  <p>
+                    Turmeric, Ginger, Pineapple, Carrot, Black Pepper, Apple.
+                  </p>
+                  <p class="price-tag">$12.00</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange.png" alt="orange juice bottle" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-6 mb-4">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5><span class="drink-number">#4</span> GOLDEN TONIC</h5>
+                  <p>Spinach, Kiwi, Avocado, Lemon, Apple.</p>
                   <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
@@ -634,27 +682,11 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
-              <div class="menu-item">
-                <div class="menu-item-content">
-                  <h5><span class="drink-number">#4</span> GOLDEN TONIC</h5>
-                  <p>
-                    Ginger, Pineapple, Turmeric, Carrot, Black Pepper, Apple &
-                    Olive Oil.
-                  </p>
-                  <p class="price-tag">$12.00</p>
-                </div>
-                <div class="menu-item-image-wrapper">
-                  <img src="src/public/orange.png" alt="orange juice bottle" />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
                   <h5><span class="drink-number">#5</span> VITAL SHIELD</h5>
-                  <p>Ginger, Spinach, Cucumber, Kale, Apple & Olive Oil.</p>
+                  <p>Kale, Celery, Spinach, Lemon, Cucumber.</p>
                   <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
@@ -663,18 +695,18 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5>
-                    <span class="drink-number">#6</span> MORNING BOOST
-                    <span class="badge bg-danger">ALLERGEN WARNING</span>
-                  </h5>
-                  <p>Lemon, Spinach, Celery, Cucumber, Kale & Olive Oil.</p>
+                  <h5><span class="drink-number">#6</span> MORNING BOOST</h5>
+                  <p>Coconut Water, Lemon, Spinach, Ginger, Apple.</p>
                   <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
-                  <img src="src/public/green.png" alt="green juice bottle" />
+                  <img
+                    src="src/public/lightGreen.png"
+                    alt="light green juice bottle"
+                  />
                 </div>
               </div>
             </div>
@@ -682,20 +714,19 @@
         </div>
       </div>
 
-      <div class="menu-section" id="classic-juices-section">
+      <div class="menu-section" id="bye-doc-section">
         <div class="container">
-          <h3 id="menu-fresh" class="text-center mb-3">CLASSIC JUICES</h3>
+          <h3 id="menu-byedoc" class="text-center mb-3">CLASSIC BOOSTS</h3>
           <p class="text-center mb-5 text-muted">
-            (The foundation of health and flavor - $11.00)
+            (Wellness-focused blends crafted for specific goals - $12.00)
           </p>
-
           <div class="row">
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#7</span> CARROT POWER</h5>
-                  <p>Ginger, Carrot, Apple, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#1</span> EASY DAY</h5>
+                  <p>Carrot, Ginger, Apple.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/orange.png" alt="orange juice bottle" />
@@ -703,12 +734,28 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#8</span> BERRY CALM</h5>
-                  <p>Ginger, Strawberries, Apple, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#2</span> GREEN PRINCE</h5>
+                  <p>Pineapple, Lemon, Cucumber.</p>
+                  <p class="price-tag">$12.00</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img
+                    src="src/public/lightGreen.png"
+                    alt="light green juice bottle"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-6 mb-4">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5><span class="drink-number">#3</span> POWER UP</h5>
+                  <p>Kiwi, Strawberry, Apple.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/red.png" alt="red juice bottle" />
@@ -716,25 +763,12 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#9</span> PINEAPPLE RUSH</h5>
-                  <p>Pineapple, Cucumber, Apple, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
-                </div>
-                <div class="menu-item-image-wrapper">
-                  <img src="src/public/green.png" alt="green juice bottle" />
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-6 mb-4">
-              <div class="menu-item">
-                <div class="menu-item-content">
-                  <h5><span class="drink-number">#10</span> BERRY LIFT</h5>
-                  <p>Strawberries, Banana, Apple, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#4</span> BOOST ME UP</h5>
+                  <p>Strawberry, Ginger, Apple.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/red.png" alt="red juice bottle" />
@@ -742,38 +776,41 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#11</span> FRESH GREENS</h5>
-                  <p>Celery, Cucumber, Kale, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#5</span> VITAL SHOT</h5>
+                  <p>Ginger, Carrot, Ice, Apple.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
-                  <img src="src/public/green.png" alt="green juice bottle" />
+                  <img src="src/public/orange.png" alt="orange juice bottle" />
                 </div>
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#12</span> VITAL PUNCH</h5>
-                  <p>Strawberries, Kiwi, Apple, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#6</span> TROPIC HYDRATE</h5>
+                  <p>Cucumber, Pineapple, Apple.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
-                  <img src="src/public/red.png" alt="red juice bottle" />
+                  <img
+                    src="src/public/lightGreen.png"
+                    alt="light green juice bottle"
+                  />
                 </div>
               </div>
             </div>
 
-            <div class="col-12 col-lg-6 mb-4">
+            <div class="col-6 col-lg-6 mb-4">
               <div class="menu-item">
                 <div class="menu-item-content">
-                  <h5><span class="drink-number">#13</span> LEMON LIFT</h5>
-                  <p>Lemon, Pineapple, Cucumber, Ice & Olive Oil.</p>
-                  <p class="price-tag">$11.00</p>
+                  <h5><span class="drink-number">#7</span> THE PURIFIER</h5>
+                  <p>Kale, Celery, Cucumber.</p>
+                  <p class="price-tag">$12.00</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/green.png" alt="green juice bottle" />
@@ -792,29 +829,24 @@
         <p class="text-center mb-5">
           (Customize any drink for extra health benefits or flavor.)
         </p>
-        <div class="row add-ons">
+        <div class="row add-ons justify-content-center">
           <div class="col-12 col-md-4 mb-4">
             <div class="booster-card">
-              <h5>BOOSTERS (Nutrition)</h5>
+              <h5>WELLNESS SHOTS</h5>
               <p>PROTEIN 💪</p>
-              <p>SPIRULINA 🟢</p>
-              <p>CHIA SEEDS 🌱</p>
+              <p>COLLAGEN ✨</p>
+              <p>VITAMIN C 🍊</p>
+              <p>OLIVE OIL 🫒</p>
             </div>
           </div>
-          <div class="col-12 col-md-4 mb-4">
+
+          <div class="col-12 col-md-4 mb-6">
             <div class="booster-card">
-              <h5>FLAVOR SHOTS</h5>
+              <h5>FLAVOR & HEAT</h5>
               <p>GINGER 🫚</p>
               <p>LEMON 🍋</p>
               <p>MINT 🌿</p>
               <p>TURMERIC 🟠</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-            <div class="booster-card">
-              <h5>SWEETENERS</h5>
-              <p>AGAVE 🌵</p>
-              <p>HONEY 🍯</p>
             </div>
           </div>
         </div>
@@ -850,7 +882,8 @@
           </div>
           <div class="col-md-4 text-center mb-4">
             <h5>Quick Links</h5>
-            <a href="#menu-fresh">Menu</a>
+            <a href="#menu-signature">Signature Juices</a>
+            <a href="#menu-byedoc">CLASSIC Boosts</a>
             <a href="#boosters-section">Boosters</a>
             <a href="#about-us">About Us</a>
           </div>
