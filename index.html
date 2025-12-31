@@ -1,264 +1,888 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bazaar Juice - Freshly Blended</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bazaar Juice - Freshly Blended</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    <style>
+      /* --- PASTE ALL CORRECTED CSS FROM SECTION 2 HERE --- */
+      /* 🎨 BRAND-SPECIFIC VARIABLES (SEMANTIC NAMES) */
+      :root {
+        /* --- PRIMARY ACTION & BRAND COLORS (ORANGE/PURPLE) --- */
+        --color-primary-action: #ff6600; /* Strong Orange (CTAs, Glow) */
+        --color-primary-hover: #cc5200; /* Darker Orange for Hover */
+        --color-accent-purple: #6a0dad;
 
-<style>
-:root {
-  --orange:#ff6600;
-  --purple:#6a0dad;
-  --bg-peach:#fff4eb;
-  --bg-lav:#f0e5ff;
-  --bg-mint:#e8f5e9;
-  --bg-coffee:#f5efe6;
-  --dark:#444;
-  --app-height:100vh;
+        /* --- TEXT COLORS --- */
+        --color-text-primary: #6a0dad; /* Dark Purple (Body Text & Headings) */
+        --color-text-light: #ffffff; /* White (Text on Dark Backgrounds) */
+
+        /* --- BACKGROUND COLORS (Semantic Names) - HARMONIZED COLORS --- */
+        --color-bg-neutral: #fff4eb; /* Soft Peach/Orange (Classic Juices) */
+        --color-bg-secondary: #f0e5ff; /* Soft Lavender/Purple (Signature Blends) */
+        --color-bg-accent-light: #e8f5e9; /* Soft Mint/Green (Ready-to-Go) */
+        --color-bg-coffee-light: #f5efe6; /* Warm Beige - About Us Section */
+        --color-bg-footer: #444; /* Dark Grey for Footer */
+
+        /* --- FONTS --- */
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Poppins", sans-serif;
+
+        /* 🟢 KEY FIX: Custom CSS Variable for Mobile Height */
+        --app-height: 100vh;
+      }
+
+      /* --- BASE RESET & GLOBAL STYLES --- */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-text-primary);
+        background-color: var(--color-text-light);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-heading);
+        color: var(--color-text-primary);
+      }
+
+      /* --- NAVBAR --- */
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1030;
+      }
+
+      .navbar .navbar-brand {
+        font-weight: 900;
+        color: var(--color-primary-action) !important;
+        font-size: 1.8rem;
+        text-shadow: 0 0 4px rgba(255, 102, 0, 0.7);
+        z-index: 10;
+      }
+
+      .navbar .nav-link {
+        color: var(--color-text-light);
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
+      }
+
+      .navbar .nav-link:hover {
+        color: var(--color-primary-action) !important;
+        text-shadow: 0 0 5px rgba(255, 102, 0, 0.9);
+      }
+
+      /* 🟢 FIX: Ensure the Home link is not styled as 'active' (darker) */
+      .navbar .nav-link.active {
+        color: var(--color-text-light) !important;
+        /* Remove the active dark coloring if it was implicitly applied */
+      }
+
+      /* ----------------------------------------------------------- */
+      /* *** HERO SECTION STYLES *** */
+      /* ----------------------------------------------------------- */
+      .hero {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        min-width: 100%;
+        min-height: 100%;
+        height: var(--app-height);
+      }
+
+      .video-background-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .hero-video-iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 177.78vh;
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        min-height: -webkit-fill-available;
+        min-width: max(100vw, 177.78vh);
+        min-height: max(100vh, 56.25vw);
+      }
+
+      /* Ensures overlay is centered (Bootstrap classes in HTML handle the text) */
+      .hero .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 1;
+      }
+
+      /* Text Glow/Shadow Animation */
+      @keyframes subtle-glow {
+        0%,
+        100% {
+          text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+        }
+        50% {
+          text-shadow: 0 0 12px rgba(255, 190, 0, 1);
+        }
+      }
+
+      /* DEFAULT (DESKTOP) HERO STYLES */
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        animation: subtle-glow 3s ease-in-out infinite;
+        color: var(--color-text-light);
+        letter-spacing: 5px;
+      }
+
+      /* Centering the paragraph block */
+      .hero p {
+        color: #ffdab9;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* CTA Button (Solid Orange) */
+      .hero .cta-button {
+        margin-top: 25px;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-text-light);
+        background-color: var(--color-primary-action);
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 102, 0, 0.5);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+      }
+      .hero .cta-button i {
+        margin-left: 10px;
+        font-size: 1.2em;
+      }
+      .hero .cta-button:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(255, 102, 0, 0.7);
+      }
+
+      /* MOBILE OPTIMIZATION FOR HERO TEXT */
+      @media (max-width: 575.98px) {
+        .hero h1 {
+          font-size: 2.3rem;
+          letter-spacing: 3px;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .hero .cta-button {
+          padding: 10px 25px;
+          font-size: 1rem;
+        }
+      }
+
+      /* ----------------------------------------------------------- */
+      /* *** MENU SECTION STYLES (COLOR MATCHING UPDATES) *** */
+      /* ----------------------------------------------------------- */
+
+      /* Section flow fixes */
+      #menu {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .menu-section {
+        background-color: transparent;
+        display: block; /* Use block flow now that we're using rows/cols */
+        padding: 60px 20px;
+      }
+
+      /* 1. Soft Lavender/Purple for Signature Blends */
+      #menu-signature {
+        background-color: var(--color-bg-secondary); /* #f0e5ff */
+      }
+
+      /* 2. Soft Peach/Orange for Classic Juices (Now BYE DOC BOOSTS) */
+      #menu-classic-boosts {
+        background-color: var(--color-bg-neutral); /* #fff4eb */
+      }
+
+      /* 3. Soft Mint/Green for Ready-to-Go (DELETED, but keeping color vars) */
+
+      /* Keep colors for headings matching the section theme */
+      #menu-signature h3 {
+        color: var(--color-text-primary); /* Dark Purple */
+      }
+      #menu-classic-boosts h3 {
+        color: var(--color-primary-action); /* Strong Orange */
+      }
+
+      /* Menu Item Card Base Style */
+      .menu-item {
+        /* *** NEW FLEX LAYOUT FOR CONTENT (Text Left, Image Right) *** */
+        display: flex;
+        flex-direction: row; /* Content flows left to right */
+        justify-content: space-between; /* Space between text and image */
+        align-items: center; /* Vertically center content */
+        /* --- */
+        background-color: #e5e4ea;
+        border-radius: 16px;
+        /* 1. 🌟 FIX: Increased padding for bigger card size */
+        padding: 30px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        height: 100%;
+        text-align: left; /* Default text alignment to left */
+      }
+
+      .menu-item:hover {
+        transform: translateY(-4px);
+        /* Changed hover shadow color to match brand purple */
+        box-shadow: 0 8px 18px rgba(106, 13, 173, 0.4);
+      }
+
+      /* IMAGE WRAPPER SIZE: Smaller and on the right */
+      .menu-item-image-wrapper {
+        width: 120px; /* Reduced size */
+        height: 120px;
+        margin-left: 15px; /* Space between text and image */
+        flex-shrink: 0; /* Prevents image from shrinking */
+      }
+
+      .menu-item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* Content (Text) Block */
+      .menu-item-content {
+        flex-grow: 1; /* Allows text to take up remaining space */
+        text-align: left;
+      }
+
+      .menu-item-content h5 {
+        margin-bottom: 5px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        /* Styles for the number prefix */
+        position: relative;
+        padding-left: 35px;
+        display: inline-block;
+      }
+
+      .drink-number {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--color-primary-action);
+        text-shadow: 0 0 2px rgba(255, 102, 0, 0.5);
+      }
+
+      .menu-item-content p {
+        /* 3. 🌟 FIX: Change ingredient text color to orange and set weight */
+        color: var(--color-bg-footer);
+        font-size: 1rem;
+        font-weight: 600; /* Made text bolder */
+        margin: 3px 0;
+      }
+
+      .menu-item-content .price-tag {
+        font-weight: 700;
+        color: var(--color-accent-purple); /* Ensure price stands out */
+        /* 2. 🌟 FIX: Increased price font size */
+        font-size: 1.3rem;
+      }
+
+      /* Bootstrap Column Spacing */
+      .row > [class*="col-"] {
+        margin-bottom: 30px;
+      }
+
+      /* --- MOBILE OPTIMIZATION for COMPACT VIEW (NEW FIX) --- */
+      /* This media query applies to screens up to 767px (Bootstrap 'md' breakpoint) */
+      @media (max-width: 767px) {
+        /* Reduce overall item padding and margin to fit single column better on mobile */
+        .menu-item {
+          padding: 0.8rem; /* Adjusted for better mobile padding */
+          margin-bottom: 1rem !important;
+        }
+
+        /* Reduce font size for the drink name (h5) */
+        .menu-item-content h5 {
+          font-size: 1.1rem; /* Smaller heading size */
+          padding-left: 30px; /* Adjust padding for smaller number */
+        }
+
+        /* Shrink the number prefix */
+        .drink-number {
+          font-size: 0.9rem;
+        }
+
+        /* Reduce font size for the ingredient list (p) on mobile */
+        .menu-item-content p {
+          font-size: 0.9rem; /* Slightly increased for better mobile readability */
+          margin: 2px 0;
+        }
+
+        /* Ensure price tag is readable but compact on mobile */
+        .menu-item-content .price-tag {
+          font-size: 1rem; /* Slightly increased for better mobile readability */
+        }
+
+        /* Shrink the image wrapper for mobile */
+        .menu-item-image-wrapper {
+          width: 80px; /* Slightly increased for better mobile look */
+          height: 80px;
+          margin-left: 10px;
+        }
+
+        /* Tighten the spacing for add-on badges */
+        .add-on-badges-container .badge {
+          font-size: 0.75rem !important; /* Smaller text for badges */
+          padding: 0.4rem 0.6rem !important; /* Smaller padding */
+          margin: 0.2rem !important; /* Smaller margin between badges */
+        }
+      }
+
+      /* ----------------------------------------------------------- */
+      /* *** BOOSTERS & ADD-ONS STYLES *** */
+      /* ----------------------------------------------------------- */
+
+      #boosters-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+        margin-bottom: 0 !important;
+        position: relative;
+        z-index: 1;
+      }
+      #boosters-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100vw;
+        height: 100%;
+        transform: translateX(-50%);
+        /* Background matches the Signature Blends section color */
+        background-color: var(--color-bg-secondary);
+        z-index: -1;
+      }
+
+      #boosters-section h3 {
+        color: var(--color-text-primary);
+        margin-bottom: 5px; /* Reduced margin to fit new subtitle */
+      }
+
+      /* New styles for booster cards */
+      .booster-card {
+        background-color: var(--color-text-light);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        text-align: left;
+      }
+
+      .booster-card h5 {
+        color: var(--color-primary-action);
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-align: center;
+        border-bottom: 2px solid rgba(255, 102, 0, 0.1);
+        padding-bottom: 10px;
+      }
+
+      /* Styles for individual booster items */
+      .booster-card p {
+        font-family: var(--font-body);
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 2.2;
+        margin: 5px 0;
+        padding: 0;
+        color: var(--color-text-primary);
+        text-shadow: none;
+        transition: color 0.2s ease;
+      }
+
+      .booster-card p:hover {
+        color: var(--color-primary-action);
+        transform: none;
+      }
+
+      /* --- ABOUT US STYLES (Box removed, text styling improved) --- */
+      #about-us {
+        background-color: var(--color-bg-coffee-light);
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+        text-align: center;
+        margin-top: 0 !important;
+      }
+      #about-us h2 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--color-primary-action);
+        text-transform: uppercase;
+        margin-bottom: 25px;
+      }
+
+      #about-us .story-content {
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+
+      #about-us .story-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #191970; /* Bolder Navy/Indigo Text */
+        font-weight: 600;
+        margin: 0;
+        padding: 0 15px;
+      }
+
+      /* Quote Styling */
+      #about-us .story-content strong {
+        color: var(--color-primary-action); /* Fancy Orange Color */
+        display: block;
+        margin-top: 25px;
+        font-size: 1.4rem;
+        font-weight: 900;
+        border-top: 2px solid var(--color-accent-purple);
+        padding-top: 20px;
+        font-style: italic; /* Italic text */
+      }
+
+      /* --- FOOTER STYLES --- */
+      .footer {
+        background-color: var(--color-bg-footer);
+        color: var(--color-text-light);
+        padding: 40px 0;
+      }
+      .footer h5 {
+        color: var(--color-primary-action);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .footer a {
+        color: #ddd;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        line-height: 1.8;
+      }
+      .footer a:hover {
+        color: var(--color-primary-action);
+      }
+      .footer .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        display: inline-block;
+      }
+      .footer .copyright {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px solid #555;
+        font-size: 0.9rem;
+      }
+     .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5); /* Adds a subtle border to the button */
 }
 
-* { box-sizing:border-box; }
-
-html,body {
-  margin:0;
-  padding:0;
-  overflow-x:hidden;
-  font-family:Poppins,sans-serif;
+.navbar-toggler-icon {
+    /* Corrected SVG: Fixed the closing svg tag and path stroke */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+      /* Apply this to the sections you are linking to */
+/* This targets every section that has an ID matching your navbar links */
+#hero, 
+#menu-signature, 
+#menu-fruits, 
+#menu-treats, 
+#menu-snacks, 
+#menu-hot, 
+#menu-boosters, 
+#about-us {
+  scroll-margin-top: 120px; /* Adjust this number based on your navbar height */
 }
 
-/* NAVBAR */
-.navbar {
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(8px);
+/* Optional: Makes the transition look professional */
+html {
+  scroll-behavior: smooth;
 }
-.navbar-brand {
-  color:var(--orange)!important;
-  font-weight:900;
-}
-.nav-link { color:#fff!important; font-weight:600; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bazaar JUICE 🍋🍊</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-signature">SIGNATURE JUICES</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-fruits">FRUITS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-treats">BOWLS & TREATS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-snacks">SNACKS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-hot">WARM COMFORTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-boosters">BOOSTERS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about-us">ABOUT US</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-/* HERO */
-.hero {
-  height:var(--app-height);
-  position:relative;
-}
-.hero iframe {
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:177vh;
-  height:100%;
-  transform:translate(-50%,-50%);
-  min-width:100%;
-  min-height:100%;
-  pointer-events:none;
-}
-.hero .overlay {
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-.hero h1 {
-  color:#fff;
-  font-size:3.5rem;
-  font-weight:900;
-}
-.hero p { color:#ffd9b3; }
+    <section id="hero" class="hero">
+      <div class="video-background-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1135227451?h=4c0c598075&autoplay=1&loop=1&autopause=0&muted=1&background=1"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          playsinline
+          class="hero-video-iframe"
+        ></iframe>
+      </div>
 
-/* MENU CARD (UNIFIED) */
-.menu-item {
-  background:#e5e4ea;
-  border-radius:16px;
-  padding:20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  height:100%;
-}
+      <div class="overlay d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <h1>THE POWER OF FRESH</h1>
+          <p>
+            Your Daily Boost of Freshness. Crafted with Nature's Best for a
+            Radiant You.
+          </p>
+          <a href="#menu-signature" class="cta-button">
+            Menu
+            <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+    </section>
 
-.menu-item-content {
-  flex:1;
-}
+    <section id="menu" class="py-5">
+  <div class="menu-section" id="menu-signature" style="background-color: var(--color-bg-secondary);">
+    <div class="container">
+      <h3 class="text-center mb-3">SIGNATURE JUICES</h3>
+      <p class="text-center mb-5 text-muted">(Premium Blends & Wellness Boosts)</p>
 
-.menu-item-content h5 {
-  font-weight:700;
-  font-size:1.3rem;
-  margin-bottom:5px;
-}
+      <div class="row">
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5><span class="drink-number">#1</span> VITAL SPLASH</h5>
+              <p>Carrot, Turmeric, Ginger, Lemon, Apple.</p>
+              <p class="price-tag">$9.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/orange.png" alt="orange juice" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
 
-.menu-item-content p {
-  font-weight:600;
-  margin:2px 0;
-}
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5><span class="drink-number">#2</span> VITAL GLOW</h5>
+              <p>Turmeric, Ginger, Pineapple, Carrot, Apple.</p>
+              <p class="price-tag">$9.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/orange.png" alt="orange juice" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
 
-.price-tag {
-  color:var(--purple);
-  font-size:1.2rem;
-  font-weight:700;
-}
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item" style="border: 2px solid var(--color-primary-action); background-color: #fff;">
+            <div class="menu-item-content">
+              <h5 style="padding-left:0;">CREATE YOUR OWN BLEND</h5>
+              <p>Real fruit, no sugar added. Custom blends available!</p>
+              <p class="price-tag">$11.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/smoothie.png" alt="smoothie" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-.menu-item-image-wrapper {
-  width:120px;
-  height:120px;
-  flex-shrink:0;
-}
+      <div class="mt-5 p-4" style="background: rgba(255,255,255,0.5); border-radius: 20px;">
+        <h4 class="text-center mb-4" style="font-weight: 900; color: var(--color-primary-action);">OUR FRESH FRUIT SELECTION</h4>
+        <div class="row g-3" id="menu-fruits">
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm" style="display: flex; align-items: center; gap: 10px;">
+              <img src="src/public/banana.png" alt="Banana" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+              <div><small class="d-block fw-bold text-dark">BANANA</small></div>
+            </div>
+          </div>
+          </div>
 
-.menu-item-image-wrapper img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
+        <div class="text-center mt-4">
+          <div class="bg-primary text-white p-3 d-inline-block rounded shadow" style="max-width: 90%; line-height: 1.4;">
+            <p class="mb-1 fw-bold"><i class="fas fa-layer-group me-2"></i> Select up to 3 fruits for your blend!</p>
+            <span class="badge bg-warning text-dark">+$1.00 for each additional choice</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-/* MOBILE FIXES */
-@media(max-width:767px){
-  .menu-item {
-    padding:14px;
-  }
-  .menu-item-image-wrapper {
-    width:70px;
-    height:70px;
-  }
-  .menu-item-content h5 { font-size:1rem; }
-  .menu-item-content p { font-size:.85rem; }
-  .price-tag { font-size:.95rem; }
-}
+  <div class="menu-section" id="menu-treats" style="background-color: #fdf2f2;">
+    <div class="container">
+      <h3 class="text-center mb-3">BOWLS & SWEET TREATS</h3>
+      <p class="text-center mb-5 text-muted">(Fresh quality fruits ready to eat)</p>
+      <div class="row">
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5>CREATE YOUR OWN BOWL</h5>
+              <p>Seasonal fruits, hand-picked and freshly sliced.</p>
+              <p class="price-tag">$11.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/fruit-bowl.png" alt="fruit bowl" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5>CHOCO BERRY SKEWER</h5>
+              <p>Fresh skewers covered in premium chocolate.</p>
+              <p class="price-tag">$7.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/choco-fruit.png" alt="choco skewer" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-/* FRUIT LIST */
-.fruit-card {
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding:8px;
-  background:#fff;
-  border-left:4px solid var(--orange);
-  border-radius:8px;
-}
-.fruit-card img {
-  width:40px;
-  height:40px;
-  border-radius:50%;
-}
+  <div class="menu-section" id="menu-snacks" style="background-color: var(--color-bg-neutral);">
+    <div class="container">
+      <h3 class="text-center mb-3">SAVORY SNACKS</h3>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5>BAZAAR JUICE SWEETCORN</h5>
+              <p>Boiled in fresh milk and coated with creamy butter.</p>
+              <p class="price-tag">$5.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/corn.png" alt="sweetcorn" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-/* FOOTER */
-footer {
-  background:#444;
-  color:#fff;
-  padding:40px 0;
-}
-footer a { color:#ddd; text-decoration:none; }
-footer a:hover { color:var(--orange); }
-</style>
-</head>
+  <div class="menu-section" id="menu-hot" style="background-color: var(--color-bg-coffee-light);">
+    <div class="container">
+      <h3 class="text-center mb-3">WARM COMFORTS</h3>
+      <div class="row">
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5>PREMIUM HOT CHOCOLATE</h5>
+              <p>Made with milk, not water. Topped with marshmallows.</p>
+              <p class="price-tag">$7.99</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/hot-chocolate.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="menu-item">
+            <div class="menu-item-content">
+              <h5>ORGANIC TEA WITH HONEY</h5>
+              <p>Soothing organic tea served with pure natural honey.</p>
+              <p class="price-tag">$5.50</p>
+            </div>
+            <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img src="src/public/hot-tea.png" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<body>
-
-<!-- NAV -->
-<nav class="navbar navbar-expand-lg fixed-top">
-<div class="container-fluid">
-<a class="navbar-brand" href="#">Bazaar JUICE 🍊</a>
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="nav">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#menu">MENU</a></li>
-<li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
-</ul>
-</div>
-</div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-<iframe src="https://player.vimeo.com/video/1135227451?background=1&autoplay=1&loop=1&muted=1"></iframe>
-<div class="overlay">
-<div>
-<h1>THE POWER OF FRESH</h1>
-<p>Your daily boost of freshness</p>
-</div>
-</div>
+  <div class="container py-5" id="boosters-section">
+    <h3 id="menu-boosters" class="text-center">BOOSTERS & ADD-ONS</h3>
+    <p class="text-center mb-2 text-primary fw-bold">Add any booster for only +$1.99 each!</p>
+    <p class="text-center mb-5 text-muted text-center">(Customize any drink for extra health benefits or flavor.)</p>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 mb-4">
+        <div class="p-4 bg-white rounded shadow-sm border-top border-4 border-primary h-100">
+          <h5 class="fw-bold mb-3 text-center">WELLNESS SHOTS</h5>
+          <p class="mb-2">PROTEIN 💪</p>
+          <p class="mb-2">COLLAGEN ✨</p>
+          <p class="mb-2">VITAMIN C 🍊</p>
+          <p class="mb-0">OLIVE OIL 🫒</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-4">
+        <div class="p-4 bg-white rounded shadow-sm border-top border-4 border-warning h-100">
+          <h5 class="fw-bold mb-3 text-center">FLAVOR & HEAT</h5>
+          <p class="mb-2">GINGER 🫚</p>
+          <p class="mb-2">LEMON 🍋</p>
+          <p class="mb-2">MINT 🌿</p>
+          <p class="mb-0">TURMERIC 🟠</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- MENU -->
-<section id="menu" class="py-5" style="background:var(--bg-lav)">
-<div class="container">
-<h3 class="text-center mb-4">SIGNATURE JUICES</h3>
-<div class="row g-4">
+    <section id="about-us" class="py-5">
+      <div class="container">
+        <h2 class="text-center">OUR STORY</h2>
+        <div class="story-content">
+          <p class="mt-4">
+            At Bazaar Juice, we turn the vibrant energy into refreshing, feel
+            good blends. For us, it’s never just about juice. We craft 100%
+            organic, freshly blended drinks that fuel your day, lift your mood
+            and treat your body kindly. Every cup is made to order with fresh,
+            high-quality fruits and a whole lot of love. One sip, and you’ll
+            feel the energy.
+          </p>
+          <strong> "Freshly blended with love, served with energy." </strong>
+        </div>
+      </div>
+    </section>
 
-<div class="col-12 col-lg-6">
-<div class="menu-item">
-<div class="menu-item-content">
-<h5>#1 VITAL SPLASH</h5>
-<p>Carrot, Turmeric, Ginger, Lemon, Apple</p>
-<p class="price-tag">$9.99</p>
-</div>
-<div class="menu-item-image-wrapper">
-<img src="src/public/orange.png">
-</div>
-</div>
-</div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center text-md-start mb-4">
+            <h5>Bazaar JUICE</h5>
+            <p class="text-white-50">Freshly blended with love, served with energy. We use only the finest organic ingredients to fuel your day.</p>
+          </div>
+          <div class="col-md-4 text-center mb-4">
+            <h5>Quick Links</h5>
+            <a href="#menu-signature">Signature Juices</a>
+            <a href="#menu-classic-boosts">CLASSIC Boosts</a>
+            <a href="#menu-treats">Bowls & Treats</a>
+            <a href="#boosters-section">Boosters</a>
+            <a href="#about-us">About Us</a>
+          </div>
+          <div class="col-md-4 text-center text-md-end mb-4">
+            <h5>Connect</h5>
+            <div class="social-icons">
+              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="text-white-50 mt-3">Santa Monica, CA</p>
+            <p class="text-white-50">contact@bazaarjuice.com</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            &copy; 2024 Bazaar Juice. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
 
-<div class="col-12 col-lg-6">
-<div class="menu-item">
-<div class="menu-item-content">
-<h5>#2 VITAL GLOW</h5>
-<p>Turmeric, Ginger, Pineapple, Apple</p>
-<p class="price-tag">$9.99</p>
-</div>
-<div class="menu-item-image-wrapper">
-<img src="src/public/orange.png">
-</div>
-</div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="col-12 col-lg-6">
-<div class="menu-item">
-<div class="menu-item-content">
-<h5>CREATE YOUR OWN JUICE</h5>
-<p>Custom blend, no sugar added</p>
-<p class="price-tag">$11.99</p>
-</div>
-<div class="menu-item-image-wrapper">
-<img src="src/public/smoothie.png">
-</div>
-</div>
-</div>
+    <script>
+      const setAppHeight = () => {
+        document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+      };
+      setAppHeight();
+      window.addEventListener("resize", setAppHeight);
 
-</div>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-5" style="background:var(--bg-coffee)">
-<div class="container text-center">
-<h2>OUR STORY</h2>
-<p class="mt-3">
-Freshly blended organic juices made with love and energy.
-</p>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-<div class="container text-center">
-<p>© 2024 Bazaar Juice</p>
-</div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-const setHeight=()=>document.documentElement.style.setProperty('--app-height',window.innerHeight+'px');
-setHeight();window.addEventListener('resize',setHeight);
-</script>
-
-</body>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbarCollapse = document.getElementById("navbarContent");
+        const navLinks = document.querySelectorAll("#navbarContent .nav-link");
+        if (navbarCollapse && navLinks) {
+          navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+              if (navbarCollapse.classList.contains("show")) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                bsCollapse.hide();
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
