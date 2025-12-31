@@ -545,10 +545,14 @@
         border-top: 1px solid #555;
         font-size: 0.9rem;
       }
-      .navbar-toggler-icon {
-        /* Sets the three lines of the icon to white */
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e");
-      }
+     .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5); /* Adds a subtle border to the button */
+}
+
+.navbar-toggler-icon {
+    /* Corrected SVG: Fixed the closing svg tag and path stroke */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
       /* Apply this to the sections you are linking to */
 /* This targets every section that has an ID matching your navbar links */
 #hero, 
