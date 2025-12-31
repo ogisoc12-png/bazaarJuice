@@ -549,6 +549,23 @@
         /* Sets the three lines of the icon to white */
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e");
       }
+      /* Apply this to the sections you are linking to */
+/* This targets every section that has an ID matching your navbar links */
+#hero, 
+#menu-signature, 
+#menu-fruits, 
+#menu-treats, 
+#menu-snacks, 
+#menu-hot, 
+#menu-boosters, 
+#about-us {
+  scroll-margin-top: 120px; /* Adjust this number based on your navbar height */
+}
+
+/* Optional: Makes the transition look professional */
+html {
+  scroll-behavior: smooth;
+}
     </style>
   </head>
   <body>
@@ -570,10 +587,10 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="#menu-signature">SIGNATURE JUICES</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-classic-boosts">CLASSIC BOOSTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-fruits">FRUITS</a></li>
             <li class="nav-item"><a class="nav-link" href="#menu-treats">BOWLS & TREATS</a></li>
             <li class="nav-item"><a class="nav-link" href="#menu-snacks">SNACKS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-hot">HOT DRINKS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#menu-hot">WARM COMFORTS</a></li>
             <li class="nav-item"><a class="nav-link" href="#menu-boosters">BOOSTERS</a></li>
             <li class="nav-item"><a class="nav-link" href="#about-us">ABOUT US</a></li>
           </ul>
@@ -609,9 +626,9 @@
     </section>
 
     <section id="menu" class="py-5">
-     <div class="menu-section" id="menu-juices" style="background-color: var(--color-bg-secondary);">
+     <div class="menu-section" id="menu-signature" style="background-color: var(--color-bg-secondary);">
   <div class="container">
-    <h3 class="text-center mb-3">BAZAAR JUICE - ORGANIC FRESH JUICE</h3>
+    <h3 class="text-center mb-3">SIGNATURE JUICES</h3>
     <p class="text-center mb-5 text-muted">(Premium Blends & Wellness Boosts)</p>
     
     <div class="row">
@@ -680,18 +697,21 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-6 mb-4">
-        <div class="menu-item" style="border: 2px solid var(--color-primary-action); background-color: #fff;">
-          <div class="menu-item-content">
-            <h5>CREATE YOUR OWN JUICE / SMOOTHIE</h5>
-            <p>Real fruit, no sugar added. Custom blends available!</p>
-            <p class="price-tag">$11.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/smoothie.png" alt="smoothie" />
-          </div>
-        </div>
-      </div>
+     <div class="col-12 col-lg-6 mb-4">
+  <div class="menu-item" style="border: 2px solid var(--color-primary-action); background-color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 15px;">
+    
+    <div class="menu-item-content" style="flex: 1; padding-right: 15px;">
+      <h5 style="margin-top: 0;">CREATE YOUR OWN JUICE / SMOOTHIE</h5>
+      <p>Real fruit, no sugar added. Custom blends available!</p>
+      <p class="price-tag" style="font-weight: bold; margin-bottom: 0;">$11.99</p>
+    </div>
+
+    <div class="menu-item-image-wrapper" style="width: 200px; height: 200px; flex-shrink: 0; margin-bottom: 60px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <img src="src/public/smoothie.png" alt="smoothie" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />
+    </div>
+
+  </div>
+</div>
     </div>
 
     <div class="mt-5 p-4" style="background: rgba(255,255,255,0.5); border-radius: 20px;">
@@ -712,7 +732,7 @@
   }
 </style>
 
-<div class="row g-3">
+<div class="row g-3" id="menu-fruits">
   <div class="col-6 col-md-4 col-lg-3">
     <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm fruit-card-content">
       <img src="src/public/blackberry.png" alt="Blackberry" class="fruit-img">
@@ -834,12 +854,12 @@
   </div>
 </div>
 
-      <div class="text-center mt-4">
-        <p class="badge bg-primary p-2" style="font-size: 0.9rem;">
-          <i class="fas fa-info-circle me-1"></i> 
-          You can add these fruits to your Juice, Smoothies or Fruit Bowls!
-        </p>
-      </div>
+     <div class="text-center mt-4">
+  <p class="bg-primary text-white p-3 d-inline-block rounded" style="font-size: 0.9rem; max-width: 90%; line-height: 1.4;">
+    <i class="fas fa-info-circle me-1"></i> 
+    You can add these fruits to your Juice, Smoothies or Fruit Bowls!
+  </p>
+</div>
     </div>
   </div>
 </div>
@@ -856,7 +876,7 @@
                   <p>Seasonal fruits, hand-picked and freshly sliced for you.</p>
                   <p class="price-tag">$11.99</p>
                 </div>
-                <div class="menu-item-image-wrapper"><img src="src/public/fruit-bowl.png" /></div>
+                <div class="menu-item-image-wrapper" style="width: 200px; height: 200px; flex-shrink: 0;"  ><img src="src/public/fruit-bowl.png" /></div>
               </div>
             </div>
             <div class="col-12 col-lg-6 mb-4">
@@ -938,9 +958,7 @@
                   <p class="price-tag">$5.50</p>
                 </div>
                 <div class="menu-item-image-wrapper"><img src="src/public/hot-tea.png" /></div>
-                <div class="menu-item-image-wrapper text-center">
-                  <i class="fas fa-mug-hot fa-4x" style="color: var(--color-primary-action);"></i>
-                </div>
+                
               </div>
             </div>
           </div>
