@@ -704,11 +704,28 @@ html {
      <div class="col-12 col-lg-6 mb-4">
   <div class="menu-item" style="border: 2px solid var(--color-primary-action); background-color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 15px;">
     
-    <div class="menu-item-content" style="flex: 1; padding-right: 15px;">
-      <h5 style="margin-top: 0;">CREATE YOUR OWN JUICE / SMOOTHIE</h5>
-      <p>Real fruit, no sugar added. Custom blends available!</p>
-      <p class="price-tag" style="font-weight: bold; margin-bottom: 0;">$11.99</p>
-    </div>
+   <div class="menu-item" style="
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    border: 2px solid var(--color-primary-action); 
+    background-color: #fff; 
+    padding: 15px;
+    border-radius: 12px;
+">
+  
+  <div class="menu-item-content" style="flex: 1; min-width: 200px; padding: 10px;">
+    <h5 style="margin-top: 0; font-size: 1.1rem; line-height: 1.3;">CREATE YOUR OWN JUICE / SMOOTHIE</h5>
+    <p style="margin-bottom: 8px; font-size: 0.9rem;">Real fruit, no sugar added. Custom blends available!</p>
+    <p class="price-tag" style="font-weight: bold; margin-bottom: 0; font-size: 1.1rem;">$11.99</p>
+  </div>
+
+  <div class="menu-item-image-wrapper" style="width: 120px; height: 120px; flex-shrink: 0; margin: 0 auto;">
+    <img src="src/public/smoothie.png" alt="smoothie" style="width: 100%; height: 100%; object-fit: contain;" />
+  </div>
+
+</div>
 
     <div class="menu-item-image-wrapper" style="width: 200px; height: 200px; flex-shrink: 0; margin-bottom: 60px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
       <img src="src/public/smoothie.png" alt="smoothie" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />
