@@ -545,31 +545,66 @@
         border-top: 1px solid #555;
         font-size: 0.9rem;
       }
-     .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5); /* Adds a subtle border to the button */
-}
+      .navbar-toggler {
+        border-color: rgba(
+          255,
+          255,
+          255,
+          0.5
+        ); /* Adds a subtle border to the button */
+      }
 
-.navbar-toggler-icon {
-    /* Corrected SVG: Fixed the closing svg tag and path stroke */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
+      .navbar-toggler-icon {
+        /* Corrected SVG: Fixed the closing svg tag and path stroke */
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      }
       /* Apply this to the sections you are linking to */
-/* This targets every section that has an ID matching your navbar links */
-#hero, 
-#menu-signature, 
-#menu-fruits, 
-#menu-treats, 
-#menu-snacks, 
-#menu-hot, 
-#menu-boosters, 
-#about-us {
-  scroll-margin-top: 120px; /* Adjust this number based on your navbar height */
-}
+      /* This targets every section that has an ID matching your navbar links */
+      #hero,
+      #menu-signature,
+      #menu-fruits,
+      #menu-treats,
+      #menu-snacks,
+      #menu-hot,
+      #menu-boosters,
+      #about-us {
+        scroll-margin-top: 120px; /* Adjust this number based on your navbar height */
+      }
 
-/* Optional: Makes the transition look professional */
-html {
-  scroll-behavior: smooth;
-}
+      /* Optional: Makes the transition look professional */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style>
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #e5e4ea;
+        height: 100%; /* Keeps boxes same height */
+      }
+      .menu-item-content {
+        flex: 1;
+        padding-right: 15px;
+      }
+      /* THIS PART MAKES ALL IMAGES LOOK THE SAME SIZE */
+      .menu-item-image-wrapper {
+        width: 140px;
+        height: 140px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .menu-item-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Keeps the full image visible without stretching */
+      }
     </style>
   </head>
   <body>
@@ -590,13 +625,31 @@ html {
         <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-signature">SIGNATURE JUICES</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-fruits">FRUITS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-treats">BOWLS & TREATS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-snacks">SNACKS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-hot">WARM COMFORTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#menu-boosters">BOOSTERS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about-us">ABOUT US</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-signature">SIGNATURE JUICES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-fruits">FRUITS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-treats">BOWLS & TREATS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-snacks">SNACKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#fruit-cups-section"> FRUIT CUPS </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-hot">WARM COMFORTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about-us">ABOUT US</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -629,331 +682,507 @@ html {
       </div>
     </section>
 
-
-
-<section id="menu" class="py-5">
-
-  <div class="menu-section" id="menu-signature">
-    <div class="container">
-      <h3 class="text-center mb-3">SIGNATURE JUICES</h3>
-      <p class="text-center mb-5 text-muted">(Premium Blends & Wellness Boosts)</p>
-
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5><span class="drink-number">#1</span> VITAL SPLASH</h5>
-              <p>Carrot, Turmeric, Ginger, Lemon, Apple.</p>
-              <p class="price-tag">$11.99</p>
+    <section id="menu" class="py-5">
+      <div
+        class="menu-section"
+        id="menu-treats"
+        style="background-color: #fdf2f2"
+      >
+        <div class="container">
+          <h3 class="text-center mb-3">BOWLS & SWEET TREATS</h3>
+          <p class="text-center mb-5 text-muted">
+            (Fresh quality fruits ready to eat)
+          </p>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5 style="padding-left: 0">CREATE YOUR OWN FRUIT BOWL</h5>
+                  <p>
+                    Seasonal fruits, hand-picked and freshly sliced for you.
+                  </p>
+                  <p class="price-tag">$11.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/fruit-bowl.png" />
+                </div>
+              </div>
             </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/orange.png" alt="orange juice" />
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5 style="padding-left: 0">PANCAKE FRUIT BOWL</h5>
+                  <p>
+                    Fluffy pancakes with fresh fruit and rich chocolate drizzle.
+                  </p>
+                  <p class="price-tag">$12.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/pancake.png" />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5><span class="drink-number">#2</span> VITAL GLOW</h5>
-              <p>Turmeric, Ginger, Pineapple, Carrot, Black Pepper, Apple.</p>
-              <p class="price-tag">$11.99</p>
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5 style="padding-left: 0">ZERO SUGAR YOGHURT BOWL</h5>
+                  <p>
+                    Pure yoghurt, oats, chia seeds, and fresh seasonal fruits.
+                  </p>
+                  <p class="price-tag">$12.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/yoghurt.png" />
+                </div>
+              </div>
             </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/orange.png" alt="orange juice" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5><span class="drink-number">#3</span> EASY DAY</h5>
-              <p>Carrot, Ginger, Apple.</p>
-              <p class="price-tag">$11.99</p>
-            </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/orange.png" alt="orange juice" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5><span class="drink-number">#4</span> POWER UP</h5>
-              <p>Kiwi, Strawberry, Apple.</p>
-              <p class="price-tag">$11.99</p>
-            </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/red.png" alt="red juice" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5><span class="drink-number">#5</span> BOOST ME UP</h5>
-              <p>Strawberry, Ginger, Apple.</p>
-              <p class="price-tag">$11.99</p>
-            </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/red.png" alt="red juice" />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="menu-item" style="border: 2px solid var(--color-primary-action);">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">CREATE YOUR OWN BLEND</h5>
-              <p>Real fruit, no sugar added. Custom blends available!</p>
-              <p class="price-tag">$11.99</p>
-            </div>
-            <div class="menu-item-image-wrapper">
-              <img src="src/public/smoothie.png" alt="smoothie" />
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5 style="padding-left: 0">CHOCO BANANA OR STRAWBERRY</h5>
+                  <p>
+                    Fresh skewers covered in premium chocolate and sprinkles.
+                  </p>
+                  <p class="price-tag">$7.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/choco-fruit.png" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-     <div class="mt-5 p-4" id="menu-fruits" style="background: rgba(255,255,255,0.5); border-radius: 20px;">
-  <h4 class="text-center mb-4" style="font-weight: 900; color: var(--color-primary-action);">OUR FRESH FRUIT SELECTION</h4>
-  <div class="row g-3">
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/blackberry.png" alt="Blackberry" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">BLACKBERRY</small>
+      <div
+        class="menu-section"
+        id="menu-snacks"
+        style="background-color: var(--color-bg-neutral)"
+      >
+        <div class="container">
+          <h3 class="text-center mb-3">SAVORY SNACKS</h3>
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5 style="padding-left: 0">BAZAAR JUICE SWEETCORN</h5>
+                  <p>Boiled in fresh milk and coated with creamy butter.</p>
+                  <p class="price-tag">$5.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/corn.png" alt="sweetcorn" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/grapes.png" alt="Grapes" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">GRAPES</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/blueberry.png" alt="Blueberry" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">BLUEBERRY</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/banana.png" alt="Banana" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">BANANA</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/mango.png" alt="Mango" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">MANGO</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/watermelon.png" alt="Watermelon" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">WATERMELON</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/strawberry.png" alt="Strawberry" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">STRAWBERRY</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/orangee.png" alt="Orange" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">ORANGE</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/kiwi.png" alt="Kiwi" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">KIWI</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/melon.png" alt="Melon" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">MELON</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/pineapple.png" alt="Pineapple" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">PINEAPPLE</small>
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="p-2 border-start border-4 border-warning bg-white rounded shadow-sm d-flex align-items-center gap-2">
-        <img src="src/public/apple.png" alt="Apple" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
-        <small class="fw-bold text-dark">APPLE</small>
-      </div>
-    </div>
-  </div>
-  
-  <div class="text-center mt-4">
-    <div class="bg-primary text-white p-2 d-inline-block rounded shadow-sm">
-      <small class="fw-bold"><i class="fas fa-layer-group me-2"></i> Select up to 3 fruits for your blend!</small>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
 
-  <div class="menu-section" id="menu-treats" style="background-color: #fdf2f2;">
-    <div class="container">
-      <h3 class="text-center mb-3">BOWLS & SWEET TREATS</h3>
-      <p class="text-center mb-5 text-muted">(Fresh quality fruits ready to eat)</p>
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">CREATE YOUR OWN FRUIT BOWL</h5>
-              <p>Seasonal fruits, hand-picked and freshly sliced for you.</p>
-              <p class="price-tag">$11.99</p>
-            </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/fruit-bowl.png" /></div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">PANCAKE FRUIT BOWL</h5>
-              <p>Fluffy pancakes with fresh fruit and rich chocolate drizzle.</p>
-              <p class="price-tag">$12.99</p>
-            </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/pancake.png" /></div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">ZERO SUGAR YOGHURT BOWL</h5>
-              <p>Pure yoghurt, oats, chia seeds, and fresh seasonal fruits.</p>
-              <p class="price-tag">$12.99</p>
-            </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/yoghurt.png" /></div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">CHOCO BANANA OR STRAWBERRY</h5>
-              <p>Fresh skewers covered in premium chocolate and sprinkles.</p>
-              <p class="price-tag">$7.99</p>
-            </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/choco-fruit.png" /></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <!-- FRUIT CUPS SECTION -->
+      <div class="col-12">
+        <div
+          class="fruit-cups-section mt-5 p-4"
+          id="fruit-cups-section"
+          style="background-color: #f2fbf7; border-radius: 14px"
+        >
+          <h4 class="text-center mb-2">FRUIT CUPS</h4>
+          <p class="text-center text-muted mb-4">
+            Fresh, ready-to-eat fruit cups crafted for every mood
+          </p>
 
-  <div class="menu-section" id="menu-snacks" style="background-color: var(--color-bg-neutral);">
-    <div class="container">
-      <h3 class="text-center mb-3">SAVORY SNACKS</h3>
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">BAZAAR JUICE SWEETCORN</h5>
-              <p>Boiled in fresh milk and coated with creamy butter.</p>
-              <p class="price-tag">$5.99</p>
+          <div class="row">
+            <!-- 1 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>1. TROPICAL ENERGY</h5>
+                  <p>Banana · Mango · Pineapple</p>
+                  <p class="text-muted">
+                    Great for energy, workouts, and a natural sugar boost.
+                  </p>
+                  <p class="price-tag">$6.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-mango-pineapple.png" />
+                </div>
+              </div>
             </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/corn.png" alt="sweetcorn" /></div>
+
+            <!-- 2 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>2. CLASSIC SWEET</h5>
+                  <p>Banana · Strawberry</p>
+                  <p class="text-muted">
+                    Perfect balance of sweet and creamy. Kid-friendly favorite.
+                  </p>
+                  <p class="price-tag">$6.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>3. ANTIOXIDANT MIX</h5>
+                  <p>Banana · Strawberry · Blueberry · Dragon Fruit</p>
+                  <p class="text-muted">
+                    Rich in antioxidants. Supports immunity and skin health.
+                  </p>
+                  <p class="price-tag">$7.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img
+                    src="src/public/banana-strawberry-blueberry-dragonfruit.png"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>4. DAILY BALANCE</h5>
+                  <p>Banana · Strawberry · Apple · Blueberry</p>
+                  <p class="text-muted">
+                    Balanced nutrients. Great for everyday snacking.
+                  </p>
+                  <p class="price-tag">$7.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry-apple-blueberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>5. SUPERFRUIT BOOST</h5>
+                  <p>Banana · Strawberry · Apple · Dragon Fruit · Raspberry</p>
+                  <p class="text-muted">
+                    High in fiber and antioxidants. Supports digestion.
+                  </p>
+                  <p class="price-tag">$8.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img
+                    src="src/public/banana-strawberry-apple-dragonfruit-raspberry.png"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>6. CITRUS GLOW</h5>
+                  <p>Orange · Kiwi · Apple · Blueberry</p>
+                  <p class="text-muted">
+                    Vitamin C rich. Great for skin and immunity.
+                  </p>
+                  <p class="price-tag">$7.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-kiwi-apple-blueberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>7. JUICY ORANGE</h5>
+                  <p>Orange</p>
+                  <p class="text-muted">
+                    Hydrating and refreshing. Pure vitamin C.
+                  </p>
+                  <p class="price-tag">$5.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>8. TROPICAL SUNSET</h5>
+                  <p>Mango · Pineapple · Strawberry</p>
+                  <p class="text-muted">
+                    Sweet, juicy, and refreshing tropical blend.
+                  </p>
+                  <p class="price-tag">$7.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-pineapple-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>9. PURE MANGO</h5>
+                  <p>Mango</p>
+                  <p class="text-muted">
+                    Naturally sweet. Great for energy and digestion.
+                  </p>
+                  <p class="price-tag">$6.49</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>10. WATERMELON COOLER</h5>
+                  <p>Watermelon</p>
+                  <p class="text-muted">
+                    Ultra-hydrating. Perfect for hot days.
+                  </p>
+                  <p class="price-tag">$5.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/watermelon.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>11. MELON FRESH</h5>
+                  <p>Melon</p>
+                  <p class="text-muted">
+                    Light, refreshing, and easy on digestion.
+                  </p>
+                  <p class="price-tag">$5.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/melon.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>12. ORCHARD MIX</h5>
+                  <p>Apple · Peach</p>
+                  <p class="text-muted">
+                    Classic orchard fruits. Good for gut health.
+                  </p>
+                  <p class="price-tag">$6.49</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple-peach.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>13. GREEN GRAPE REFRESH</h5>
+                  <p>Grape · Orange · Kiwi</p>
+                  <p class="text-muted">
+                    Refreshing and hydrating with a citrus kick.
+                  </p>
+                  <p class="price-tag">$7.49</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/grape-orange-kiwi.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>14. IMMUNITY POWER</h5>
+                  <p>Orange · Dragon Fruit · Pomegranate</p>
+                  <p class="text-muted">
+                    Loaded with antioxidants. Immune support.
+                  </p>
+                  <p class="price-tag">$8.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-dragonfruit-pomegranate.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>15. SWEET DUO</h5>
+                  <p>Mango · Strawberry</p>
+                  <p class="text-muted">
+                    Sweet, juicy, and crowd-favorite combo.
+                  </p>
+                  <p class="price-tag">$6.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>16. CRISP APPLE</h5>
+                  <p>Apple</p>
+                  <p class="text-muted">Simple, crunchy, and fiber-rich.</p>
+                  <p class="price-tag">$5.49</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple.png" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="col-12">
+        <div
+          class="refreshers-section mt-5 p-4"
+          style="background-color: #f4f7f6; border-radius: 14px"
+        >
+          <h4 class="text-center mb-2">REFRESHERS</h4>
+          <p class="text-center text-muted mb-4">
+            Light, cold, and refreshing drinks for any time of day
+          </p>
 
-  <div class="menu-section" id="menu-hot" style="background-color: var(--color-bg-coffee-light);">
-    <div class="container">
-      <h3 class="text-center mb-3">WARM COMFORTS</h3>
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="menu-item">
-            <div class="menu-item-content">
-              <h5 style="padding-left: 0;">PREMIUM HOT CHOCOLATE</h5>
-              <p>Made with milk, not water. Topped with marshmallows.</p>
-              <p class="price-tag">$7.99</p>
+          <div class="row">
+            <!-- 1 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>1. TAP SIP COCONUT WATER</h5>
+                  <p>100% Natural · Product of Vietnam</p>
+                  <p class="text-muted">
+                    Pure coconut water with no added sugar. Naturally hydrating
+                    and rich in electrolytes.
+                  </p>
+                  <p class="price-tag">$8.99</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/coconutWater.png" />
+                </div>
+              </div>
             </div>
-            <div class="menu-item-image-wrapper"><img src="src/public/hot-chocolate.png" /></div>
+
+            <!-- 2 -->
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>2. CHOCOLATE MILK</h5>
+                  <p>Cold Milk · Real Cacao</p>
+                  <p class="text-muted">
+                    Smooth, creamy chocolate milk made with real cacao and
+                    served ice cold.
+                  </p>
+                  <p class="price-tag">$4.49</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/chocolate-cacao-milk.png" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-       
       </div>
-    </div>
-  </div>
 
-  <div class="container py-5" id="boosters-section">
-  <h3 id="menu-boosters" class="text-center">BOOSTERS & ADD-ONS</h3>
-  <p class="text-center mb-2 text-primary fw-bold" style="font-size: 1.2rem;">
-    Add any booster for only <span style="text-decoration: underline;">+$0.50</span> each!
-  </p>
-  <p class="text-center mb-5 text-muted">(Customize any drink for extra health benefits or flavor.)</p>
-  
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-5 mb-4">
-      <div class="booster-card p-4 text-center" style="border: 2px dashed var(--color-primary-action); border-radius: 15px; background-color: #fdfdfd;">
-        <h5 class="fw-bold mb-3" style="color: var(--color-primary-action);">WELLNESS SHOTS</h5>
-        <div class="booster-list">
-          <p class="mb-2">PROTEIN 💪</p>
-          <p class="mb-2">COLLAGEN ✨</p>
-          <p class="mb-2">VITAMIN C 🍊</p>
-          <p class="mb-0">OLIVE OIL 🫒</p>
+      <!-- 2 -->
+
+      <div class="container py-5" id="boosters-section">
+        <h3 id="menu-boosters" class="text-center">BOOSTERS & ADD-ONS</h3>
+        <p
+          class="text-center mb-2 text-primary fw-bold"
+          style="font-size: 1.2rem"
+        >
+          Add any booster for only
+          <span style="text-decoration: underline">+$0.50</span> each!
+        </p>
+        <p class="text-center mb-5 text-muted">
+          (Customize any drink for extra health benefits or flavor.)
+        </p>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-5 mb-4">
+            <div
+              class="booster-card p-4 text-center"
+              style="
+                border: 2px dashed var(--color-primary-action);
+                border-radius: 15px;
+                background-color: #fdfdfd;
+              "
+            >
+              <h5
+                class="fw-bold mb-3"
+                style="color: var(--color-primary-action)"
+              >
+                WELLNESS SHOTS
+              </h5>
+              <div class="booster-list">
+                <p class="mb-2">PROTEIN 💪</p>
+                <p class="mb-2">COLLAGEN ✨</p>
+                <p class="mb-2">VITAMIN C 🍊</p>
+                <p class="mb-0">OLIVE OIL 🫒</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-5 mb-4">
+            <div
+              class="booster-card p-4 text-center"
+              style="
+                border: 2px dashed var(--color-primary-action);
+                border-radius: 15px;
+                background-color: #fdfdfd;
+              "
+            >
+              <h5
+                class="fw-bold mb-3"
+                style="color: var(--color-primary-action)"
+              >
+                FLAVOR & HEAT
+              </h5>
+              <div class="booster-list">
+                <p class="mb-2">GINGER 🫚</p>
+                <p class="mb-2">LEMON 🍋</p>
+                <p class="mb-2">MINT 🌿</p>
+                <p class="mb-0">TURMERIC 🟠</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-12 col-md-5 mb-4">
-      <div class="booster-card p-4 text-center" style="border: 2px dashed var(--color-primary-action); border-radius: 15px; background-color: #fdfdfd;">
-        <h5 class="fw-bold mb-3" style="color: var(--color-primary-action);">FLAVOR & HEAT</h5>
-        <div class="booster-list">
-          <p class="mb-2">GINGER 🫚</p>
-          <p class="mb-2">LEMON 🍋</p>
-          <p class="mb-2">MINT 🌿</p>
-          <p class="mb-0">TURMERIC 🟠</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-<style>
-  .menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #e5e4ea;
-    height: 100%; /* Keeps boxes same height */
-  }
-  .menu-item-content {
-    flex: 1;
-    padding-right: 15px;
-  }
-  /* THIS PART MAKES ALL IMAGES LOOK THE SAME SIZE */
-  .menu-item-image-wrapper {
-    width: 140px; 
-    height: 140px; 
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .menu-item-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps the full image visible without stretching */
-  }
-</style>
+    </section>
 
     <section id="about-us" class="py-5">
       <div class="container">
@@ -977,7 +1206,10 @@ html {
         <div class="row">
           <div class="col-md-4 text-center text-md-start mb-4">
             <h5>Bazaar JUICE</h5>
-            <p class="text-white-50">Freshly blended with love, served with energy. We use only the finest organic ingredients to fuel your day.</p>
+            <p class="text-white-50">
+              Freshly blended with love, served with energy. We use only the
+              finest organic ingredients to fuel your day.
+            </p>
           </div>
           <div class="col-md-4 text-center mb-4">
             <h5>Quick Links</h5>
@@ -1010,7 +1242,10 @@ html {
 
     <script>
       const setAppHeight = () => {
-        document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+        document.documentElement.style.setProperty(
+          "--app-height",
+          `${window.innerHeight}px`
+        );
       };
       setAppHeight();
       window.addEventListener("resize", setAppHeight);
@@ -1022,7 +1257,9 @@ html {
           navLinks.forEach(function (link) {
             link.addEventListener("click", function () {
               if (navbarCollapse.classList.contains("show")) {
-                const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                  toggle: false,
+                });
                 bsCollapse.hide();
               }
             });
@@ -1031,8 +1268,8 @@ html {
       });
     </script>
     <script>
-  // This looks for the element with id="year" and puts the current year inside it
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+      // This looks for the element with id="year" and puts the current year inside it
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
