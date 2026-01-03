@@ -704,6 +704,11 @@
     border-radius: 14px;
     transition: all 0.25s ease;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
   }
 
   .fruit-card:hover {
@@ -716,13 +721,18 @@
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0; /* 🔑 prevents text squeeze */
   }
 
   .fruit-name {
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
-    white-space: nowrap;
+
+    min-width: 0;              /* 🔑 critical for flexbox */
+    white-space: normal;       /* allow wrapping */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .premium-badge {
@@ -748,137 +758,92 @@
 
     <!-- GRID -->
     <div class="row g-3">
-      <!-- PREMIUM -->
+
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/blackberry.png" class="fruit-img" />
-          <div class="d-flex align-items-center flex-wrap">
-            <span class="fruit-name">BLACKBERRY</span>
-          
-          </div>
+          <span class="fruit-name">BLACKBERRY</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/blueberry.png" class="fruit-img" />
-          <div class="d-flex align-items-center flex-wrap">
-            <span class="fruit-name">BLUEBERRY</span>
-        
-          </div>
+          <span class="fruit-name">BLUEBERRY</span>
         </div>
       </div>
 
-      <!-- STANDARD -->
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/grapes.png" class="fruit-img" />
           <span class="fruit-name">GRAPES</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/banana.png" class="fruit-img" />
           <span class="fruit-name">BANANA</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/mangoo.png" class="fruit-img" />
           <span class="fruit-name">MANGO</span>
         </div>
       </div>
 
-     <div class="col-6 col-md-4 col-lg-3">
-  <div
-    class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm"
-    style="width:100%;"
-  >
-    <img
-      src="src/public/watermeloon.png"
-      class="fruit-img"
-      style="flex-shrink:0;"
-    />
-
-    <span
-      class="fruit-name"
-      style="
-        display:block;
-        min-width:0;
-        white-space:normal;
-        overflow-wrap:break-word;
-        word-break:break-word;
-      "
-    >
-      WATERMELON
-    </span>
-  </div>
-</div>
-
-     <div class="col-6 col-md-4 col-lg-3">
-  <div
-    class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm"
-    style="width:100%;"
-  >
-    <img
-      src="src/public/strawberry.png"
-      class="fruit-img"
-      style="flex-shrink:0;"
-    />
-
-    <span
-      class="fruit-name"
-      style="
-        display:block;
-        min-width:0;
-        white-space:normal;
-        overflow-wrap:break-word;
-        word-break:break-word;
-      "
-    >
-      STRAWBERRY
-    </span>
-  </div>
-</div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card p-3 shadow-sm">
+          <img src="src/public/watermeloon.png" class="fruit-img" />
+          <span class="fruit-name">WATERMELON</span>
+        </div>
+      </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
+          <img src="src/public/strawberry.png" class="fruit-img" />
+          <span class="fruit-name">STRAWBERRY</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/orangee.png" class="fruit-img" />
           <span class="fruit-name">ORANGE</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/kiwi.png" class="fruit-img" />
           <span class="fruit-name">KIWI</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/meloon.png" class="fruit-img" />
           <span class="fruit-name">MELON</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/pineapple.png" class="fruit-img" />
           <span class="fruit-name">PINEAPPLE</span>
         </div>
       </div>
 
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+        <div class="fruit-card p-3 shadow-sm">
           <img src="src/public/applee.png" class="fruit-img" />
           <span class="fruit-name">APPLE</span>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
       <div
