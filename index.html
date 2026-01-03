@@ -1288,7 +1288,7 @@
               Creamy hot chocolate topped with whipped cream, marshmallows,
               chocolate drizzle, and colorful sprinkles.
             </p>
-            <p class="price-tag">$4.99</p>
+            <p class="price-tag">$7.99</p>
           </div>
 
           <div class="menu-item-image-wrapper">
@@ -1424,55 +1424,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-  // Keep your app-height fix (optional for your hero video sizing)
-  function setAppHeight() {
-    document.documentElement.style.setProperty(
-      "--app-height",
-      `${window.innerHeight}px`
-    );
-  }
-  setAppHeight();
-  window.addEventListener("resize", setAppHeight);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const collapseEl = document.getElementById("navbarContent");
-    const toggler = document.querySelector(
-      '.navbar-toggler[data-bs-toggle="collapse"][data-bs-target="#navbarContent"]'
-    );
-
-    if (!collapseEl) return;
-
-    // Ensure a single Bootstrap collapse instance
-    const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl, {
-      toggle: false,
-    });
-
-    // Close when any nav link inside the collapsed menu is clicked
-    collapseEl.addEventListener("click", (e) => {
-      const link = e.target.closest("a.nav-link");
-      if (!link) return;
-
-      // only hide on mobile when it's open
-      if (collapseEl.classList.contains("show")) {
-        collapse.hide();
-        toggler?.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    // Optional: close when clicking outside the open menu (mobile UX)
-    document.addEventListener("click", (e) => {
-      if (!collapseEl.classList.contains("show")) return;
-
-      const clickedInsideMenu = e.target.closest("#navbarContent");
-      const clickedToggler = e.target.closest(".navbar-toggler");
-      if (!clickedInsideMenu && !clickedToggler) {
-        collapse.hide();
-        toggler?.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
-</script>
+  
     <script>
       // This looks for the element with id="year" and puts the current year inside it
       document.getElementById("year").textContent = new Date().getFullYear();
