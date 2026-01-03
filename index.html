@@ -721,31 +721,29 @@
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    flex-shrink: 0; /* 🔑 prevents text squeeze */
+    flex-shrink: 0; /* image never squeezes text */
   }
 
+  /* ✅ FIX: no overflow + no ugly split like BLACKBER / RY */
   .fruit-name {
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
 
-    min-width: 0;              /* 🔑 critical for flexbox */
-    white-space: normal;       /* allow wrapping */
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
+    flex: 1;
+    min-width: 0;          /* critical for flexbox */
+    white-space: normal;   /* allow wrapping */
 
-  .premium-badge {
-    margin-left: 6px;
-    background: #111827;
-    color: #ffffff;
-    font-size: 0.65rem;
-    padding: 3px 7px;
-    border-radius: 999px;
+    /* allow proper hyphenation when needed */
+    hyphens: auto;
+
+    /* IMPORTANT: remove forced ugly breaking */
+    overflow-wrap: normal;
+    word-break: normal;
   }
 </style>
 
-<section id="menu-fruits" class="fruit-section mt-5">
+<section id="menu-fruits" class="fruit-section mt-5" lang="en">
   <div class="container">
 
     <!-- HEADER -->
