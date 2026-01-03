@@ -606,6 +606,7 @@
         object-fit: contain; /* Keeps the full image visible without stretching */
       }
     </style>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -622,31 +623,41 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+  <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#menu-treats">BOWLS & TREATS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#menu-snacks">SNACKS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#fruit-cups-section"> FRUIT BOWLS & SMOOTHIES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#refreshers-section"> REFRESHERS </a>
-            </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu-fruits">BAZAAR FRUIT SELECTION</a>
+  </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about-us">ABOUT US</a>
-            </li>
-          </ul>
-        </div>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu-treats">BOWLS & TREATS</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#menu-snacks">SNACKS</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#fruit-cups-section">FRUIT BOWLS & SMOOTHIES</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#refreshers-section">REFRESHERS</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#hot-drinks-section">HOT DRINKS</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#about-us">ABOUT US</a>
+  </li>
+</ul>
       </div>
     </nav>
 
@@ -678,6 +689,179 @@
     </section>
 
     <section id="menu" class="py-5">
+       <div
+  class="mt-5 p-4"
+  id="menu-fruits"
+  style="background: rgba(255,255,255,0.6); border-radius: 20px;"
+>
+  
+  
+<style>
+  /* ===== FRUIT SECTION ===== */
+  .fruit-section {
+    background: linear-gradient(180deg, #f9fdf9 0%, #eef6ef 100%);
+    padding: 60px 0;
+    border-radius: 16px;
+  }
+
+  .fruit-section .section-title {
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .fruit-section .section-subtitle {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  /* ===== FRUIT CARD ===== */
+  .fruit-card {
+    background: #ffffff;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .fruit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  .fruit-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .fruit-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .premium-badge {
+    margin-left: 6px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 0.65rem;
+    padding: 3px 7px;
+    border-radius: 999px;
+  }
+</style>
+
+<section id="menu-fruits" class="fruit-section mt-5">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="text-center">
+      <h2 class="section-title">FRESH FRUIT SELECTION</h2>
+      <p class="section-subtitle">
+        Choose from our hand-picked fruits to build your perfect bowl
+      </p>
+    </div>
+
+    <!-- GRID -->
+    <div class="row g-3">
+      <!-- PREMIUM -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/blackberry.jpg" class="fruit-img" />
+          <div class="d-flex align-items-center flex-wrap">
+            <span class="fruit-name">BLACKBERRY</span>
+            <span class="premium-badge">PREMIUM +$1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/blueberry.jpg" class="fruit-img" />
+          <div class="d-flex align-items-center flex-wrap">
+            <span class="fruit-name">BLUEBERRY</span>
+            <span class="premium-badge">PREMIUM +$1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/grapes.jpg" class="fruit-img" />
+          <span class="fruit-name">GRAPES</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/banana.jpg" class="fruit-img" />
+          <span class="fruit-name">BANANA</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/mangoo.jpg" class="fruit-img" />
+          <span class="fruit-name">MANGO</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/watermelon.jpg" class="fruit-img" />
+          <span class="fruit-name">WATERMELON</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/strawberry.jpg" class="fruit-img" />
+          <span class="fruit-name">STRAWBERRY</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/orangee.jpg" class="fruit-img" />
+          <span class="fruit-name">ORANGE</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/kiwi.jpg" class="fruit-img" />
+          <span class="fruit-name">KIWI</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/melon.jpg" class="fruit-img" />
+          <span class="fruit-name">MELON</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/pineapple.jpg" class="fruit-img" />
+          <span class="fruit-name">PINEAPPLE</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="fruit-card d-flex align-items-center gap-3 p-3 shadow-sm">
+          <img src="src/public/apple.jpg" class="fruit-img" />
+          <span class="fruit-name">APPLE</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
       <div
         class="menu-section"
         id="menu-treats"
@@ -772,236 +956,286 @@
           </div>
         </div>
       </div>
+      
+  
 
       <!-- FRUIT CUPS SECTION -->
-    <div class="col-12">
-  <div
-    class="fruit-cups-section mt-5 p-4"
-    id="fruit-cups-section"
-    style="background-color: #f2fbf7; border-radius: 14px"
-  >
-    <h4 class="text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
+      <div class="col-12">
+        <div
+          class="fruit-cups-section mt-5 p-4"
+          id="fruit-cups-section"
+          style="background-color: #f2fbf7; border-radius: 14px"
+        >
+          <h4 class="text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
 
-    <p class="text-center text-muted mb-2">Choose how you enjoy it</p>
+          <p class="text-center text-muted mb-2">Choose how you enjoy it</p>
 
-    <p class="text-center text-muted mb-4" style="font-size: 0.95rem;">
-      <strong>Fruit Bowl:</strong> $11.99 &nbsp;|&nbsp;
-      <strong>Smoothie / Juice:</strong> $12.99
-    </p>
+          <p class="text-center text-muted mb-4" style="font-size: 0.95rem">
+            <strong>Fruit Bowl:</strong> $11.99 &nbsp;|&nbsp;
+            <strong>Smoothie / Juice:</strong> $12.99
+          </p>
 
-    <div class="row">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#1 Banana · Mango · Pineapple</h5>
+                  <p class="text-muted">
+                    Great for energy, workouts, and natural fuel.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-mango-pineapple.png" />
+                </div>
+              </div>
+            </div>
 
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#1 Banana · Mango · Pineapple</h5>
-            <p class="text-muted">Great for energy, workouts, and natural fuel.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/banana-mango-pineapple.png" />
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#2 Banana · Strawberry</h5>
+                  <p class="text-muted">Sweet, filling, and kid-friendly.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#3 Banana · Strawberry · Blueberry · Dragon Fruit</h5>
+                  <p class="text-muted">
+                    High in antioxidants. Supports immunity.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img
+                    src="src/public/banana-strawberry-blueberry-dragonfruit.png"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#4 Banana · Strawberry · Apple · Blueberry</h5>
+                  <p class="text-muted">
+                    Balanced nutrients for everyday snacking.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry-apple-blueberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>
+                    #5 Banana · Strawberry · Apple · Dragon Fruit · Raspberry
+                  </h5>
+                  <p class="text-muted">High fiber. Great for digestion.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img
+                    src="src/public/banana-strawberry-apple-dragonfruit-raspberry.png"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#6 Orange · Kiwi · Apple · Blueberry</h5>
+                  <p class="text-muted">
+                    Vitamin C rich. Supports skin and immunity.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-kiwi-apple-blueberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#7 Orange</h5>
+                  <p class="text-muted">Refreshing and hydrating.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#8 Mango · Pineapple · Strawberry</h5>
+                  <p class="text-muted">Sweet tropical blend. Mood booster.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-pineapple-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#9 Mango</h5>
+                  <p class="text-muted">Naturally sweet. Energy support.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#10 Watermelon</h5>
+                  <p class="text-muted">
+                    Ultra-hydrating. Perfect for hot days.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/watermelon.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#11 Melon</h5>
+                  <p class="text-muted">
+                    Light, refreshing, and easy to digest.
+                  </p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/melon.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#12 Apple · Peach</h5>
+                  <p class="text-muted">Classic fruits. Good for gut health.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple-peach.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#13 Grape · Orange · Kiwi</h5>
+                  <p class="text-muted">Refreshing with a citrus kick.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/grape-orange-kiwi.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#14 Orange · Dragon Fruit · Pomegranate</h5>
+                  <p class="text-muted">Antioxidant-rich. Immune support.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-dragonfruit-pomegranate.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#15 Mango · Strawberry</h5>
+                  <p class="text-muted">Sweet and juicy crowd favorite.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-strawberry.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#16 Apple</h5>
+                  <p class="text-muted">Crunchy and fiber-rich.</p>
+                  <p class="price-tag">
+                    Fruit Bowl $11.99 · Smoothie / Juice $12.99
+                  </p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple.png" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#2 Banana · Strawberry</h5>
-            <p class="text-muted">Sweet, filling, and kid-friendly.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/banana-strawberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#3 Banana · Strawberry · Blueberry · Dragon Fruit</h5>
-            <p class="text-muted">High in antioxidants. Supports immunity.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/banana-strawberry-blueberry-dragonfruit.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#4 Banana · Strawberry · Apple · Blueberry</h5>
-            <p class="text-muted">Balanced nutrients for everyday snacking.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/banana-strawberry-apple-blueberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#5 Banana · Strawberry · Apple · Dragon Fruit · Raspberry</h5>
-            <p class="text-muted">High fiber. Great for digestion.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/banana-strawberry-apple-dragonfruit-raspberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#6 Orange · Kiwi · Apple · Blueberry</h5>
-            <p class="text-muted">Vitamin C rich. Supports skin and immunity.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/orange-kiwi-apple-blueberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#7 Orange</h5>
-            <p class="text-muted">Refreshing and hydrating.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/orange.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#8 Mango · Pineapple · Strawberry</h5>
-            <p class="text-muted">Sweet tropical blend. Mood booster.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/mango-pineapple-strawberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#9 Mango</h5>
-            <p class="text-muted">Naturally sweet. Energy support.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/mango.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#10 Watermelon</h5>
-            <p class="text-muted">Ultra-hydrating. Perfect for hot days.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/watermelon.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#11 Melon</h5>
-            <p class="text-muted">Light, refreshing, and easy to digest.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/melon.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#12 Apple · Peach</h5>
-            <p class="text-muted">Classic fruits. Good for gut health.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/apple-peach.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#13 Grape · Orange · Kiwi</h5>
-            <p class="text-muted">Refreshing with a citrus kick.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/grape-orange-kiwi.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#14 Orange · Dragon Fruit · Pomegranate</h5>
-            <p class="text-muted">Antioxidant-rich. Immune support.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/orange-dragonfruit-pomegranate.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#15 Mango · Strawberry</h5>
-            <p class="text-muted">Sweet and juicy crowd favorite.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/mango-strawberry.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-6">
-        <div class="menu-item">
-          <div class="menu-item-content">
-            <h5>#16 Apple</h5>
-            <p class="text-muted">Crunchy and fiber-rich.</p>
-            <p class="price-tag">Fruit Bowl $11.99 · Smoothie / Juice $12.99</p>
-          </div>
-          <div class="menu-item-image-wrapper">
-            <img src="src/public/apple.png" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
       <div class="col-12">
         <div
           class="refreshers-section mt-5 p-4"
@@ -1052,7 +1286,41 @@
           </div>
         </div>
       </div>
+<div class="col-12">
+  <div
+    class="warm-drinks-section mt-5 p-4 padding-bottom-3"
+    id="hot-drinks-section"
+    style="background-color: #fff3e8; border-radius: 14px"
+  >
+    <h4 class="text-center mb-2">WARM DRINKS</h4>
+    <p class="text-center text-muted mb-4">
+      Rich, warm, and comforting drinks
+    </p>
 
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6">
+        <div class="menu-item">
+          <div class="menu-item-content">
+            <h5>1. HOT CHOCOLATE</h5>
+            <p>Warm Milk · Real Cacao · Marshmallows</p>
+            <p class="text-muted">
+              Creamy hot chocolate topped with whipped cream, marshmallows,
+              chocolate drizzle, and colorful sprinkles.
+            </p>
+            <p class="price-tag">$4.99</p>
+          </div>
+
+          <div class="menu-item-image-wrapper">
+            <img
+              src="src/public/hot-chocolate.png"
+              alt="Hot Chocolate"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- 2 -->
 
       <div class="container py-5" id="boosters-section">
@@ -1087,8 +1355,7 @@
               <div class="booster-list">
                 <p class="mb-2">PROTEIN 💪</p>
                 <p class="mb-2">COLLAGEN ✨</p>
-                <p class="mb-2">VITAMIN C 🍊</p>
-                <p class="mb-0">OLIVE OIL 🫒</p>
+                
               </div>
             </div>
           </div>
