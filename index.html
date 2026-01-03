@@ -625,7 +625,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- ✅ THIS WRAPPER IS REQUIRED -->
+    <!-- ✅ THIS WRAPPER IS REQUIRED --> 
+     
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
@@ -1437,31 +1438,37 @@
   document.addEventListener("DOMContentLoaded", () => {
     const collapseEl = document.getElementById("navbarContent");
     const toggler = document.querySelector(
-      '[data-bs-toggle="collapse"][data-bs-target="#navbarContent"]'
+      '.navbar-toggler[data-bs-toggle="collapse"][data-bs-target="#navbarContent"]'
     );
 
     if (!collapseEl) return;
 
+    // Ensure a single Bootstrap collapse instance
     const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl, {
       toggle: false,
     });
 
-    // Close menu after clicking any nav link (or dropdown item) inside the collapse
+    // Close when any nav link inside the collapsed menu is clicked
     collapseEl.addEventListener("click", (e) => {
-      const clickedLink = e.target.closest("a.nav-link, .dropdown-item");
-      if (!clickedLink) return;
+      const link = e.target.closest("a.nav-link");
+      if (!link) return;
 
+      // only hide on mobile when it's open
       if (collapseEl.classList.contains("show")) {
         collapse.hide();
-        if (toggler) toggler.setAttribute("aria-expanded", "false");
+        toggler?.setAttribute("aria-expanded", "false");
       }
     });
 
-    // Also close when the hash changes (covers some scroll/JS navigation cases)
-    window.addEventListener("hashchange", () => {
-      if (collapseEl.classList.contains("show")) {
+    // Optional: close when clicking outside the open menu (mobile UX)
+    document.addEventListener("click", (e) => {
+      if (!collapseEl.classList.contains("show")) return;
+
+      const clickedInsideMenu = e.target.closest("#navbarContent");
+      const clickedToggler = e.target.closest(".navbar-toggler");
+      if (!clickedInsideMenu && !clickedToggler) {
         collapse.hide();
-        if (toggler) toggler.setAttribute("aria-expanded", "false");
+        toggler?.setAttribute("aria-expanded", "false");
       }
     });
   });
