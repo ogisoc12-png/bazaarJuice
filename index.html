@@ -610,57 +610,37 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bazaar JUICE 🍋🍊</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-          aria-controls="navbarContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Bazaar JUICE 🍋🍊</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ✅ THIS WRAPPER IS REQUIRED -->
+    <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-  <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#menu-fruits">BAZAAR FRUIT SELECTION</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#menu-treats">BOWLS & TREATS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#menu-snacks">SNACKS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#fruit-cups-section">FRUIT BOWLS & SMOOTHIES</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#refreshers-section">REFRESHERS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#hot-drinks-section">HOT DRINKS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#about-us">ABOUT US</a>
-  </li>
-</ul>
-      </div>
-    </nav>
-
+        <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu-fruits">BAZAAR FRUIT SELECTION</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu-treats">BOWLS & TREATS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu-snacks">SNACKS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#fruit-cups-section">FRUIT BOWLS & SMOOTHIES</a></li>
+        <li class="nav-item"><a class="nav-link" href="#refreshers-section">REFRESHERS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#hot-drinks-section">HOT DRINKS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu-boosters">BOOSTERS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about-us">ABOUT US</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <section id="hero" class="hero">
       <div class="video-background-wrapper">
         <iframe
@@ -1443,33 +1423,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      const setAppHeight = () => {
-        document.documentElement.style.setProperty(
-          "--app-height",
-          `${window.innerHeight}px`
-        );
-      };
-      setAppHeight();
-      window.addEventListener("resize", setAppHeight);
+  <script>
+  // Keep your app-height fix (optional for your hero video sizing)
+  function setAppHeight() {
+    document.documentElement.style.setProperty(
+      "--app-height",
+      `${window.innerHeight}px`
+    );
+  }
+  setAppHeight();
+  window.addEventListener("resize", setAppHeight);
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbarCollapse = document.getElementById("navbarContent");
-        const navLinks = document.querySelectorAll("#navbarContent .nav-link");
-        if (navbarCollapse && navLinks) {
-          navLinks.forEach(function (link) {
-            link.addEventListener("click", function () {
-              if (navbarCollapse.classList.contains("show")) {
-                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                  toggle: false,
-                });
-                bsCollapse.hide();
-              }
-            });
-          });
-        }
-      });
-    </script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const collapseEl = document.getElementById("navbarContent");
+    const toggler = document.querySelector(
+      '[data-bs-toggle="collapse"][data-bs-target="#navbarContent"]'
+    );
+
+    if (!collapseEl) return;
+
+    const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl, {
+      toggle: false,
+    });
+
+    // Close menu after clicking any nav link (or dropdown item) inside the collapse
+    collapseEl.addEventListener("click", (e) => {
+      const clickedLink = e.target.closest("a.nav-link, .dropdown-item");
+      if (!clickedLink) return;
+
+      if (collapseEl.classList.contains("show")) {
+        collapse.hide();
+        if (toggler) toggler.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Also close when the hash changes (covers some scroll/JS navigation cases)
+    window.addEventListener("hashchange", () => {
+      if (collapseEl.classList.contains("show")) {
+        collapse.hide();
+        if (toggler) toggler.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>
     <script>
       // This looks for the element with id="year" and puts the current year inside it
       document.getElementById("year").textContent = new Date().getFullYear();
