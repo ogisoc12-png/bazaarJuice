@@ -17,569 +17,927 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+  
 
-    <style>
-      /* 🎨 BRAND VARIABLES */
-      :root {
-        --color-primary-action: #ff6600;
-        --color-primary-hover: #cc5200;
-        --color-accent-purple: #6a0dad;
+<style>
+  /* =========================================================
+   BAZAAR JUICE — FULL CSS (LIGHT PREMIUM THEME)
+   Paste this instead of your current <style> block.
+   ========================================================= */
 
-        --color-text-primary: #6a0dad;
-        --color-text-light: #ffffff;
+/* 🎨 BRAND VARIABLES */
+:root{
+  /* Brand accents */
+  --accent-orange: #f2a56a;         /* apricot */
+  --accent-orange-deep: #e88744;    /* hover */
+  --accent-purple: #a8a4c7;         /* grey-lavender */
+  --accent-purple-deep: #8e86b6;
 
-        --color-bg-neutral: #fff4eb;
-        --color-bg-secondary: #f0e5ff;
-        --color-bg-accent-light: #e8f5e9;
-        --color-bg-coffee-light: #f5efe6;
-        --color-bg-footer: #444;
+  /* Text */
+  --text: #1f2937;
+  --muted: #6b7280;
+  --white: #ffffff;
 
-        --font-heading: "Montserrat", sans-serif;
-        --font-body: "Poppins", sans-serif;
+  /* Background system */
+  --bg-main: #fdfcff;
+  --bg-soft: #fbf8ff;
+  --glow-orange: rgba(253,186,116,.28);
+  --glow-purple: rgba(203,213,225,.34);
 
-        --app-height: 100vh;
-      }
+  /* Surfaces */
+  --card: rgba(255,255,255,.92);
+  --card-strong: rgba(255,255,255,.96);
+  --panel: rgba(248,250,252,.92);
 
-      /* --- BASE RESET --- */
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-      }
+  /* Lines & shadows */
+  --line: rgba(229,231,235,.9);
+  --dash: rgba(229,231,235,.7);
+  --shadow: 0 18px 40px rgba(17,24,39,.10);
+  --shadow-hover: 0 26px 55px rgba(17,24,39,.14);
 
-      body {
-        font-family: var(--font-body);
-        color: var(--color-text-primary);
-        background-color: var(--color-text-light);
-      }
+  --radius: 18px;
+  --radius-lg: 24px;
 
-      h1,
-      h2,
-      h3 {
-        font-family: var(--font-heading);
-        color: var(--color-text-primary);
-      }
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Poppins", sans-serif;
 
-      /* --- NAVBAR --- */
-      .navbar {
-        background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 1030;
-      }
+  --app-height: 100vh;
+}
 
-      .navbar .navbar-brand {
-        font-weight: 900;
-        color: var(--color-primary-action) !important;
-        font-size: 1.8rem;
-        text-shadow: 0 0 4px rgba(255, 102, 0, 0.7);
-        z-index: 10;
-      }
+/* --- BASE RESET --- */
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  overflow-x:hidden;
+}
 
-      .navbar .nav-link {
-        color: var(--color-text-light);
-        font-weight: 600;
-        font-size: 1rem;
-        transition: color 0.2s ease, text-shadow 0.2s ease;
-      }
+body{
+  font-family: var(--font-body);
+  color: var(--text);
+  position: relative;
+  min-height: 100vh;
 
-      .navbar .nav-link:hover {
-        color: var(--color-primary-action) !important;
-        text-shadow: 0 0 5px rgba(255, 102, 0, 0.9);
-      }
+  /* Soft peach + grey-lavender background */
+  background:
+    radial-gradient(1200px 600px at -12% -12%, var(--glow-orange), transparent 55%),
+    radial-gradient(900px 500px at 112% 4%, var(--glow-purple), transparent 55%),
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
+}
 
-      .navbar .nav-link.active {
-        color: var(--color-text-light) !important;
-      }
+/* Subtle sprinkles + paper grain */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 
-      /* ----------------------------------------------------------- */
-      /* HERO */
-      /* ----------------------------------------------------------- */
-      .hero {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        min-width: 100%;
-        min-height: 100%;
-        height: var(--app-height);
-      }
+  background:
+    radial-gradient(circle, rgba(242,165,106,.16) 1px, transparent 1.6px) 0 0/44px 44px,
+    radial-gradient(circle, rgba(168,164,199,.18) 1px, transparent 1.6px) 18px 12px/54px 54px,
+    radial-gradient(circle, rgba(242,165,106,.10) 1px, transparent 1.6px) 8px 28px/68px 68px,
+    radial-gradient(1200px 700px at 50% 0%, rgba(255,255,255,.55), transparent 70%);
 
-      .video-background-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 0;
-      }
+  opacity: .30;
+  filter: blur(.25px);
+  mix-blend-mode: multiply;
+}
 
-      .hero-video-iframe {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 177.78vh;
-        height: 100%;
-        min-width: 100%;
-        min-height: 100%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        min-height: -webkit-fill-available;
-        min-width: max(100vw, 177.78vh);
-        min-height: max(100vh, 56.25vw);
-      }
+h1,h2,h3,h4,h5{
+  font-family: var(--font-heading);
+  color: var(--text);
+}
 
-      .hero .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-        padding: 0 20px;
-        background: rgba(0, 0, 0, 0.65);
-        z-index: 1;
-      }
+/* Make your main content above background layers */
+.hero, main, section, .menu-section, #menu-drinks, #menu-toasts, #menu-custom,
+#menu-fruits, #menu-boosters, #about-us, footer{
+  position: relative;
+  z-index: 1;
+}
 
-      @keyframes subtle-glow {
-        0%,
-        100% {
-          text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
-        }
-        50% {
-          text-shadow: 0 0 12px rgba(255, 190, 0, 1);
-        }
-      }
+/* =========================================================
+   NAVBAR (keep glass, but nicer)
+   ========================================================= */
+/* =========================
+   NAVBAR — HIGH VISIBILITY GLASS
+   ========================= */
+.navbar{
+  background: rgba(255,255,255,.82) !important;  /* less transparent */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-      .hero h1 {
-        font-size: 4rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        animation: subtle-glow 3s ease-in-out infinite;
-        color: var(--color-text-light);
-        letter-spacing: 5px;
-      }
+  border-bottom: 1px solid rgba(31,41,55,.10);
+  box-shadow: 0 12px 30px rgba(17,24,39,.10);
+}
 
-      .hero p {
-        color: #ffdab9;
-        font-size: 1.3rem;
-        font-weight: 400;
-        line-height: 1.6;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+/* Brand */
+.navbar .navbar-brand{
+  color: var(--accent-orange) !important;
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: .4px;
+  text-shadow: none; /* cleaner */
+}
 
-      .hero .cta-button {
-        margin-top: 25px;
-        padding: 12px 30px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--color-text-light);
-        background-color: var(--color-primary-action);
-        border: none;
-        border-radius: 30px;
-        text-decoration: none;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(255, 102, 0, 0.5);
-        transition: all 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-      }
-      .hero .cta-button i {
-        margin-left: 10px;
-        font-size: 1.2em;
-      }
-      .hero .cta-button:hover {
-        background-color: var(--color-primary-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(255, 102, 0, 0.7);
-      }
+/* Links */
+.navbar .nav-link{
+  color: rgba(31,41,55,.88) !important; /* dark text */
+  font-weight: 700;
+  transition: color .2s ease, background .2s ease;
+  border-radius: 999px;
+  padding: .45rem .8rem;
+}
 
-      @media (max-width: 575.98px) {
-        .hero h1 {
-          font-size: 2.3rem;
-          letter-spacing: 3px;
-        }
-        .hero p {
-          font-size: 1rem;
-        }
-        .hero .cta-button {
-          padding: 10px 25px;
-          font-size: 1rem;
-        }
-      }
+/* Hover / active */
+.navbar .nav-link:hover{
+  color: var(--accent-orange-deep) !important;
+  background: rgba(242,165,106,.12);
+}
 
-      /* ----------------------------------------------------------- */
-      /* MENU ITEMS (ONE SINGLE SOURCE OF TRUTH) */
-      /* ----------------------------------------------------------- */
-      .menu-section {
-        background-color: transparent;
-        display: block;
-        padding: 60px 20px;
-      }
+.navbar .nav-link.active{
+  color: var(--accent-purple-deep) !important;
+  background: rgba(168,164,199,.14);
+}
 
-      .menu-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #e5e4ea;
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        height: 100%;
-        text-align: left;
-      }
+/* Mobile toggler button */
+.navbar-toggler{
+  border: 1px solid rgba(31,41,55,.18) !important;
+  box-shadow: 0 8px 18px rgba(17,24,39,.10);
+}
 
-      .menu-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 18px rgba(106, 13, 173, 0.4);
-      }
+.navbar-toggler:focus{
+  box-shadow: 0 0 0 4px rgba(242,165,106,.20);
+}
 
-      .menu-item-content {
-        flex: 1;
-        padding-right: 15px;
-        text-align: left;
-      }
+/* Make hamburger icon dark */
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(31,41,55,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
 
-      .menu-item-content h5 {
-        margin-bottom: 5px;
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--color-text-primary);
-        position: relative;
-        padding-left: 35px;
-        display: inline-block;
-      }
+/* Mobile dropdown background (so it doesn't float on page) */
+@media (max-width: 991.98px){
+  .navbar-collapse{
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(31,41,55,.08);
+    border-radius: 18px;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0 18px 40px rgba(17,24,39,.12);
+  }
+}
 
-      .drink-number {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1rem;
-        font-weight: 900;
-        color: var(--color-primary-action);
-        text-shadow: 0 0 2px rgba(255, 102, 0, 0.5);
-      }
+/* =========================================================
+   HERO (keep your video overlay)
+   ========================================================= */
+.hero{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100%;
+  height: var(--app-height);
+}
 
-      .menu-item-content p {
-        color: var(--color-bg-footer);
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 3px 0;
-      }
+.video-background-wrapper{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  overflow:hidden;
+  z-index:0;
+}
 
-      .menu-item-content .text-muted {
-        font-weight: 500;
-      }
+.hero-video-iframe{
+  position:absolute;
+  top:50%; left:50%;
+  width:177.78vh;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  transform: translate(-50%,-50%);
+  pointer-events:none;
+  min-height: -webkit-fill-available;
+  min-width: max(100vw, 177.78vh);
+  min-height: max(100vh, 56.25vw);
+}
 
-      .menu-item-content .price-tag {
-        font-weight: 800;
-        color: var(--color-accent-purple);
-        font-size: 1.3rem;
-      }
+/* Softer overlay (less harsh black) */
+.hero .overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:0 20px;
+  background:
+    radial-gradient(900px 600px at 20% 10%, rgba(242,165,106,.22), transparent 60%),
+    radial-gradient(900px 600px at 80% 10%, rgba(168,164,199,.22), transparent 60%),
+    rgba(0,0,0,.45);
+  z-index:1;
+}
 
-      /* Unified image sizing */
-      .menu-item-image-wrapper {
-        width: 140px;
-        height: 140px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        margin-left: 15px;
-      }
+@keyframes subtle-glow{
+  0%,100%{ text-shadow:0 0 10px rgba(242,165,106,.55); }
+  50%{ text-shadow:0 0 16px rgba(242,165,106,.80); }
+}
 
-      .menu-item-image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* keeps full image visible */
-        border-radius: 8px;
-        display: block;
-      }
+.hero h1{
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: subtle-glow 3s ease-in-out infinite;
+  color: var(--white);
+  letter-spacing: 5px;
+}
 
-      /* Column spacing */
-      .row > [class*="col-"] {
-        margin-bottom: 30px;
-      }
+.hero p{
+  color: rgba(255,255,255,.85);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 12px auto 0;
+}
 
-      @media (max-width: 767px) {
-        .menu-item {
-          padding: 0.9rem;
-          margin-bottom: 1rem !important;
-        }
-        .menu-item-content h5 {
-          font-size: 1.1rem;
-          padding-left: 30px;
-        }
-        .drink-number {
-          font-size: 0.9rem;
-        }
-        .menu-item-content p {
-          font-size: 0.9rem;
-          margin: 2px 0;
-        }
-        .menu-item-content .price-tag {
-          font-size: 1rem;
-        }
-        .menu-item-image-wrapper {
-          width: 90px;
-          height: 90px;
-          margin-left: 10px;
-        }
-      }
+.hero .cta-button{
+  margin-top: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple));
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(242,165,106,.25);
+  transition: all .2s ease;
+  display:inline-flex;
+  align-items:center;
+}
 
-      /* ----------------------------------------------------------- */
-      /* FULL-WIDTH COLORED SECTION GAPS (FIXED) */
-      /* ----------------------------------------------------------- */
-      .section-gap {
-        height: 80px;
-        background: var(--color-bg-secondary);
-        position: relative;
-        left: 50%;
-        margin-left: -50vw;
-        width: 100vw;
-      }
-      .section-gap.orange {
-        background: var(--color-bg-neutral);
-      }
-      .section-gap.mint {
-        background: var(--color-bg-accent-light);
-      }
-      .section-gap.dark {
-        background: #111827;
-      }
-      @media (max-width: 768px) {
-        .section-gap {
-          height: 50px;
-        }
-      }
+.hero .cta-button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(168,164,199,.22);
+}
 
-      /* ----------------------------------------------------------- */
-      /* FRUIT SECTION */
-      /* ----------------------------------------------------------- */
-      .fruit-section {
-        background: linear-gradient(180deg, #f9fdf9 0%, #eef6ef 100%);
-        padding: 60px 0;
-        border-radius: 16px;
-      }
+@media(max-width:575.98px){
+  .hero h1{ font-size:2.3rem; letter-spacing:3px; }
+  .hero p{ font-size:1rem; }
+  .hero .cta-button{ padding:10px 25px; font-size:1rem; }
+}
 
-      .fruit-section .section-title {
-        font-weight: 800;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
+/* =========================================================
+   GLOBAL SECTION TITLES (one consistent style)
+   ========================================================= */
+.section-title{
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--text);
+}
 
-      .fruit-section .section-subtitle {
-        color: #6b7280;
-        font-size: 0.95rem;
-        margin-bottom: 32px;
-      }
+.section-subtitle{
+  font-size: 1.05rem;
+  color: rgba(31,41,55,.70);
+  margin: 0;
+  font-weight: 500;
+}
 
-      .fruit-card {
-        background: #ffffff;
-        border-radius: 14px;
-        transition: all 0.25s ease;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-      }
+.header-divider{
+  width: 58px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple));
+  margin: 16px auto 0;
+}
 
-      .fruit-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-      }
+/* Container helper */
+.container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
 
-      .fruit-img {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-      }
+/* =========================================================
+   MENU SECTION BACKGROUNDS (remove hard black)
+   ========================================================= */
+.menu-section{
+  background-color: transparent;
+  display:block;
+  padding: 70px 20px;
+}
 
-      /* ✅ no ugly split, allow hyphenation properly */
-      .fruit-name {
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-        flex: 1;
-        min-width: 0;
-        white-space: normal;
-        hyphens: auto;
-        overflow-wrap: normal;
-        word-break: normal;
-      }
+/* Optional color gaps (keep but not dark) */
+.section-gap{
+  height: 80px;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  background: rgba(255,255,255,.35);
+}
+.section-gap.orange{ background: rgba(242,165,106,.10); }
+.section-gap.mint{ background: rgba(34,197,94,.08); }
+.section-gap.dark{ background: rgba(168,164,199,.10); } /* no black */
+@media(max-width:768px){ .section-gap{ height:50px; } }
 
-      /* ----------------------------------------------------------- */
-      /* BOOSTERS */
-      /* ----------------------------------------------------------- */
-      #menu-boosters {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-        position: relative;
-        z-index: 1;
-      }
-      #menu-boosters::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 100vw;
-        height: 100%;
-        transform: translateX(-50%);
-        background-color: var(--color-bg-secondary);
-        z-index: -1;
-      }
+/* =========================================================
+   UNIVERSAL CARD LOOK (applies to menu items / toast / drinks / custom)
+   ========================================================= */
+.card-soft{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+}
 
-      .booster-card {
-        background-color: var(--color-text-light);
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        height: 100%;
-        text-align: left;
-      }
+/* =========================================================
+   MENU ITEM (your list-style items)
+   ========================================================= */
+.menu-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-      .booster-card h5 {
-        color: var(--color-primary-action);
-        font-weight: 700;
-        margin-bottom: 15px;
-        text-align: center;
-        border-bottom: 2px solid rgba(255, 102, 0, 0.1);
-        padding-bottom: 10px;
-      }
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+  height:100%;
+  text-align:left;
+}
 
-      .booster-card p {
-        font-family: var(--font-body);
-        font-size: 1.1rem;
-        font-weight: 600;
-        line-height: 2.2;
-        margin: 5px 0;
-        color: var(--color-text-primary);
-      }
+.menu-item:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
 
-      /* ----------------------------------------------------------- */
-      /* ABOUT US */
-      /* ----------------------------------------------------------- */
-      #about-us {
-        background-color: var(--color-bg-coffee-light);
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-        text-align: center;
-      }
+.menu-item-content{
+  flex:1;
+  padding-right: 15px;
+}
 
-      #about-us h2 {
-        font-size: 2.5rem;
-        font-weight: 900;
-        color: var(--color-primary-action);
-        text-transform: uppercase;
-        margin-bottom: 25px;
-      }
+.menu-item-content h5{
+  margin:0 0 6px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  position: relative;
+  padding-left: 34px;
+  display: inline-block;
+}
 
-      #about-us .story-content {
-        max-width: 800px;
-        margin: 0 auto;
-      }
+.drink-number{
+  position:absolute;
+  left:0;
+  top:50%;
+  transform: translateY(-50%);
+  font-size: .95rem;
+  font-weight: 900;
+  color: var(--accent-orange);
+  text-shadow: 0 0 10px rgba(242,165,106,.25);
+}
 
-      #about-us .story-content p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #191970;
-        font-weight: 600;
-        margin: 0;
-        padding: 0 15px;
-      }
+.menu-item-content p{
+  color: rgba(31,41,55,.78);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2px 0;
+}
 
-      #about-us .story-content strong {
-        color: var(--color-primary-action);
-        display: block;
-        margin-top: 25px;
-        font-size: 1.4rem;
-        font-weight: 900;
-        border-top: 2px solid var(--color-accent-purple);
-        padding-top: 20px;
-        font-style: italic;
-      }
+.menu-item-content .text-muted{
+  font-weight: 500;
+  color: rgba(31,41,55,.60) !important;
+}
 
-      /* ----------------------------------------------------------- */
-      /* FOOTER */
-      /* ----------------------------------------------------------- */
-      .footer {
-        background-color: var(--color-bg-footer);
-        color: var(--color-text-light);
-        padding: 40px 0;
-      }
+.menu-item-content .price-tag{
+  font-weight: 900;
+  color: var(--accent-purple-deep);
+  font-size: 1.25rem;
+}
 
-      .footer h5 {
-        color: var(--color-primary-action);
-        font-family: var(--font-heading);
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
+/* Unified image sizing */
+.menu-item-image-wrapper{
+  width: 140px;
+  height: 140px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin-left: 15px;
 
-      .footer a {
-        color: #ddd;
-        text-decoration: none;
-        transition: color 0.2s;
-        display: block;
-        line-height: 1.8;
-      }
+  border-radius: 16px;
+  border: 1px solid rgba(226,232,240,.9);
+  background:
+    linear-gradient(135deg, rgba(242,165,106,.10), rgba(168,164,199,.12)),
+    rgba(241,245,249,.90);
+}
 
-      .footer a:hover {
-        color: var(--color-primary-action);
-      }
+.menu-item-image-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display:block;
+  filter: drop-shadow(0 10px 14px rgba(17,24,39,.15));
+}
 
-      .footer .social-icons a {
-        font-size: 1.5rem;
-        margin: 0 10px;
-        display: inline-block;
-      }
+.row > [class*="col-"]{ margin-bottom: 30px; }
 
-      .footer .copyright {
-        margin-top: 20px;
-        padding-top: 10px;
-        border-top: 1px solid #555;
-        font-size: 0.9rem;
-      }
+@media(max-width:767px){
+  .menu-item{ padding: 0.95rem; }
+  .menu-item-content h5{ font-size: 1.1rem; padding-left: 30px; }
+  .drink-number{ font-size: .85rem; }
+  .menu-item-content p{ font-size: .9rem; }
+  .menu-item-content .price-tag{ font-size: 1rem; }
+  .menu-item-image-wrapper{ width: 92px; height: 92px; margin-left: 10px; }
+}
 
-      .navbar-toggler {
-        border-color: rgba(255, 255, 255, 0.5);
-      }
+/* =========================================================
+   DRINKS GRID (FIX: remove dark cards)
+   ========================================================= */
+#menu-drinks.drinks-section{
+  padding: 90px 0;
+  background: transparent;
+}
 
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-      }
+.drinks-header{
+  text-align:center;
+  margin-bottom: 50px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 12px;
+}
 
-      /* Scroll offset for fixed navbar */
-      #hero,
-      #menu-fruits,
-      #menu-treats,
-      #menu-snacks,
-      #fruit-cups-section,
-      #refreshers-section,
-      #hot-drinks-section,
-      #menu-boosters,
-      #about-us {
-        scroll-margin-top: 120px;
-      }
+.drinks-header .section-title{ color: var(--text); }
+.drinks-header .section-subtitle{
+  color: rgba(31,41,55,.70);
+}
 
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
+.drinks-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.drink-card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.70);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.drink-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.drink-image-box{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(242,165,106,.10), rgba(168,164,199,.12)),
+    rgba(241,245,249,.92);
+  border-bottom: 1px solid rgba(226,232,240,.9);
+}
+
+.drink-img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.drink-card:hover .drink-img{
+  transform: scale(1.06);
+}
+
+.drink-info{
+  padding: 16px 12px 18px;
+  text-align:center;
+}
+
+.drink-name{
+  color: var(--text);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: .3px;
+}
+
+@media(max-width:992px){
+  .drinks-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:480px){
+  .drinks-grid{ grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .section-title{ font-size: 1.9rem; }
+  .drink-name{ font-size: .92rem; }
+}
+
+/* =========================================================
+   TOASTS GRID (FIX: remove dark cards)
+   ========================================================= */
+#menu-toasts.toast-section{
+  padding: 90px 0;
+  background: transparent;
+}
+
+.toast-header{
+  text-align:center;
+  margin-bottom: 55px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 14px;
+}
+
+.toast-grid{
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.toast-card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.70);
+  border-radius: 22px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.toast-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.image-box{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(242,165,106,.10), rgba(168,164,199,.12)),
+    rgba(241,245,249,.92);
+  border-bottom: 1px solid rgba(226,232,240,.9);
+}
+
+.toast-card img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.toast-card:hover img{
+  transform: scale(1.06);
+}
+
+.toast-info{
+  padding: 14px 10px 16px;
+  text-align:center;
+  min-height: 68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.toast-name{
+  color: var(--text);
+  font-size: .86rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: capitalize;
+}
+
+@media(max-width:1024px){
+  .toast-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media(max-width:600px){
+  .toast-grid{ grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .section-title{ font-size: 1.8rem; }
+  .toast-name{ font-size: .78rem; }
+}
+
+/* =========================================================
+   CUSTOM SECTION (FIX: remove dark cards)
+   ========================================================= */
+#menu-custom.custom-section{
+  padding: 90px 0;
+  background: transparent;
+}
+
+.custom-header{
+  text-align:center;
+  margin-bottom: 50px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 12px;
+}
+
+.custom-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.custom-card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.70);
+  border-radius: 28px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.custom-card:hover{
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Highlight card */
+.highlight-card{
+  border: 1px solid rgba(242,165,106,.45);
+  box-shadow: 0 22px 55px rgba(242,165,106,.12);
+}
+
+.custom-card .image-box{
+  background:
+    linear-gradient(135deg, rgba(242,165,106,.10), rgba(168,164,199,.12)),
+    rgba(241,245,249,.92);
+  padding: 18px;
+}
+
+.custom-card img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  transition: transform .35s ease;
+  filter: drop-shadow(0 10px 14px rgba(17,24,39,.18));
+}
+
+.custom-card:hover img{
+  transform: scale(1.05);
+}
+
+.custom-info{
+  padding: 18px 14px 22px;
+  text-align:center;
+}
+
+.custom-name{
+  color: var(--text);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+}
+
+@media(max-width:992px){
+  .custom-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:500px){
+  .custom-grid{ grid-template-columns: 1fr; gap: 18px; }
+  .custom-header .section-title{ font-size: 2.0rem; }
+}
+
+/* =========================================================
+   FRUIT SECTION (keep but match theme)
+   ========================================================= */
+.fruit-section{
+  background: rgba(255,255,255,.45);
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 18px;
+  padding: 70px 0;
+  box-shadow: 0 14px 35px rgba(17,24,39,.06);
+}
+
+.fruit-section .section-subtitle{
+  color: rgba(31,41,55,.65);
+  font-size: .95rem;
+  margin-bottom: 32px;
+}
+
+.fruit-card{
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.70);
+  border-radius: 14px;
+  transition: .2s ease;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(17,24,39,.06);
+}
+
+.fruit-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(17,24,39,.10);
+}
+
+.fruit-img{
+  width:48px; height:48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink:0;
+  border: 1px solid rgba(226,232,240,.9);
+}
+
+.fruit-name{
+  font-weight: 900;
+  font-size: .85rem;
+  letter-spacing: .05em;
+  flex:1;
+  min-width:0;
+  white-space: normal;
+  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* =========================================================
+   BOOSTERS (match theme)
+   ========================================================= */
+#menu-boosters{
+  padding-top: 70px !important;
+  padding-bottom: 70px !important;
+  position:relative;
+  z-index:1;
+}
+
+#menu-boosters::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  left:50%;
+  width:100vw;
+  transform: translateX(-50%);
+  background: rgba(168,164,199,.10);
+  z-index:-1;
+}
+
+.booster-card{
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.70);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  height:100%;
+  text-align:left;
+}
+
+.booster-card h5{
+  color: var(--accent-orange-deep);
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-align:center;
+  border-bottom: 2px solid rgba(242,165,106,.18);
+  padding-bottom: 10px;
+}
+
+.booster-card p{
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 2.1;
+  margin: 5px 0;
+  color: var(--text);
+}
+
+/* =========================================================
+   ABOUT US (match theme)
+   ========================================================= */
+#about-us{
+  background: rgba(242,165,106,.10);
+  padding-top: 70px !important;
+  padding-bottom: 70px !important;
+  text-align:center;
+}
+
+#about-us h2{
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--accent-orange-deep);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+#about-us .story-content{
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+#about-us .story-content p{
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(31,41,55,.78);
+  font-weight: 600;
+  margin: 0;
+  padding: 0 15px;
+}
+
+#about-us .story-content strong{
+  color: var(--accent-orange-deep);
+  display:block;
+  margin-top: 25px;
+  font-size: 1.35rem;
+  font-weight: 900;
+  border-top: 2px solid rgba(168,164,199,.45);
+  padding-top: 20px;
+  font-style: italic;
+}
+
+/* =========================================================
+   FOOTER (no hard black, warm charcoal)
+   ========================================================= */
+.footer{
+  background: #1b1a1f; /* warm charcoal */
+  color: rgba(255,255,255,.88);
+  padding: 44px 0;
+  position:relative;
+  z-index:1;
+}
+
+.footer h5{
+  color: var(--accent-orange);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.footer a{
+  color: rgba(255,255,255,.75);
+  text-decoration:none;
+  transition: color .2s;
+  display:block;
+  line-height:1.8;
+}
+
+.footer a:hover{
+  color: var(--accent-orange);
+}
+
+.footer .social-icons a{
+  font-size: 1.5rem;
+  margin: 0 10px;
+  display:inline-block;
+}
+
+.footer .copyright{
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  font-size: .9rem;
+}
+
+/* Scroll offset for fixed navbar */
+#hero,
+#menu-fruits,
+#menu-treats,
+#menu-snacks,
+#fruit-cups-section,
+#refreshers-section,
+#hot-drinks-section,
+#menu-boosters,
+#about-us{
+  scroll-margin-top: 120px;
+}
+
+html{ scroll-behavior: smooth; }
+
+/* Print-friendly */
+@media print{
+  body::before{ display:none; }
+  .navbar{ display:none; }
+  .footer{ background:#fff; color:#111; }
+}
+</style>
+
+
+    
   </head>
 
   <body>
@@ -608,11 +966,20 @@
             <li class="nav-item">
               <a class="nav-link" href="#menu-treats">BOWLS</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#menu-custom">CRREATE YOUR OWN</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#menu-toasts">TOASTS</a>
+            </li>
            
             <li class="nav-item">
               <a class="nav-link" href="#fruit-cups-section"
                 >FRUIT BOWLS & SMOOTHIES</a
               >
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#menu-drinks">DRINKS</a>
             </li>
             
             <li class="nav-item">
@@ -653,7 +1020,7 @@
       </div>
     </section>
 
-    <div class="section-gap"></div>
+    
 
     <!-- FRUITS -->
     <section id="menu-fruits" class="fruit-section" lang="en">
@@ -753,7 +1120,7 @@
       </div>
     </section>
 
-    <div class="section-gap mint"></div>
+   
 
     <!-- TREATS -->
     <section id="menu-treats" class="menu-section" style="background-color: #fdf2f2">
@@ -781,13 +1148,93 @@
         </div>
       </div>
     </section>
+    <section id="menu-custom" class="custom-section" lang="en">
+  <div class="container">
+    <div class="custom-header">
+      <h2 class="section-title">Create Your Own</h2>
+      <p class="section-subtitle">Your favorites, exactly how you like them</p>
+    </div>
 
-    <div class="section-gap orange"></div>
+    <div class="custom-grid">
+      <div class="custom-card">
+        <div class="image-box"><img src="src/public/smoothie.png" alt="Smoothie"></div>
+        <div class="custom-info"><span class="custom-name">Smoothie</span></div>
+      </div>
 
+      <div class="custom-card">
+        <div class="image-box"><img src="src/public/pancakeF.png" alt="Pancake Fruit Bowl"></div>
+        <div class="custom-info"><span class="custom-name">Pancake Fruit Bowl</span></div>
+      </div>
+
+      <div class="custom-card">
+        <div class="image-box"><img src="src/public/yoghurt2.png" alt="Acai Bowl"></div>
+        <div class="custom-info"><span class="custom-name">Acai Bowl</span></div>
+      </div>
+
+      <div class="custom-card highlight-card">
+        <div class="image-box"><img src="src/public/custom-special-dessert.png" alt="Special Desert"></div>
+        <div class="custom-info"><span class="custom-name">Special Desert</span></div>
+      </div>
+
+      <div class="custom-card">
+        <div class="image-box"><img src="src/public/yoghurt.png" alt="Yoghurt Bowl"></div>
+        <div class="custom-info"><span class="custom-name">Yoghurt Bowl</span></div>
+      </div>
+
+      <div class="custom-card">
+        <div class="image-box"><img src="src/public/custom-biscoff-millionaire.png" alt="Biscoff Millionaire"></div>
+        <div class="custom-info"><span class="custom-name">Biscoff Millionaire</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <!-- toastS -->
+<section id="menu-toasts" class="toast-section">
+  <div class="container">
+    <div class="toast-header">
+      <h2 class="section-title">Signature Toasts</h2>
+      <p class="section-subtitle">Freshly prepared, premium open-face toasts</p>
+    </div>
+
+    <div class="toast-grid">
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-blueberry-pomegranate.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Blueberry & Pomegranate</span></div>
+      </div>
+
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-avocado.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Avocado Cream Cheese</span></div>
+      </div>
+
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-blueberry-chocolate.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Blueberry Chocolate</span></div>
+      </div>
+
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-tomato.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Tomato Cream Cheese</span></div>
+      </div>
+
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-banana-chocolate.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Banana Chocolate</span></div>
+      </div>
+
+      <div class="toast-card">
+        <div class="image-box"><img src="src/public/toast-apple-peanutbutter.png" alt=""></div>
+        <div class="toast-info"><span class="toast-name">Apple Peanut Butter</span></div>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- SNACKS -->
     
 
-    <div class="section-gap"></div>
+    
 
     <!-- FRUIT CUPS -->
     <section id="fruit-cups-section" class="menu-section" style="background-color: #f2fbf7">
@@ -1013,52 +1460,104 @@
       </div>
     </section>
 
-    <div class="section-gap"></div>
+    
 
     <!-- REFRESHERS -->
    
-    <div class="section-gap orange"></div>
+  
 
-    <!-- HOT DRINKS -->
-   
+<section id="menu-drinks" class="drinks-section" lang="en">
+  <div class="container">
+    <div class="drinks-header">
+      <h2 class="section-title">DRINKS</h2>
+      <p class="section-subtitle">Food truck favorites — hot & iced</p>
+    </div>
 
-    <div class="section-gap"></div>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-image-box">
+          <img src="src/public/drink-hot-coffee.png" class="drink-img" alt="Hot Coffee" />
+        </div>
+        <div class="drink-info">
+          <span class="drink-name">Hot Coffee</span>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <div class="drink-image-box">
+          <img src="src/public/drink-iced-coffee.png" class="drink-img" alt="Iced Coffee" />
+        </div>
+        <div class="drink-info">
+          <span class="drink-name">Iced Coffee</span>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <div class="drink-image-box">
+          <img src="src/public/drink-iced-matcha.png" class="drink-img" alt="Iced Matcha" />
+        </div>
+        <div class="drink-info">
+          <span class="drink-name">Iced Matcha</span>
+        </div>
+      </div>
+
+      <div class="drink-card">
+        <div class="drink-image-box">
+          <img src="src/public/drink-hot-chocolate.png" class="drink-img" alt="Hot Chocolate" />
+        </div>
+        <div class="drink-info">
+          <span class="drink-name">Hot Chocolate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- BOOSTERS (FIXED ID + VALID HTML) -->
     <section id="menu-boosters">
-      <div class="container py-5">
-        <h3 class="text-center">BOOSTERS & ADD-ONS</h3>
-        <p class="text-center mb-2 text-primary fw-bold" style="font-size: 1.2rem">
-          Add any booster for only <span style="text-decoration: underline">+$0.50</span> each!
-        </p>
-        <p class="text-center mb-5 text-muted">
-          (Customize any drink for extra health benefits or flavor.)
-        </p>
+  <div class="container py-5">
+    <h3 class="text-center">BOOSTERS & ADD-ONS</h3>
 
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-5 mb-4">
-            <div
-              class="booster-card p-4 text-center"
-              style="
-                border: 2px dashed var(--color-primary-action);
-                border-radius: 15px;
-                background-color: #fdfdfd;
-              "
-            >
-              <h5 class="fw-bold mb-3" style="color: var(--color-primary-action)">
-                WELLNESS SHOTS
-              </h5>
-              <div class="booster-list">
-                <p class="mb-2">PROTEIN 💪</p>
-                <p class="mb-2">COLLAGEN ✨</p>
-              </div>
-            </div>
+    <p class="text-center mb-2 text-primary fw-bold" style="font-size: 1.2rem">
+      Add any booster for only <span style="text-decoration: underline">+$1.00</span> each!
+    </p>
+
+    <p class="text-center mb-5 text-muted">
+      (Customize any drink or bowl for extra health benefits.)
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-5 mb-4">
+        <div
+          class="booster-card p-4 text-center"
+          style="
+            border: 2px dashed var(--accent-orange);
+            border-radius: 18px;
+            background: linear-gradient(
+              180deg,
+              rgba(255,255,255,0.98),
+              rgba(248,250,252,0.95)
+            );
+          "
+        >
+          <h5 class="fw-bold mb-3" style="color: var(--accent-orange)">
+            WELLNESS BOOSTERS
+          </h5>
+
+          <div class="booster-list">
+            <p class="mb-2">💪 Protein <span class="text-muted">+ $1</span></p>
+            <p class="mb-2">🌱 Chia Seeds <span class="text-muted">+ $1</span></p>
+            <p class="mb-2">💙 Blue Spirulina <span class="text-muted">+ $1</span></p>
+            
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <div class="section-gap mint"></div>
+   
 
     <!-- ABOUT -->
     <section id="about-us">
