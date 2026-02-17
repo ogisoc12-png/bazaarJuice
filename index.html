@@ -40,8 +40,39 @@
         --bg-main: #fdfcff;
         --bg-soft: #fbf8ff;
 
-        --card: rgba(255, 255, 255, 0.92);
-        --card-strong: rgba(255, 255, 255, 0.97);
+        --card: rgba(255, 252, 247, 0.95);
+        --card-strong: rgba(255, 255, 255, 0.98);
+        --card-surface: linear-gradient(
+          155deg,
+          rgba(255, 252, 245, 0.98) 0%,
+          rgba(255, 244, 231, 0.95) 52%,
+          rgba(243, 240, 255, 0.93) 100%
+        );
+        --card-border: rgba(255, 255, 255, 0.86);
+        --tone-mirror-1: linear-gradient(
+          140deg,
+          rgba(255, 239, 218, 0.96) 0%,
+          rgba(255, 249, 236, 0.95) 45%,
+          rgba(238, 231, 255, 0.93) 100%
+        );
+        --tone-mirror-2: linear-gradient(
+          220deg,
+          rgba(255, 239, 218, 0.96) 0%,
+          rgba(255, 249, 236, 0.95) 45%,
+          rgba(238, 231, 255, 0.93) 100%
+        );
+        --tone-mirror-3: linear-gradient(
+          145deg,
+          rgba(255, 233, 207, 0.95) 0%,
+          rgba(255, 247, 226, 0.94) 40%,
+          rgba(232, 224, 255, 0.92) 100%
+        );
+        --tone-mirror-4: linear-gradient(
+          215deg,
+          rgba(255, 233, 207, 0.95) 0%,
+          rgba(255, 247, 226, 0.94) 40%,
+          rgba(232, 224, 255, 0.92) 100%
+        );
 
         --line: rgba(229, 231, 235, 0.85);
         --shadow: 0 16px 40px rgba(17, 24, 39, 0.10);
@@ -282,7 +313,7 @@
       /* ---------- SPACING ---------- */
       .menu-section {
         background-color: transparent;
-        padding: 84px 16px;
+        padding: 68px 12px;
       }
 
       /* ---------- PREMIUM GRADIENT FRAME (SUBTLE) ---------- */
@@ -308,13 +339,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        background: var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.74);
+        gap: 12px;
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-radius: var(--radius-lg);
-        padding: 22px;
+        padding: 18px;
         box-shadow: var(--shadow);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         height: 100%;
@@ -331,14 +362,14 @@
       }
 
       .menu-item-content h5 {
-        margin: 0 0 8px;
+        margin: 0 0 6px;
         font-size: 1.28rem;
         font-weight: 900;
         line-height: 1.15;
       }
 
       .menu-item-content p {
-        margin: 4px 0;
+        margin: 2px 0;
         color: rgba(31, 41, 55, 0.78);
         font-weight: 600;
       }
@@ -349,6 +380,7 @@
       }
 
       .menu-item-content .price-tag {
+        margin-top: 6px;
         font-weight: 900;
         color: var(--accent-purple-deep);
         font-size: 1.12rem;
@@ -356,11 +388,11 @@
 
       /* BIGGER image + elegant frame (no HTML changes needed) */
       .menu-item-image-wrapper {
-        width: 176px;
-        height: 176px;
+        width: 196px;
+        height: 196px;
         flex-shrink: 0;
-        border-radius: 24px;
-        padding: 6px;
+        border-radius: 22px;
+        padding: 4px;
         background: linear-gradient(
           135deg,
           rgba(242, 165, 106, 0.88),
@@ -372,26 +404,27 @@
       .menu-item-image-wrapper img {
         width: 100%;
         height: 100%;
-        border-radius: 18px;
+        border-radius: 16px;
         background: rgba(255, 255, 255, 0.97);
         object-fit: contain;
         display: block;
-        padding: 6px;
+        padding: 3px;
         filter: drop-shadow(0 14px 18px rgba(17, 24, 39, 0.12));
         image-rendering: -webkit-optimize-contrast;
       }
 
       @media (max-width: 992px) {
         .menu-item-image-wrapper {
-          width: 150px;
-          height: 150px;
+          width: 168px;
+          height: 168px;
         }
       }
 
       @media (max-width: 767px) {
         .menu-item {
-          padding: 16px;
-          border-radius: 22px;
+          padding: 14px;
+          border-radius: 20px;
+          gap: 10px;
         }
         .menu-item-content h5 {
           font-size: 1.06rem;
@@ -403,19 +436,36 @@
           font-size: 1rem;
         }
         .menu-item-image-wrapper {
-          width: 116px;
-          height: 116px;
-          padding: 5px;
-          border-radius: 22px;
+          width: 124px;
+          height: 124px;
+          padding: 4px;
+          border-radius: 18px;
         }
         .menu-item-image-wrapper img {
-          border-radius: 16px;
-          padding: 5px;
+          border-radius: 14px;
+          padding: 3px;
         }
       }
 
       .row > [class*="col-"] {
-        margin-bottom: 22px;
+        margin-bottom: 14px;
+      }
+
+      /* ---------- MIRRORED CARD TONES ---------- */
+      .row > [class*="col-"]:nth-child(4n + 1) .menu-item {
+        background: var(--tone-mirror-1);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 2) .menu-item {
+        background: var(--tone-mirror-2);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 3) .menu-item {
+        background: var(--tone-mirror-3);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 4) .menu-item {
+        background: var(--tone-mirror-4);
       }
 
       /* ---------- FRUITS ---------- */
@@ -423,19 +473,20 @@
         background: rgba(255, 255, 255, 0.52);
         border: 1px solid rgba(255, 255, 255, 0.70);
         border-radius: 22px;
-        padding: 76px 0;
+        padding: 64px 0;
         box-shadow: 0 16px 40px rgba(17, 24, 39, 0.07);
       }
 
       .fruit-section .section-subtitle {
-        margin-bottom: 34px;
+        margin-bottom: 24px;
       }
 
       .fruit-card {
-        background: rgba(255, 255, 255, 0.94);
-        border: 1px solid rgba(255, 255, 255, 0.76);
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         border-radius: 18px;
-        padding: 14px 14px;
+        padding: 12px;
+        gap: 10px;
         box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         cursor: pointer;
@@ -446,9 +497,25 @@
         box-shadow: 0 18px 40px rgba(17, 24, 39, 0.10);
       }
 
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 1) .fruit-card {
+        background: var(--tone-mirror-1);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 2) .fruit-card {
+        background: var(--tone-mirror-2);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 3) .fruit-card {
+        background: var(--tone-mirror-3);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 4) .fruit-card {
+        background: var(--tone-mirror-4);
+      }
+
       .fruit-img {
-        width: 56px;
-        height: 56px;
+        width: 62px;
+        height: 62px;
         border-radius: 999px;
         object-fit: cover;
         flex-shrink: 0;
@@ -471,8 +538,8 @@
 
       @media (max-width: 480px) {
         .fruit-img {
-          width: 50px;
-          height: 50px;
+          width: 54px;
+          height: 54px;
         }
         .fruit-name {
           font-size: 0.82rem;
@@ -481,12 +548,12 @@
 
       /* ---------- DRINKS GRID ---------- */
       #menu-drinks.drinks-section {
-        padding: 92px 0;
+        padding: 76px 0;
       }
 
       .drinks-header {
         text-align: center;
-        margin-bottom: 54px;
+        margin-bottom: 38px;
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -496,15 +563,15 @@
       .drinks-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        gap: 14px;
         max-width: 1180px;
         margin: 0 auto;
-        padding: 0 6px;
+        padding: 0;
       }
 
       .drink-card {
-        background: var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.74);
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         border-radius: 26px;
         overflow: hidden;
         box-shadow: var(--shadow);
@@ -516,29 +583,45 @@
         box-shadow: var(--shadow-hover);
       }
 
+      .drinks-grid .drink-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
       .drink-image-box {
-        padding: 14px;
+        padding: 10px;
         background:
-          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.16), transparent 55%),
-          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.16), transparent 55%),
-          rgba(241, 245, 249, 0.55);
+          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.18), transparent 55%),
+          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.18), transparent 55%),
+          rgba(255, 251, 245, 0.8);
         border-bottom: 1px solid rgba(226, 232, 240, 0.9);
       }
 
       .drink-img {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        border-radius: 22px;
+        aspect-ratio: 1 / 1.05;
+        border-radius: 20px;
         object-fit: cover;
         display: block;
-        padding: 6px;
+        padding: 4px;
         background: linear-gradient(
           135deg,
           rgba(242, 165, 106, 0.86),
           rgba(168, 164, 199, 0.86)
         );
         box-shadow:
-          0 0 0 6px rgba(255, 255, 255, 0.92) inset,
+          0 0 0 4px rgba(255, 255, 255, 0.92) inset,
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
       }
@@ -548,7 +631,7 @@
       }
 
       .drink-info {
-        padding: 14px 12px 18px;
+        padding: 12px 12px 14px;
         text-align: center;
       }
 
@@ -572,12 +655,12 @@
 
       /* ---------- TOAST GRID ---------- */
       #menu-toasts.toast-section {
-        padding: 92px 0;
+        padding: 76px 0;
       }
 
       .toast-header {
         text-align: center;
-        margin-bottom: 56px;
+        margin-bottom: 40px;
         display: flex;
         flex-direction: column;
         gap: 14px;
@@ -587,15 +670,15 @@
       .toast-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        gap: 14px;
         max-width: 1180px;
         margin: 0 auto;
-        padding: 0 6px;
+        padding: 0;
       }
 
       .toast-card {
-        background: var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.74);
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         border-radius: 24px;
         overflow: hidden;
         box-shadow: var(--shadow);
@@ -607,29 +690,45 @@
         box-shadow: var(--shadow-hover);
       }
 
+      .toast-grid .toast-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
       .image-box {
-        padding: 14px;
+        padding: 10px;
         background:
-          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.16), transparent 55%),
-          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.16), transparent 55%),
-          rgba(241, 245, 249, 0.55);
+          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.18), transparent 55%),
+          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.18), transparent 55%),
+          rgba(255, 251, 245, 0.8);
         border-bottom: 1px solid rgba(226, 232, 240, 0.9);
       }
 
       .toast-card img {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        border-radius: 22px;
+        aspect-ratio: 1 / 1.05;
+        border-radius: 20px;
         object-fit: cover;
         display: block;
-        padding: 6px;
+        padding: 4px;
         background: linear-gradient(
           135deg,
           rgba(242, 165, 106, 0.86),
           rgba(168, 164, 199, 0.86)
         );
         box-shadow:
-          0 0 0 6px rgba(255, 255, 255, 0.92) inset,
+          0 0 0 4px rgba(255, 255, 255, 0.92) inset,
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
       }
@@ -639,9 +738,9 @@
       }
 
       .toast-info {
-        padding: 14px 12px 18px;
+        padding: 12px 10px 14px;
         text-align: center;
-        min-height: 64px;
+        min-height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -671,12 +770,12 @@
 
       /* ---------- CUSTOM GRID ---------- */
       #menu-custom.custom-section {
-        padding: 92px 0;
+        padding: 76px 0;
       }
 
       .custom-header {
         text-align: center;
-        margin-bottom: 52px;
+        margin-bottom: 38px;
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -686,15 +785,15 @@
       .custom-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        gap: 14px;
         max-width: 1180px;
         margin: 0 auto;
-        padding: 0 6px;
+        padding: 0;
       }
 
       .custom-card {
-        background: var(--card);
-        border: 1px solid rgba(255, 255, 255, 0.74);
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         border-radius: 26px;
         overflow: hidden;
         box-shadow: var(--shadow);
@@ -706,6 +805,22 @@
         box-shadow: var(--shadow-hover);
       }
 
+      .custom-grid .custom-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
       .highlight-card {
         border: 1px solid rgba(242, 165, 106, 0.55);
         box-shadow: 0 22px 62px rgba(242, 165, 106, 0.16);
@@ -713,18 +828,18 @@
 
       .custom-card img {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        border-radius: 22px;
+        aspect-ratio: 1 / 1.05;
+        border-radius: 20px;
         object-fit: contain;
         display: block;
-        padding: 6px;
+        padding: 4px;
         background: linear-gradient(
           135deg,
           rgba(242, 165, 106, 0.86),
           rgba(168, 164, 199, 0.86)
         );
         box-shadow:
-          0 0 0 6px rgba(255, 255, 255, 0.92) inset,
+          0 0 0 4px rgba(255, 255, 255, 0.92) inset,
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
         filter: drop-shadow(0 14px 18px rgba(17, 24, 39, 0.10));
@@ -735,13 +850,21 @@
       }
 
       .custom-info {
-        padding: 14px 12px 18px;
+        padding: 12px 10px 14px;
         text-align: center;
       }
 
       .custom-name {
         font-size: 1.02rem;
         font-weight: 900;
+      }
+
+      .custom-desc {
+        margin: 4px 0 0;
+        font-size: 0.84rem;
+        line-height: 1.4;
+        font-weight: 600;
+        color: rgba(31, 41, 55, 0.68);
       }
 
       @media (max-width: 992px) {
@@ -755,6 +878,47 @@
         .custom-grid {
           grid-template-columns: 1fr;
         }
+      }
+
+      /* ---------- MERCH ---------- */
+      #menu-merch.merch-section {
+        padding: 76px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      #menu-merch::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: rgba(220, 38, 38, 0.06);
+        z-index: -1;
+      }
+
+      .merch-header {
+        text-align: center;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .merch-grid {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .merch-led-card {
+        border: 2px solid #dc2626;
+        border-radius: 18px;
+        background:
+          radial-gradient(360px 170px at 50% 6%, rgba(255, 214, 214, 0.3), transparent 68%),
+          var(--tone-mirror-2);
+        box-shadow: 0 15px 40px rgba(220, 38, 38, 0.15);
       }
 
       /* ---------- BOOSTERS ---------- */
@@ -777,10 +941,132 @@
       }
 
       .booster-card {
-        background: rgba(255, 255, 255, 0.93);
-        border: 1px solid rgba(255, 255, 255, 0.76);
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
         border-radius: 20px;
         box-shadow: var(--shadow);
+      }
+
+      #menu-boosters .booster-grid .booster-card {
+        background: var(--tone-mirror-4);
+      }
+
+      .booster-grid {
+        gap: 12px 12px;
+      }
+
+      .booster-card.tight-card {
+        padding: 16px !important;
+      }
+
+      .wellness-card {
+        border: 2px dashed var(--accent-orange);
+        border-radius: 22px;
+        background:
+          radial-gradient(320px 180px at 50% 0%, rgba(255, 232, 207, 0.62), transparent 70%),
+          var(--tone-mirror-4);
+      }
+
+      .wellness-title {
+        margin: 0 0 8px;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        color: #ca702f;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .wellness-intro {
+        margin: 0 0 14px;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 600;
+        color: rgba(31, 41, 55, 0.82);
+        text-align: center;
+      }
+
+      .wellness-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .wellness-item {
+        margin: 0;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 10px 20px rgba(17, 24, 39, 0.06);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wellness-item-name {
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: rgba(31, 41, 55, 0.92);
+      }
+
+      .wellness-item-note {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: rgba(31, 41, 55, 0.68);
+      }
+
+      .led-tumbler-card {
+        position: relative;
+      }
+
+      .led-tumbler-image-wrap {
+        width: min(100%, 360px);
+        margin: 0 auto 8px;
+        padding: 10px;
+        border-radius: 24px;
+        background:
+          radial-gradient(240px 170px at 50% 8%, rgba(255, 255, 255, 0.95), transparent 70%),
+          linear-gradient(150deg, rgba(254, 226, 226, 0.9), rgba(255, 245, 245, 0.85));
+        border: 1px solid rgba(220, 38, 38, 0.2);
+      }
+
+      .led-tumbler-img {
+        width: min(100%, 330px);
+        display: block;
+        margin: 0 auto;
+        filter: drop-shadow(0 26px 26px rgba(220, 38, 38, 0.34));
+        transition: transform 0.22s ease;
+      }
+
+      .led-tumbler-card:hover .led-tumbler-img {
+        transform: scale(1.06);
+      }
+
+      @media (max-width: 767px) {
+        .booster-grid {
+          gap: 10px;
+        }
+
+        .wellness-item {
+          padding: 11px 12px;
+        }
+
+        .wellness-item-name {
+          font-size: 1rem;
+        }
+
+        .wellness-item-note {
+          font-size: 0.85rem;
+        }
+
+        .led-tumbler-image-wrap {
+          width: min(100%, 300px);
+        }
+
+        .led-tumbler-img {
+          width: min(100%, 270px);
+        }
       }
 
       /* ---------- ABOUT ---------- */
@@ -873,6 +1159,7 @@
       #fruit-cups-section,
       #refreshers-section,
       #hot-drinks-section,
+      #menu-merch,
       #menu-boosters,
       #about-us {
         scroll-margin-top: 120px;
@@ -880,6 +1167,299 @@
 
       html {
         scroll-behavior: smooth;
+      }
+
+      /* ---------- MOBILE POLISH ---------- */
+      @media (max-width: 991.98px) {
+        .navbar {
+          padding: 8px 0;
+        }
+
+        .navbar .container-fluid {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .navbar .navbar-brand {
+          font-size: 1.28rem;
+          letter-spacing: 0.1px;
+        }
+
+        .navbar-collapse {
+          max-height: calc(100svh - 84px);
+          overflow-y: auto;
+          margin-top: 12px;
+          padding: 12px;
+        }
+
+        .navbar-nav {
+          gap: 4px;
+        }
+
+        .navbar .nav-link {
+          display: block;
+          padding: 0.62rem 0.82rem;
+          font-size: 0.85rem;
+          line-height: 1.25;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .container {
+          width: min(100%, calc(100% - 18px));
+        }
+
+        .hero {
+          height: 84svh;
+          min-height: 540px;
+        }
+
+        .hero .overlay {
+          padding: 0 14px;
+        }
+
+        .hero h1 {
+          font-size: clamp(1.55rem, 9vw, 2.15rem);
+          letter-spacing: 2px;
+          line-height: 1.14;
+        }
+
+        .hero p {
+          font-size: 0.93rem;
+          line-height: 1.45;
+          max-width: 92%;
+        }
+
+        .hero .cta-button {
+          margin-top: 16px;
+          padding: 10px 20px;
+          font-size: 0.92rem;
+        }
+
+        .menu-section,
+        #menu-drinks.drinks-section,
+        #menu-toasts.toast-section,
+        #menu-custom.custom-section,
+        #menu-merch.merch-section,
+        #menu-boosters,
+        #about-us {
+          padding-top: 56px !important;
+          padding-bottom: 56px !important;
+        }
+
+        .section-title {
+          font-size: clamp(1.26rem, 6.4vw, 1.58rem);
+          letter-spacing: 1.2px;
+          line-height: 1.18;
+        }
+
+        .section-subtitle {
+          font-size: 0.88rem;
+          line-height: 1.42;
+        }
+
+        .drinks-header,
+        .toast-header,
+        .custom-header,
+        .merch-header {
+          margin-bottom: 24px;
+          gap: 8px;
+        }
+
+        .fruit-section .section-subtitle {
+          margin-bottom: 18px;
+        }
+
+        .row.g-3.mt-4 {
+          row-gap: 10px !important;
+        }
+
+        .row > [class*="col-"] {
+          margin-bottom: 10px;
+        }
+
+        .menu-item {
+          padding: 12px;
+          gap: 9px;
+          border-radius: 16px;
+          align-items: flex-start;
+        }
+
+        .menu-item-content h5 {
+          font-size: 0.98rem;
+          line-height: 1.22;
+        }
+
+        .menu-item-content p {
+          font-size: 0.84rem;
+          line-height: 1.35;
+        }
+
+        .menu-item-image-wrapper {
+          width: 104px;
+          height: 104px;
+          border-radius: 14px;
+        }
+
+        .menu-item-image-wrapper img {
+          border-radius: 11px;
+        }
+
+        .fruit-card {
+          padding: 10px;
+          border-radius: 14px;
+        }
+
+        .fruit-img {
+          width: 46px;
+          height: 46px;
+        }
+
+        .fruit-name {
+          font-size: 0.78rem;
+          letter-spacing: 0.04em;
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          gap: 10px;
+        }
+
+        .drink-image-box,
+        .image-box {
+          padding: 8px;
+        }
+
+        .drink-info,
+        .toast-info,
+        .custom-info {
+          padding: 10px 8px 12px;
+        }
+
+        .drink-name,
+        .custom-name {
+          font-size: 0.9rem;
+        }
+
+        .toast-name {
+          font-size: 0.82rem;
+        }
+
+        .custom-desc {
+          font-size: 0.76rem;
+          line-height: 1.35;
+        }
+
+        .led-tumbler-image-wrap {
+          width: min(100%, 260px);
+          padding: 8px;
+        }
+
+        .led-tumbler-img {
+          width: min(100%, 230px);
+        }
+
+        .wellness-title {
+          font-size: 1.08rem;
+          letter-spacing: 0.02em;
+        }
+
+        .wellness-intro {
+          font-size: 0.9rem;
+          margin-bottom: 10px;
+        }
+
+        .wellness-item {
+          padding: 10px;
+          border-radius: 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .wellness-item-name {
+          font-size: 0.95rem;
+        }
+
+        .wellness-item-note {
+          font-size: 0.8rem;
+        }
+
+        .footer {
+          padding: 34px 0 28px;
+        }
+
+        .footer .row > [class*="col-"] {
+          margin-bottom: 18px;
+        }
+
+        .footer h5 {
+          margin-bottom: 10px;
+        }
+
+        .footer a,
+        .footer p {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .hero {
+          height: 80svh;
+          min-height: 500px;
+        }
+
+        .menu-item {
+          flex-direction: column-reverse;
+          align-items: stretch;
+        }
+
+        .menu-item-image-wrapper {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+        }
+
+        .menu-item-image-wrapper img {
+          object-fit: contain;
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        #hero,
+        #menu-fruits,
+        #menu-treats,
+        #menu-snacks,
+        #fruit-cups-section,
+        #refreshers-section,
+        #hot-drinks-section,
+        #menu-merch,
+        #menu-boosters,
+        #about-us {
+          scroll-margin-top: 88px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .navbar .navbar-brand {
+          font-size: 1.12rem;
+        }
+
+        .hero h1 {
+          font-size: 1.4rem;
+        }
       }
 
       @media print {
@@ -934,6 +1514,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#menu-drinks">DRINKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-merch">MERCH</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
@@ -1105,27 +1688,42 @@
         <div class="custom-grid">
           <div class="custom-card">
             <div class="image-box"><img src="src/public/smoothie.png" alt="Smoothie"></div>
-            <div class="custom-info"><span class="custom-name">Smoothie</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Smoothie</span>
+              <p class="custom-desc">Fresh organic fruits blended on the spot — clean energy, real taste.</p>
+            </div>
           </div>
 
           <div class="custom-card">
             <div class="image-box"><img src="src/public/pancakeF.png" alt="Pancake Fruit Bowl"></div>
-            <div class="custom-info"><span class="custom-name">Pancake Fruit Bowl</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Pancake Fruit Bowl</span>
+              <p class="custom-desc">Mini pancakes topped with seasonal organic fruit — warm comfort, fresh finish.</p>
+            </div>
           </div>
 
           <div class="custom-card">
             <div class="image-box"><img src="src/public/yoghurt2.png" alt="Acai Bowl"></div>
-            <div class="custom-info"><span class="custom-name">Acai Bowl</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Acai Bowl</span>
+              <p class="custom-desc">Pure açaí base + fresh organic fruit + crunchy granola — simple &amp; powerful.</p>
+            </div>
           </div>
 
           <div class="custom-card highlight-card">
             <div class="image-box"><img src="src/public/custom-special-dessert.png" alt="Special Dessert"></div>
-            <div class="custom-info"><span class="custom-name">Special Dessert</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Special Dessert</span>
+              <p class="custom-desc">Fresh-made dessert with banana &amp; strawberry, cream puffs, Biscoff cream.</p>
+            </div>
           </div>
 
           <div class="custom-card">
             <div class="image-box"><img src="src/public/yoghurt.png" alt="Yoghurt Bowl"></div>
-            <div class="custom-info"><span class="custom-name">Yoghurt Bowl</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Yoghurt Bowl</span>
+              <p class="custom-desc">Creamy, refreshing bowl topped with bright organic fruit — feel-good and filling.</p>
+            </div>
           </div>
 
           <div class="custom-card">
@@ -1135,12 +1733,18 @@
 
           <div class="custom-card">
             <div class="image-box"><img src="src/public/ice-cream-fruit-bowl.png" alt="Ice Cream Fruit Bowl"></div>
-            <div class="custom-info"><span class="custom-name">Ice Cream Fruit Bowl</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Ice Cream Fruit Bowl</span>
+              <p class="custom-desc">Light ice cream paired with lots of fresh organic fruit.</p>
+            </div>
           </div>
 
           <div class="custom-card">
             <div class="image-box"><img src="src/public/soft-serve-cone.png" alt="Soft Serve Cone"></div>
-            <div class="custom-info"><span class="custom-name">Soft Serve Cone</span></div>
+            <div class="custom-info">
+              <span class="custom-name">Soft Serve Cone</span>
+              <p class="custom-desc">Creamy soft serve — smooth, classic, and always fresh.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1464,27 +2068,17 @@
       </div>
     </section>
 
-    <!-- BOOSTERS -->
-    <section id="menu-boosters">
-      <div class="container py-5">
-        <h3 class="text-center mb-4">BOOSTERS & SPECIAL ADD-ONS</h3>
+    <!-- MERCH -->
+    <section id="menu-merch" class="merch-section">
+      <div class="container">
+        <div class="merch-header">
+          <h2 class="section-title">MERCH</h2>
+          <p class="section-subtitle">Take Bazaar Juice with you</p>
+        </div>
 
-        <div class="row align-items-stretch">
-          <!-- LEFT -->
-          <div class="col-12 col-md-6 mb-4">
-            <div
-              class="booster-card p-4 h-100 text-center"
-              style="
-                border: 2px solid #dc2626;
-                border-radius: 18px;
-                background: linear-gradient(
-                  180deg,
-                  rgba(255,255,255,0.98),
-                  rgba(255,245,245,0.95)
-                );
-                box-shadow: 0 15px 40px rgba(220,38,38,0.15);
-              "
-            >
+        <div class="row merch-grid justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6 mb-0">
+            <div class="booster-card tight-card led-tumbler-card merch-led-card h-100 text-center">
               <span
                 style="
                   display:inline-block;
@@ -1495,55 +2089,62 @@
                   border-radius:999px;
                   font-size:0.8rem;
                   letter-spacing:1px;
-                  margin-bottom:15px;
+                  margin-bottom:10px;
                 "
               >
                 LIMITED STOCK
               </span>
 
-              <h5 class="fw-bold mb-3" style="color:#dc2626;">
+              <h5 class="fw-bold mb-2" style="color:#dc2626;">
                 ✨ LED FLASHING TUMBLER
               </h5>
 
-              <img
-                src="src/public/as.png"
-                alt="LED Tumbler"
-                style="max-width: 190px; margin-bottom: 18px;"
-              />
+              <div class="led-tumbler-image-wrap">
+                <img
+                  src="src/public/as.png"
+                  alt="LED Tumbler"
+                  class="led-tumbler-img"
+                />
+              </div>
 
-              <p class="mb-2 fw-bold">Glow up your drink!</p>
-              <p class="text-muted mb-2">LED • Double Wall • Reusable</p>
-              <p class="fw-bold" style="font-size:1.2rem;">Only $9.99</p>
+              <p class="mb-1 fw-bold">Glow up your drink!</p>
+              <p class="text-muted mb-1">LED • Double Wall • Reusable</p>
+              
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- RIGHT -->
-          <div class="col-12 col-md-6 mb-4">
-            <div
-              class="booster-card p-4 h-100 text-center"
-              style="
-                border: 2px dashed var(--accent-orange);
-                border-radius: 18px;
-                background: linear-gradient(
-                  180deg,
-                  rgba(255,255,255,0.98),
-                  rgba(248,250,252,0.95)
-                );
-              "
-            >
-              <h5 class="fw-bold mb-3" style="color: var(--accent-orange)">
+    <!-- BOOSTERS -->
+    <section id="menu-boosters">
+      <div class="container py-5">
+        <h3 class="text-center mb-4">BOOSTERS & SPECIAL ADD-ONS</h3>
+
+        <div class="row booster-grid justify-content-center align-items-stretch">
+          <div class="col-12 col-lg-6 mb-0">
+            <div class="booster-card tight-card wellness-card h-100">
+              <h5 class="wellness-title">
                 💪 WELLNESS BOOSTERS
               </h5>
 
-              <p class="fw-bold mb-3">
-                Add any booster for only
-                <span style="text-decoration: underline">+$1.00</span>
+              <p class="wellness-intro">
+                Add nutrient-rich boosters to your drink for extra power.
               </p>
 
-              <div class="booster-list">
-                <p class="mb-2">💪 Protein <span class="text-muted">+ $1</span></p>
-                <p class="mb-2">🌱 Chia Seeds <span class="text-muted">+ $1</span></p>
-                <p class="mb-2">💙 Blue Spirulina <span class="text-muted">+ $1</span></p>
+              <div class="wellness-list">
+                <p class="wellness-item">
+                  <span class="wellness-item-name">💪 Protein</span>
+                  <span class="wellness-item-note">Recovery support</span>
+                </p>
+                <p class="wellness-item">
+                  <span class="wellness-item-name">🌱 Chia Seeds</span>
+                  <span class="wellness-item-note">Fiber + omega boost</span>
+                </p>
+                <p class="wellness-item">
+                  <span class="wellness-item-name">💙 Blue Spirulina</span>
+                  <span class="wellness-item-note">Antioxidant rich</span>
+                </p>
               </div>
             </div>
           </div>
@@ -1586,6 +2187,7 @@
             <a href="#menu-fruits">Bazaar Fruit Selection</a>
             <a href="#menu-treats">Bowls & Treats</a>
             <a href="#menu-snacks">Snacks</a>
+            <a href="#menu-merch">Merch</a>
             <a href="#menu-boosters">Boosters</a>
             <a href="#about-us">About Us</a>
           </div>
@@ -1612,7 +2214,7 @@
                 ><i class="fab fa-tiktok"></i
               ></a>
             </div>
-            <p class="text-white-50 mt-3">Santa Monica, CA</p>
+            <p class="text-white-50 mt-3">Los Angeles, CA</p>
             <p class="text-white-50">bazaarjuicela@gmail.com</p>
           </div>
         </div>
@@ -1629,11 +2231,24 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      const navbarCollapseEl = document.getElementById("navbarContent");
+      const bsNavbarCollapse = navbarCollapseEl
+        ? new bootstrap.Collapse(navbarCollapseEl, { toggle: false })
+        : null;
+
       // Optional: highlight active nav link on click (simple)
       document.querySelectorAll(".navbar .nav-link").forEach((link) => {
         link.addEventListener("click", () => {
           document.querySelectorAll(".navbar .nav-link").forEach((l) => l.classList.remove("active"));
           link.classList.add("active");
+
+          if (
+            bsNavbarCollapse &&
+            window.innerWidth < 992 &&
+            navbarCollapseEl.classList.contains("show")
+          ) {
+            bsNavbarCollapse.hide();
+          }
         });
       });
     </script>
