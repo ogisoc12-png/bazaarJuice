@@ -413,10 +413,63 @@
         image-rendering: -webkit-optimize-contrast;
       }
 
+      /* No-crop image treatment for Bowls sections */
+      #fruit-cups-section .menu-item-image-wrapper,
+      #menu-treats .menu-item-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        padding: 4px;
+        border-radius: 22px;
+        background:
+          radial-gradient(130% 95% at 10% 0%, rgba(242, 165, 106, 0.30) 0%, rgba(242, 165, 106, 0) 62%),
+          radial-gradient(130% 95% at 90% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+          linear-gradient(
+            160deg,
+            rgba(255, 248, 236, 0.96) 0%,
+            rgba(255, 241, 223, 0.92) 44%,
+            rgba(239, 233, 255, 0.92) 100%
+          );
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper::after,
+      #menu-treats .menu-item-image-wrapper::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.46), transparent 74%),
+          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.09), transparent 74%);
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper img,
+      #menu-treats .menu-item-image-wrapper img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        padding: 0;
+        border-radius: 16px;
+        background: transparent;
+        image-rendering: -webkit-optimize-contrast;
+      }
+
       @media (max-width: 992px) {
         .menu-item-image-wrapper {
           width: 168px;
           height: 168px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper,
+        #menu-treats .menu-item-image-wrapper {
+          width: 168px;
+          height: auto;
+          aspect-ratio: 4 / 3;
         }
       }
 
@@ -444,6 +497,20 @@
         .menu-item-image-wrapper img {
           border-radius: 14px;
           padding: 3px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper,
+        #menu-treats .menu-item-image-wrapper {
+          width: 124px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          border-radius: 18px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper img,
+        #menu-treats .menu-item-image-wrapper img {
+          border-radius: 14px;
+          padding: 0;
         }
       }
 
@@ -1556,7 +1623,15 @@
           aspect-ratio: 4 / 3;
           padding: 0;
           border-radius: 16px 16px 11px 11px;
-          background: none;
+          background:
+            radial-gradient(130% 95% at 10% 0%, rgba(242, 165, 106, 0.30) 0%, rgba(242, 165, 106, 0) 62%),
+            radial-gradient(130% 95% at 90% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+            linear-gradient(
+              160deg,
+              rgba(255, 248, 236, 0.96) 0%,
+              rgba(255, 241, 223, 0.92) 44%,
+              rgba(239, 233, 255, 0.92) 100%
+            );
           box-shadow: none;
           overflow: hidden;
         }
@@ -1566,9 +1641,23 @@
           height: 100%;
           padding: 0;
           border-radius: 0;
-          object-fit: cover;
+          object-fit: contain;
+          object-position: center;
           background: transparent;
           filter: none;
+        }
+
+        #menu-treats .menu-item-image-wrapper {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 3;
+        }
+
+        #menu-treats .menu-item-image-wrapper img {
+          object-fit: contain;
+          object-position: center;
+          padding: 0;
+          background: transparent;
         }
 
         .drinks-grid,
