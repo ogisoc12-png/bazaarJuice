@@ -600,19 +600,39 @@
       }
 
       .drink-image-box {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
         padding: 10px;
         background:
-          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.18), transparent 55%),
-          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.18), transparent 55%),
-          rgba(255, 251, 245, 0.8);
+          radial-gradient(130% 95% at 8% 0%, rgba(242, 165, 106, 0.28) 0%, rgba(242, 165, 106, 0) 62%),
+          radial-gradient(130% 95% at 92% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+          linear-gradient(
+            160deg,
+            rgba(255, 248, 236, 0.96) 0%,
+            rgba(255, 241, 223, 0.92) 44%,
+            rgba(239, 233, 255, 0.92) 100%
+          );
         border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      }
+
+      .drink-image-box::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.48), transparent 74%),
+          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.10), transparent 74%);
       }
 
       .drink-img {
         width: 100%;
         aspect-ratio: 1 / 1.05;
         border-radius: 20px;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
         display: block;
         padding: 4px;
         background: linear-gradient(
@@ -624,6 +644,9 @@
           0 0 0 4px rgba(255, 255, 255, 0.92) inset,
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
       }
 
       .drink-card:hover .drink-img {
@@ -707,19 +730,39 @@
       }
 
       .image-box {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
         padding: 10px;
         background:
-          radial-gradient(700px 260px at 30% 10%, rgba(242, 165, 106, 0.18), transparent 55%),
-          radial-gradient(700px 260px at 70% 10%, rgba(168, 164, 199, 0.18), transparent 55%),
-          rgba(255, 251, 245, 0.8);
+          radial-gradient(130% 95% at 8% 0%, rgba(242, 165, 106, 0.28) 0%, rgba(242, 165, 106, 0) 62%),
+          radial-gradient(130% 95% at 92% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+          linear-gradient(
+            160deg,
+            rgba(255, 248, 236, 0.96) 0%,
+            rgba(255, 241, 223, 0.92) 44%,
+            rgba(239, 233, 255, 0.92) 100%
+          );
         border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      }
+
+      .image-box::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.48), transparent 74%),
+          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.10), transparent 74%);
       }
 
       .toast-card img {
         width: 100%;
         aspect-ratio: 1 / 1.05;
         border-radius: 20px;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
         display: block;
         padding: 4px;
         background: linear-gradient(
@@ -731,6 +774,9 @@
           0 0 0 4px rgba(255, 255, 255, 0.92) inset,
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
       }
 
       .toast-card:hover img {
@@ -831,6 +877,7 @@
         aspect-ratio: 1 / 1.05;
         border-radius: 20px;
         object-fit: contain;
+        object-position: center;
         display: block;
         padding: 4px;
         background: linear-gradient(
@@ -843,6 +890,9 @@
           0 16px 40px rgba(17, 24, 39, 0.12);
         transition: transform 0.35s ease;
         filter: drop-shadow(0 14px 18px rgba(17, 24, 39, 0.10));
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
       }
 
       .custom-card:hover img {
