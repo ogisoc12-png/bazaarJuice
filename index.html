@@ -84,6 +84,8 @@
 
         --font-heading: "Montserrat", sans-serif;
         --font-body: "Poppins", sans-serif;
+        --section-title-color: #273252;
+        --section-title-shadow: rgba(232, 135, 68, 0.22);
 
         --app-height: 100vh;
       }
@@ -301,6 +303,8 @@
         font-weight: 900;
         letter-spacing: 2.5px;
         text-transform: uppercase;
+        color: var(--section-title-color);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px var(--section-title-shadow);
         margin: 0;
       }
 
@@ -731,6 +735,14 @@
 
       .drink-card:hover .drink-img {
         transform: scale(1.03);
+      }
+
+      .drink-img.iced-coffee-zoom {
+        transform: scale(1.08);
+      }
+
+      .drink-card:hover .drink-img.iced-coffee-zoom {
+        transform: scale(1.12);
       }
 
       .drink-info {
@@ -1206,7 +1218,7 @@
       #about-us h2 {
         font-size: clamp(2rem, 3vw, 2.55rem);
         font-weight: 900;
-        color: var(--accent-orange-deep);
+        color: var(--section-title-color);
         text-transform: uppercase;
         margin-bottom: 25px;
       }
@@ -2030,7 +2042,7 @@
     <section id="fruit-cups-section" class="menu-section" style="background-color: #f2fbf7">
       <div class="container">
         <div class="p-4" style="border-radius: 14px">
-          <h4 class="text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
+          <h4 class="section-title text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
           <p class="text-center text-muted mb-2">Choose how you enjoy it</p>
           <p class="text-center text-muted mb-4" style="font-size: 0.95rem">
             <strong>Fruit Bowl:</strong> $11.99 &nbsp;|&nbsp;
@@ -2043,7 +2055,6 @@
                 <div class="menu-item-content">
                   <h5>#1 Banana · Mango · Pineapple</h5>
                   <p class="text-muted">Great for energy, workouts, and natural fuel.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/banana-mango-pineapple.png" alt="Banana Mango Pineapple" />
@@ -2056,7 +2067,6 @@
                 <div class="menu-item-content">
                   <h5>#2 Banana · Strawberry</h5>
                   <p class="text-muted">Sweet, filling, and kid-friendly.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/banana-strawberry.png" alt="Banana Strawberry" />
@@ -2069,7 +2079,6 @@
                 <div class="menu-item-content">
                   <h5>#3 Banana · Strawberry · Blueberry · Dragon Fruit</h5>
                   <p class="text-muted">High in antioxidants. Supports immunity.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/banana-strawberry-blueberry-dragonfruit.png" alt="Banana Strawberry Blueberry Dragonfruit" />
@@ -2082,7 +2091,6 @@
                 <div class="menu-item-content">
                   <h5>#4 Banana · Strawberry · Apple · Blueberry</h5>
                   <p class="text-muted">Balanced nutrients for everyday snacking.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/banana-strawberry-apple-blueberry.png" alt="Banana Strawberry Apple Blueberry" />
@@ -2095,7 +2103,6 @@
                 <div class="menu-item-content">
                   <h5>#5 Banana · Strawberry · Apple · Dragon Fruit · Raspberry</h5>
                   <p class="text-muted">High fiber. Great for digestion.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/banana-strawberry-apple-dragonfruit-raspberry.png" alt="Banana Strawberry Apple Dragonfruit Raspberry" />
@@ -2108,7 +2115,6 @@
                 <div class="menu-item-content">
                   <h5>#6 Orange · Kiwi · Apple · Blueberry</h5>
                   <p class="text-muted">Vitamin C rich. Supports skin and immunity.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/orange-kiwi-apple-blueberry.png" alt="Orange Kiwi Apple Blueberry" />
@@ -2121,7 +2127,6 @@
                 <div class="menu-item-content">
                   <h5>#7 Orange</h5>
                   <p class="text-muted">Refreshing and hydrating.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/orange.png" alt="Orange" />
@@ -2134,7 +2139,6 @@
                 <div class="menu-item-content">
                   <h5>#8 Mango · Pineapple · Strawberry</h5>
                   <p class="text-muted">Sweet tropical blend. Mood booster.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/mango-pineapple-strawberry.png" alt="Mango Pineapple Strawberry" />
@@ -2147,7 +2151,6 @@
                 <div class="menu-item-content">
                   <h5>#9 Mango</h5>
                   <p class="text-muted">Naturally sweet. Energy support.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/mango.png" alt="Mango" />
@@ -2160,7 +2163,6 @@
                 <div class="menu-item-content">
                   <h5>#10 Watermelon</h5>
                   <p class="text-muted">Ultra-hydrating. Perfect for hot days.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/watermelon.png" alt="Watermelon" />
@@ -2173,7 +2175,6 @@
                 <div class="menu-item-content">
                   <h5>#11 Melon</h5>
                   <p class="text-muted">Light, refreshing, and easy to digest.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/melon.png" alt="Melon" />
@@ -2186,7 +2187,6 @@
                 <div class="menu-item-content">
                   <h5>#12 Apple · Peach</h5>
                   <p class="text-muted">Classic fruits. Good for gut health.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/apple-peach.png" alt="Apple Peach" />
@@ -2199,7 +2199,6 @@
                 <div class="menu-item-content">
                   <h5>#13 Grape · Orange · Kiwi</h5>
                   <p class="text-muted">Refreshing with a citrus kick.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/grape-orange-kiwi.png" alt="Grape Orange Kiwi" />
@@ -2212,7 +2211,6 @@
                 <div class="menu-item-content">
                   <h5>#14 Orange · Dragon Fruit · Pomegranate</h5>
                   <p class="text-muted">Antioxidant-rich. Immune support.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/orange-dragonfruit-pomegranate.png" alt="Orange Dragonfruit Pomegranate" />
@@ -2225,7 +2223,6 @@
                 <div class="menu-item-content">
                   <h5>#15 Mango · Strawberry</h5>
                   <p class="text-muted">Sweet and juicy crowd favorite.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/mango-strawberry.png" alt="Mango Strawberry" />
@@ -2238,7 +2235,6 @@
                 <div class="menu-item-content">
                   <h5>#16 Apple</h5>
                   <p class="text-muted">Crunchy and fiber-rich.</p>
-                  <p class="price-tag">Bowl $11.99 | Smoothie $12.99</p>
                 </div>
                 <div class="menu-item-image-wrapper">
                   <img src="src/public/apple.png" alt="Apple" />
@@ -2261,7 +2257,7 @@
         <div class="drinks-grid">
           <div class="drink-card">
             <div class="drink-image-box">
-              <img src="src/public/cofee-iced.png" class="drink-img" alt="Iced Coffee" />
+              <img src="src/public/cofee-iced.png" class="drink-img iced-coffee-zoom" alt="Iced Coffee" />
             </div>
             <div class="drink-info"><span class="drink-name">Iced Coffee</span></div>
           </div>
@@ -2275,9 +2271,9 @@
 
           <div class="drink-card">
             <div class="drink-image-box">
-              <img src="src/public/matcha-latte.png" class="drink-img" alt="Matcha Latte" />
+              <img src="src/public/matcha-latte.png" class="drink-img" alt="Iced Matcha Latte" />
             </div>
-            <div class="drink-info"><span class="drink-name">Matcha Latte</span></div>
+            <div class="drink-info"><span class="drink-name">Iced Matcha Latte</span></div>
           </div>
 
           <div class="drink-card">
@@ -2348,7 +2344,7 @@
     <!-- BOOSTERS -->
     <section id="menu-boosters">
       <div class="container py-5">
-        <h3 class="text-center mb-4">BOOSTERS & SPECIAL ADD-ONS</h3>
+        <h3 class="section-title text-center mb-4">BOOSTERS & SPECIAL ADD-ONS</h3>
 
         <div class="row booster-grid justify-content-center align-items-stretch">
           <div class="col-12 col-lg-6 mb-0">
@@ -2384,7 +2380,7 @@
     <!-- ABOUT -->
     <section id="about-us">
       <div class="container">
-        <h2 class="text-center">OUR STORY</h2>
+        <h2 class="section-title text-center">OUR STORY</h2>
         <div class="story-content">
           <p class="mt-4">
             At Bazaar Juice, we turn the vibrant energy into refreshing, feel
