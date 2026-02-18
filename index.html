@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600;700&family=Sora:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -37,8 +37,8 @@
         --muted: #6b7280;
         --white: #ffffff;
 
-        --bg-main: #fdfcff;
-        --bg-soft: #fbf8ff;
+        --bg-main: #f3edf8;
+        --bg-soft: #e7dff1;
 
         --card: rgba(255, 252, 247, 0.95);
         --card-strong: rgba(255, 255, 255, 0.98);
@@ -84,8 +84,22 @@
 
         --font-heading: "Montserrat", sans-serif;
         --font-body: "Poppins", sans-serif;
-        --section-title-color: #273252;
-        --section-title-shadow: rgba(232, 135, 68, 0.22);
+        --font-section-title: "Sora", "Montserrat", sans-serif;
+        --font-hero-display: "Cinzel", "Sora", sans-serif;
+        --section-title-base: #1f2937;
+        --section-title-shadow: rgba(127, 106, 184, 0.22);
+        --section-title-vibrant: linear-gradient(
+          105deg,
+          #d7661f 0%,
+          #f09b41 44%,
+          #8360d2 100%
+        );
+        --fruit-bowl-frame: linear-gradient(
+          145deg,
+          rgba(242, 165, 106, 0.95) 0%,
+          rgba(255, 224, 184, 0.92) 42%,
+          rgba(168, 164, 199, 0.94) 100%
+        );
 
         --app-height: 100vh;
       }
@@ -104,8 +118,8 @@
         color: var(--text);
         min-height: 100vh;
         background:
-          radial-gradient(1000px 650px at -10% -10%, rgba(242, 165, 106, 0.22), transparent 60%),
-          radial-gradient(1000px 650px at 110% 0%, rgba(168, 164, 199, 0.22), transparent 60%),
+          radial-gradient(1000px 650px at -10% -10%, rgba(232, 135, 68, 0.30), transparent 60%),
+          radial-gradient(1000px 650px at 110% 0%, rgba(142, 134, 182, 0.30), transparent 60%),
           linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
       }
 
@@ -116,10 +130,10 @@
         pointer-events: none;
         z-index: 0;
         background:
-          radial-gradient(circle, rgba(242, 165, 106, 0.14) 1px, transparent 1.6px) 0 0/48px 48px,
-          radial-gradient(circle, rgba(168, 164, 199, 0.14) 1px, transparent 1.6px) 18px 12px/58px 58px,
-          radial-gradient(1200px 700px at 50% 0%, rgba(255, 255, 255, 0.55), transparent 70%);
-        opacity: 0.28;
+          radial-gradient(circle, rgba(232, 135, 68, 0.16) 1px, transparent 1.6px) 0 0/48px 48px,
+          radial-gradient(circle, rgba(142, 134, 182, 0.16) 1px, transparent 1.6px) 18px 12px/58px 58px,
+          radial-gradient(1200px 700px at 50% 0%, rgba(255, 255, 255, 0.34), transparent 70%);
+        opacity: 0.22;
         filter: blur(0.25px);
         mix-blend-mode: multiply;
       }
@@ -249,20 +263,44 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.1rem, 4.2vw, 4rem);
-        font-weight: 900;
+        font-family: var(--font-hero-display);
+        font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+        font-weight: 700;
         text-transform: uppercase;
-        color: var(--white);
-        letter-spacing: 4px;
-        margin-bottom: 10px;
+        color: #ffe3b5;
+        letter-spacing: 0.09em;
+        line-height: 1.05;
+        margin-bottom: 12px;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.2),
+          0 12px 28px rgba(0, 0, 0, 0.44),
+          0 0 36px rgba(234, 144, 78, 0.28);
+      }
+
+      @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        .hero h1 {
+          background-image: linear-gradient(
+            115deg,
+            #f0ab61 0%,
+            #ffdcae 45%,
+            #c5adff 100%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+        }
       }
 
       .hero p {
-        color: rgba(255, 255, 255, 0.86);
-        font-size: 1.05rem;
-        line-height: 1.6;
-        max-width: 680px;
+        color: rgba(255, 236, 207, 0.98);
+        font-size: clamp(0.98rem, 1.45vw, 1.12rem);
+        font-weight: 600;
+        line-height: 1.62;
+        letter-spacing: 0.01em;
+        max-width: 640px;
         margin: 0 auto;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
       }
 
       .hero .cta-button {
@@ -290,10 +328,11 @@
 
       @media (max-width: 575.98px) {
         .hero h1 {
-          letter-spacing: 3px;
+          letter-spacing: 0.08em;
         }
         .hero p {
-          font-size: 0.98rem;
+          font-size: 0.95rem;
+          line-height: 1.58;
         }
       }
 
@@ -301,11 +340,12 @@
       .section-title {
         font-size: clamp(1.85rem, 2.8vw, 2.5rem);
         font-weight: 900;
-        letter-spacing: 2.5px;
+        letter-spacing: 2.8px;
         text-transform: uppercase;
-        color: var(--section-title-color);
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.88), 0 8px 18px var(--section-title-shadow);
+        color: var(--section-title-base);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.88), 0 10px 22px var(--section-title-shadow);
         margin: 0;
+        font-family: var(--font-section-title);
       }
 
       .section-subtitle {
@@ -441,44 +481,62 @@
       /* No-crop image treatment for Fruit Bowls */
       #fruit-cups-section .menu-item-image-wrapper {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         height: auto;
         aspect-ratio: 4 / 3;
-        padding: 4px;
-        border-radius: 22px;
-        background:
-          radial-gradient(130% 95% at 10% 0%, rgba(242, 165, 106, 0.30) 0%, rgba(242, 165, 106, 0) 62%),
-          radial-gradient(130% 95% at 90% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
-          linear-gradient(
-            160deg,
-            rgba(255, 248, 236, 0.96) 0%,
-            rgba(255, 241, 223, 0.92) 44%,
-            rgba(239, 233, 255, 0.92) 100%
-          );
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border: 0;
+        box-shadow: none;
       }
 
       #fruit-cups-section .menu-item-image-wrapper::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        background:
-          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.46), transparent 74%),
-          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.09), transparent 74%);
+        content: none;
       }
 
       #fruit-cups-section .menu-item-image-wrapper img {
         position: relative;
         z-index: 1;
+        display: block;
         width: 100%;
         height: 100%;
         object-fit: contain;
         object-position: center;
+        --fruit-bowl-image-radius: 22px;
+        --fruit-bowl-image-border: 2px;
         padding: 0;
-        border-radius: var(--product-image-radius);
-        background: transparent;
+        border-radius: var(--fruit-bowl-image-radius);
+        border: var(--fruit-bowl-image-border) solid transparent;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)) padding-box,
+          var(--fruit-bowl-frame) border-box;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.16);
         image-rendering: -webkit-optimize-contrast;
+      }
+
+      #fruit-cups-section .menu-item {
+        padding: 20px 22px;
+        gap: 18px;
+        border-radius: 30px;
+      }
+
+      #fruit-cups-section .menu-item-content {
+        padding: 4px 8px 4px 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #fruit-cups-section .menu-item-content h5 {
+        margin: 0;
+        line-height: 1.24;
+      }
+
+      #fruit-cups-section .menu-item-content .text-muted {
+        margin: 0;
+        line-height: 1.5;
       }
 
       @media (max-width: 992px) {
@@ -524,11 +582,14 @@
           width: 124px;
           height: auto;
           aspect-ratio: 4 / 3;
-          border-radius: 18px;
+          border-radius: 0;
+          padding: 0;
+          background: none;
         }
 
         #fruit-cups-section .menu-item-image-wrapper img {
-          border-radius: calc(var(--product-image-radius) - 4px);
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
           padding: 0;
         }
       }
@@ -688,61 +749,74 @@
       .drink-image-box {
         position: relative;
         isolation: isolate;
-        overflow: hidden;
-        padding: 10px;
-        background:
-          radial-gradient(130% 95% at 8% 0%, rgba(242, 165, 106, 0.28) 0%, rgba(242, 165, 106, 0) 62%),
-          radial-gradient(130% 95% at 92% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
-          linear-gradient(
-            160deg,
-            rgba(255, 248, 236, 0.96) 0%,
-            rgba(255, 241, 223, 0.92) 44%,
-            rgba(239, 233, 255, 0.92) 100%
-          );
-        border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+        overflow: visible;
+        padding: 0;
+        background: none;
+        border-bottom: 0;
       }
 
       .drink-image-box::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.48), transparent 74%),
-          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.10), transparent 74%);
+        content: none;
       }
 
       .drink-img {
         width: 100%;
         aspect-ratio: 1 / 1.05;
-        border-radius: var(--product-image-radius);
+        border-radius: 18px;
         object-fit: cover;
         object-position: center;
         display: block;
-        padding: 3px;
+        padding: 0;
+        border: 1.8px solid transparent;
         background: linear-gradient(
-          135deg,
-          rgba(242, 165, 106, 0.86),
-          rgba(168, 164, 199, 0.86)
-        );
-        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          linear-gradient(
+            140deg,
+            rgba(242, 165, 106, 0.96),
+            rgba(168, 164, 199, 0.95)
+          ) border-box;
+        box-shadow: 0 10px 22px rgba(17, 24, 39, 0.14);
         transition: transform 0.35s ease;
         image-rendering: -webkit-optimize-contrast;
         position: relative;
         z-index: 1;
       }
 
+      .led-tumbler-image-wrap {
+        width: min(100%, 360px);
+        margin: 0 auto 8px;
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border: 0;
+      }
+
+      .led-tumbler-img {
+        width: min(100%, 330px);
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        border-radius: 18px;
+        border: 1.8px solid transparent;
+        background:
+          linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          linear-gradient(
+            140deg,
+            rgba(242, 165, 106, 0.96),
+            rgba(168, 164, 199, 0.95)
+          ) border-box;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.16);
+        filter: none;
+        transition: transform 0.22s ease;
+      }
+
       .drink-card:hover .drink-img {
         transform: scale(1.03);
-      }
-
-      .drink-img.iced-coffee-zoom {
-        transform: scale(1.08);
-      }
-
-      .drink-card:hover .drink-img.iced-coffee-zoom {
-        transform: scale(1.12);
       }
 
       .drink-info {
@@ -1158,25 +1232,6 @@
         position: relative;
       }
 
-      .led-tumbler-image-wrap {
-        width: min(100%, 360px);
-        margin: 0 auto 8px;
-        padding: 10px;
-        border-radius: 24px;
-        background:
-          radial-gradient(240px 170px at 50% 8%, rgba(255, 255, 255, 0.95), transparent 70%),
-          linear-gradient(150deg, rgba(254, 226, 226, 0.9), rgba(255, 245, 245, 0.85));
-        border: 1px solid rgba(220, 38, 38, 0.2);
-      }
-
-      .led-tumbler-img {
-        width: min(100%, 330px);
-        display: block;
-        margin: 0 auto;
-        filter: drop-shadow(0 26px 26px rgba(220, 38, 38, 0.34));
-        transition: transform 0.22s ease;
-      }
-
       .led-tumbler-card:hover .led-tumbler-img {
         transform: scale(1.06);
       }
@@ -1218,7 +1273,7 @@
       #about-us h2 {
         font-size: clamp(2rem, 3vw, 2.55rem);
         font-weight: 900;
-        color: var(--section-title-color);
+        color: var(--section-title-base);
         text-transform: uppercase;
         margin-bottom: 25px;
       }
@@ -1356,15 +1411,15 @@
         }
 
         .hero h1 {
-          font-size: clamp(1.55rem, 9vw, 2.15rem);
-          letter-spacing: 2px;
-          line-height: 1.14;
+          font-size: clamp(1.7rem, 8.6vw, 2.35rem);
+          letter-spacing: 0.075em;
+          line-height: 1.08;
         }
 
         .hero p {
-          font-size: 0.93rem;
-          line-height: 1.45;
-          max-width: 92%;
+          font-size: 0.94rem;
+          line-height: 1.56;
+          max-width: 32ch;
         }
 
         .hero .cta-button {
@@ -1386,7 +1441,7 @@
 
         .section-title {
           font-size: clamp(1.26rem, 6.4vw, 1.58rem);
-          letter-spacing: 1.2px;
+          letter-spacing: 1.5px;
           line-height: 1.18;
         }
 
@@ -1432,45 +1487,46 @@
           line-height: 1.35;
         }
 
-        /* Fruit Bowls & Smoothies: left two-line details + right price line */
+        /* Fruit Bowls & Smoothies: cleaner spacing on small screens */
         #fruit-cups-section .menu-item {
-          padding: 10px 10px 12px;
-          gap: 10px;
+          padding: 14px 15px 15px;
+          gap: 12px;
+          border-radius: 22px;
         }
 
         #fruit-cups-section .menu-item-content {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) auto;
-          grid-template-areas:
-            "title price"
-            "desc price";
-          column-gap: 10px;
-          row-gap: 3px;
-          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 6px;
+          padding: 2px 6px 2px 2px;
         }
 
         #fruit-cups-section .menu-item-content h5 {
-          grid-area: title;
           margin: 0;
-          font-size: 0.96rem;
-          line-height: 1.2;
+          font-size: 1rem;
+          line-height: 1.25;
         }
 
         #fruit-cups-section .menu-item-content .text-muted {
-          grid-area: desc;
           margin: 0;
-          font-size: 0.82rem;
-          line-height: 1.3;
+          font-size: 0.86rem;
+          line-height: 1.4;
         }
 
-        #fruit-cups-section .menu-item-content .price-tag {
-          grid-area: price;
-          margin: 0;
-          text-align: right;
-          white-space: nowrap;
-          font-size: 0.82rem;
-          line-height: 1.2;
-          color: var(--accent-orange-deep);
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 112px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          border-radius: 0;
+          padding: 0;
+          background: none;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper img {
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
+          padding: 0;
         }
 
         .menu-item-image-wrapper {
@@ -1535,7 +1591,6 @@
           gap: 10px;
         }
 
-        .drink-image-box,
         .image-box {
           padding: 8px;
         }
@@ -1551,6 +1606,10 @@
           font-size: 0.9rem;
         }
 
+        .drink-img {
+          border-radius: 14px;
+        }
+
         .toast-name {
           font-size: 0.82rem;
         }
@@ -1562,11 +1621,12 @@
 
         .led-tumbler-image-wrap {
           width: min(100%, 260px);
-          padding: 8px;
+          padding: 0;
         }
 
         .led-tumbler-img {
           width: min(100%, 230px);
+          border-radius: 14px;
         }
 
         .wellness-title {
@@ -1635,42 +1695,52 @@
           object-fit: contain;
         }
 
-        /* Fruit Bowls & Smoothies: edge-to-edge image on mobile */
+        /* Fruit Bowls & Smoothies: keep breathing room on mobile */
+        #fruit-cups-section .menu-item {
+          padding: 14px;
+          border-radius: 20px;
+        }
+
+        #fruit-cups-section .menu-item-content {
+          padding: 0 2px 4px;
+          gap: 7px;
+        }
+
         #fruit-cups-section .menu-item-image-wrapper {
-          margin: -10px -10px 6px;
-          width: calc(100% + 20px);
+          margin: 0 0 10px;
+          width: 100%;
           height: auto;
           aspect-ratio: 4 / 3;
           padding: 0;
-          border-radius: 16px 16px 11px 11px;
-          background:
-            radial-gradient(130% 95% at 10% 0%, rgba(242, 165, 106, 0.30) 0%, rgba(242, 165, 106, 0) 62%),
-            radial-gradient(130% 95% at 90% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
-            linear-gradient(
-              160deg,
-              rgba(255, 248, 236, 0.96) 0%,
-              rgba(255, 241, 223, 0.92) 44%,
-              rgba(239, 233, 255, 0.92) 100%
-            );
+          border-radius: 0;
+          background: none;
           box-shadow: none;
-          overflow: hidden;
+          overflow: visible;
         }
 
         #fruit-cups-section .menu-item-image-wrapper img {
           width: 100%;
           height: 100%;
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
           padding: 0;
-          border-radius: 0;
           object-fit: contain;
           object-position: center;
-          background: transparent;
-          filter: none;
+          box-shadow: 0 10px 20px rgba(17, 24, 39, 0.14);
         }
 
         .drinks-grid,
         .toast-grid,
         .custom-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .drink-img {
+          border-radius: 16px;
+        }
+
+        .led-tumbler-img {
+          border-radius: 16px;
         }
 
         #hero,
@@ -1698,7 +1768,8 @@
         }
 
         .hero h1 {
-          font-size: 1.4rem;
+          font-size: 1.32rem;
+          letter-spacing: 0.06em;
         }
 
         #menu-fruits .fruit-img {
@@ -1723,6 +1794,303 @@
         #menu-fruits .row.g-3.mt-4 > [class*="col-"] {
           flex: 0 0 50%;
           max-width: 50%;
+        }
+      }
+
+      /* ---------- PREMIUM MOBILE REFINEMENT OVERRIDES ---------- */
+      :root {
+        --section-space-desktop: 70px;
+        --section-space-mobile: 54px;
+        --premium-card-radius: 20px;
+        --premium-image-radius-desktop: 18px;
+        --premium-image-radius-mobile: 14px;
+        --premium-image-border: 1.8px;
+        --premium-image-frame: linear-gradient(
+          140deg,
+          rgba(242, 165, 106, 0.96),
+          rgba(168, 164, 199, 0.95)
+        );
+      }
+
+      body {
+        line-height: 1.56;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      #menu-fruits,
+      #menu-custom.custom-section,
+      #menu-toasts.toast-section,
+      #fruit-cups-section,
+      #menu-drinks.drinks-section,
+      #menu-merch.merch-section,
+      #menu-boosters,
+      #about-us {
+        padding-top: var(--section-space-desktop) !important;
+        padding-bottom: var(--section-space-desktop) !important;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        line-height: 1.08;
+        letter-spacing: 0.085em;
+        font-family: var(--font-section-title);
+        font-weight: 800;
+        color: #312018;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72), 0 7px 14px rgba(131, 96, 210, 0.16);
+      }
+
+      .section-subtitle {
+        max-width: 52ch;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.55;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 62%;
+        height: 3px;
+        margin: 7px auto 0;
+        border-radius: 999px;
+        background: var(--section-title-vibrant);
+        box-shadow: 0 6px 12px rgba(131, 96, 210, 0.24);
+      }
+
+      #fruit-cups-section .section-title,
+      #menu-boosters .section-title {
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        .section-title {
+          background-image: var(--section-title-vibrant);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          text-shadow: none;
+          filter: drop-shadow(0 5px 8px rgba(49, 32, 24, 0.22));
+        }
+      }
+
+      .drink-card,
+      .toast-card,
+      .custom-card,
+      #fruit-cups-section .menu-item,
+      .fruit-card,
+      .booster-card {
+        border-radius: var(--premium-card-radius);
+      }
+
+      #menu-drinks .drink-image-box,
+      #menu-toasts .image-box,
+      #menu-custom .image-box {
+        overflow: visible !important;
+        padding: 0 !important;
+        background: none !important;
+        border-bottom: 0 !important;
+      }
+
+      #menu-drinks .drink-image-box::after,
+      #menu-toasts .image-box::after,
+      #menu-custom .image-box::after {
+        content: none !important;
+      }
+
+      #menu-drinks .drink-img,
+      #menu-toasts .toast-card img,
+      #menu-custom .custom-card img,
+      #menu-merch .led-tumbler-img,
+      #fruit-cups-section .menu-item-image-wrapper img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0 !important;
+        border-radius: var(--premium-image-radius-desktop) !important;
+        border: var(--premium-image-border) solid transparent;
+        background:
+          linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          var(--premium-image-frame) border-box;
+        box-shadow: 0 10px 22px rgba(17, 24, 39, 0.14) !important;
+        filter: none !important;
+      }
+
+      #menu-drinks .drink-img,
+      #menu-toasts .toast-card img,
+      #menu-custom .custom-card img,
+      #menu-merch .led-tumbler-img,
+      #fruit-cups-section .menu-item-image-wrapper img {
+        object-fit: cover !important;
+        object-position: center !important;
+      }
+
+      #menu-merch .led-tumbler-image-wrap {
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        border: 0 !important;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper {
+        position: relative;
+        overflow: visible !important;
+        width: clamp(124px, 30vw, 168px) !important;
+        height: auto !important;
+        aspect-ratio: 4 / 3 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper::after {
+        content: none !important;
+      }
+
+      #fruit-cups-section .menu-item {
+        gap: 12px !important;
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar .navbar-brand {
+          font-size: 1.12rem !important;
+          letter-spacing: 0.02em;
+        }
+
+        .navbar-collapse {
+          padding: 10px 10px 12px !important;
+          border-radius: 14px !important;
+        }
+
+        .navbar .nav-link {
+          font-size: 0.84rem !important;
+          border-radius: 12px;
+        }
+
+        #hero,
+        #menu-fruits,
+        #menu-snacks,
+        #fruit-cups-section,
+        #refreshers-section,
+        #hot-drinks-section,
+        #menu-merch,
+        #menu-boosters,
+        #about-us {
+          scroll-margin-top: 88px;
+        }
+
+        #menu-fruits,
+        #menu-custom.custom-section,
+        #menu-toasts.toast-section,
+        #fruit-cups-section,
+        #menu-drinks.drinks-section,
+        #menu-merch.merch-section,
+        #menu-boosters,
+        #about-us {
+          padding-top: var(--section-space-mobile) !important;
+          padding-bottom: var(--section-space-mobile) !important;
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 10px !important;
+        }
+      }
+
+      @media (max-width: 767px) {
+        body::before {
+          opacity: 0.14;
+          filter: none;
+        }
+
+        .section-title {
+          font-size: clamp(1.2rem, 6vw, 1.52rem);
+          letter-spacing: 0.05em;
+          font-weight: 800;
+        }
+
+        .section-subtitle {
+          font-size: 0.9rem;
+        }
+
+        #menu-fruits .fruit-card {
+          min-height: 84px;
+          padding: 10px;
+          gap: 8px;
+        }
+
+        #menu-fruits .fruit-img {
+          width: 56px;
+          height: 56px;
+        }
+
+        #fruit-cups-section .menu-item {
+          padding: 14px !important;
+          border-radius: 18px !important;
+          gap: 10px !important;
+        }
+
+        #fruit-cups-section .menu-item-content {
+          padding: 0 2px 2px !important;
+          gap: 6px !important;
+        }
+
+        #menu-drinks .drink-img,
+        #menu-toasts .toast-card img,
+        #menu-custom .custom-card img,
+        #menu-merch .led-tumbler-img,
+        #fruit-cups-section .menu-item-image-wrapper img {
+          border-radius: var(--premium-image-radius-mobile) !important;
+        }
+
+        .section-title::after {
+          width: 58%;
+          height: 2.5px;
+          margin-top: 6px;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        #fruit-cups-section .menu-item {
+          flex-direction: column-reverse !important;
+          align-items: stretch !important;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 100% !important;
+          margin: 0 0 10px !important;
+          aspect-ratio: 4 / 3 !important;
+        }
+
+        #menu-drinks .drink-img,
+        #menu-toasts .toast-card img,
+        #menu-custom .custom-card img,
+        #menu-merch .led-tumbler-img,
+        #fruit-cups-section .menu-item-image-wrapper img {
+          border-radius: 16px !important;
+        }
+      }
+
+      @media (max-width: 379.98px) {
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: 1fr !important;
         }
       }
 
@@ -2044,11 +2412,6 @@
         <div class="p-4" style="border-radius: 14px">
           <h4 class="section-title text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
           <p class="text-center text-muted mb-2">Choose how you enjoy it</p>
-          <p class="text-center text-muted mb-4" style="font-size: 0.95rem">
-            <strong>Fruit Bowl:</strong> $11.99 &nbsp;|&nbsp;
-            <strong>Smoothie / Juice:</strong> $12.99
-          </p>
-
           <div class="row">
             <div class="col-12 col-lg-6">
               <div class="menu-item">
@@ -2257,7 +2620,7 @@
         <div class="drinks-grid">
           <div class="drink-card">
             <div class="drink-image-box">
-              <img src="src/public/cofee-iced.png" class="drink-img iced-coffee-zoom" alt="Iced Coffee" />
+              <img src="src/public/cofee-iced.png" class="drink-img" alt="Iced Coffee" />
             </div>
             <div class="drink-info"><span class="drink-name">Iced Coffee</span></div>
           </div>
