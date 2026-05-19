@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bazaar Juice - Freshly Blended</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@700;900&family=Poppins:wght@400;500;600;700&family=Sora:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      /* =========================================================
+        BAZAAR JUICE — ELEGANT BUSINESS THEME (MOBILE FIRST)
+        - Premium but not crazy
+        - Strong mobile layout
+        - Bigger images + subtle gradient frames
+        - Consistent spacing / typography
+      ========================================================= */
+
+      :root {
+        --accent-orange: #f2a56a;
+        --accent-orange-deep: #e88744;
+        --accent-purple: #a8a4c7;
+        --accent-purple-deep: #8e86b6;
+
+        --text: #1f2937;
+        --muted: #6b7280;
+        --white: #ffffff;
+
+        --bg-main: #f3edf8;
+        --bg-soft: #e7dff1;
+
+        --card: rgba(255, 252, 247, 0.95);
+        --card-strong: rgba(255, 255, 255, 0.98);
+        --card-surface: linear-gradient(
+          155deg,
+          rgba(255, 252, 245, 0.98) 0%,
+          rgba(255, 244, 231, 0.95) 52%,
+          rgba(243, 240, 255, 0.93) 100%
+        );
+        --card-border: rgba(255, 255, 255, 0.86);
+        --tone-mirror-1: linear-gradient(
+          140deg,
+          rgba(255, 239, 218, 0.96) 0%,
+          rgba(255, 249, 236, 0.95) 45%,
+          rgba(238, 231, 255, 0.93) 100%
+        );
+        --tone-mirror-2: linear-gradient(
+          220deg,
+          rgba(255, 239, 218, 0.96) 0%,
+          rgba(255, 249, 236, 0.95) 45%,
+          rgba(238, 231, 255, 0.93) 100%
+        );
+        --tone-mirror-3: linear-gradient(
+          145deg,
+          rgba(255, 233, 207, 0.95) 0%,
+          rgba(255, 247, 226, 0.94) 40%,
+          rgba(232, 224, 255, 0.92) 100%
+        );
+        --tone-mirror-4: linear-gradient(
+          215deg,
+          rgba(255, 233, 207, 0.95) 0%,
+          rgba(255, 247, 226, 0.94) 40%,
+          rgba(232, 224, 255, 0.92) 100%
+        );
+
+        --line: rgba(229, 231, 235, 0.85);
+        --shadow: 0 16px 40px rgba(17, 24, 39, 0.10);
+        --shadow-hover: 0 26px 60px rgba(17, 24, 39, 0.14);
+
+        --radius: 18px;
+        --radius-lg: 26px;
+        --product-image-radius: 18px;
+
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Poppins", sans-serif;
+        --font-section-title: "Sora", "Montserrat", sans-serif;
+        --font-hero-display: "Cinzel", "Sora", sans-serif;
+        --section-title-base: #1f2937;
+        --section-title-shadow: rgba(127, 106, 184, 0.22);
+        --section-title-vibrant: linear-gradient(
+          105deg,
+          #d7661f 0%,
+          #f09b41 44%,
+          #8360d2 100%
+        );
+        --fruit-bowl-frame: linear-gradient(
+          145deg,
+          rgba(242, 165, 106, 0.95) 0%,
+          rgba(255, 224, 184, 0.92) 42%,
+          rgba(168, 164, 199, 0.94) 100%
+        );
+
+        --app-height: 100vh;
+      }
+
+      /* ---------- BASE ---------- */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text);
+        min-height: 100vh;
+        background:
+          radial-gradient(1000px 650px at -10% -10%, rgba(232, 135, 68, 0.30), transparent 60%),
+          radial-gradient(1000px 650px at 110% 0%, rgba(142, 134, 182, 0.30), transparent 60%),
+          linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(circle, rgba(232, 135, 68, 0.16) 1px, transparent 1.6px) 0 0/48px 48px,
+          radial-gradient(circle, rgba(142, 134, 182, 0.16) 1px, transparent 1.6px) 18px 12px/58px 58px,
+          radial-gradient(1200px 700px at 50% 0%, rgba(255, 255, 255, 0.34), transparent 70%);
+        opacity: 0.22;
+        filter: blur(0.25px);
+        mix-blend-mode: multiply;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-heading);
+        color: var(--text);
+      }
+
+      /* Keep sections above background layers */
+      .hero,
+      main,
+      section,
+      footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Slightly nicer container width */
+      .container {
+        width: min(1180px, 92%);
+      }
+
+      /* ---------- NAVBAR ---------- */
+      .navbar {
+        background: rgba(255, 255, 255, 0.88) !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(31, 41, 55, 0.10);
+        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.10);
+      }
+
+      .navbar .navbar-brand {
+        color: var(--accent-orange-deep) !important;
+        font-weight: 900;
+        font-size: 1.65rem;
+        letter-spacing: 0.3px;
+      }
+
+      .navbar .nav-link {
+        color: rgba(31, 41, 55, 0.86) !important;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 0.45rem 0.8rem;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      }
+
+      .navbar .nav-link:hover {
+        color: var(--accent-orange-deep) !important;
+        background: rgba(242, 165, 106, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .navbar .nav-link.active {
+        color: var(--accent-purple-deep) !important;
+        background: rgba(168, 164, 199, 0.14);
+      }
+
+      .navbar-toggler {
+        border: 1px solid rgba(31, 41, 55, 0.16) !important;
+        box-shadow: 0 8px 18px rgba(17, 24, 39, 0.10);
+      }
+      .navbar-toggler:focus {
+        box-shadow: 0 0 0 4px rgba(242, 165, 106, 0.18);
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(31,41,55,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar-collapse {
+          background: rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(31, 41, 55, 0.08);
+          border-radius: 18px;
+          padding: 10px;
+          margin-top: 10px;
+          box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
+        }
+      }
+
+      /* ---------- HERO ---------- */
+      .hero {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        height: var(--app-height);
+      }
+
+      .video-background-wrapper {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .hero-video-iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 177.78vh;
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        min-width: max(100vw, 177.78vh);
+        min-height: max(100vh, 56.25vw);
+      }
+
+      .hero .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 18px;
+        background:
+          radial-gradient(900px 600px at 20% 10%, rgba(242, 165, 106, 0.20), transparent 60%),
+          radial-gradient(900px 600px at 80% 10%, rgba(168, 164, 199, 0.20), transparent 60%),
+          rgba(0, 0, 0, 0.48);
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-family: var(--font-hero-display);
+        font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #ffe3b5;
+        letter-spacing: 0.09em;
+        line-height: 1.05;
+        margin-bottom: 12px;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.2),
+          0 12px 28px rgba(0, 0, 0, 0.44),
+          0 0 36px rgba(234, 144, 78, 0.28);
+      }
+
+      @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        .hero h1 {
+          background-image: linear-gradient(
+            115deg,
+            #f0ab61 0%,
+            #ffdcae 45%,
+            #c5adff 100%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+        }
+      }
+
+      .hero p {
+        color: rgba(255, 236, 207, 0.98);
+        font-size: clamp(0.98rem, 1.45vw, 1.12rem);
+        font-weight: 600;
+        line-height: 1.62;
+        letter-spacing: 0.01em;
+        max-width: 640px;
+        margin: 0 auto;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
+      }
+
+      .hero .cta-button {
+        margin-top: 22px;
+        padding: 12px 28px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--white);
+        background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple));
+        border: none;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 16px 36px rgba(242, 165, 106, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 48px rgba(168, 164, 199, 0.22);
+      }
+
+      @media (max-width: 575.98px) {
+        .hero h1 {
+          letter-spacing: 0.08em;
+        }
+        .hero p {
+          font-size: 0.95rem;
+          line-height: 1.58;
+        }
+      }
+
+      /* ---------- SECTION TITLES ---------- */
+      .section-title {
+        font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+        font-weight: 900;
+        letter-spacing: 2.8px;
+        text-transform: uppercase;
+        color: var(--section-title-base);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.88), 0 10px 22px var(--section-title-shadow);
+        margin: 0;
+        font-family: var(--font-section-title);
+      }
+
+      .section-subtitle {
+        font-size: 1.02rem;
+        color: rgba(31, 41, 55, 0.70);
+        margin: 0;
+        font-weight: 600;
+      }
+
+      /* ---------- SPACING ---------- */
+      .menu-section {
+        background-color: transparent;
+        padding: 68px 12px;
+      }
+
+      /* ---------- PREMIUM GRADIENT FRAME (SUBTLE) ---------- */
+      .frame {
+        border-radius: 24px;
+        padding: 6px;
+        background: linear-gradient(
+          135deg,
+          rgba(242, 165, 106, 0.90),
+          rgba(168, 164, 199, 0.90)
+        );
+        box-shadow: 0 14px 34px rgba(17, 24, 39, 0.12);
+      }
+
+      .frame .frame-inner {
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.96);
+        overflow: hidden;
+      }
+
+      /* ---------- MENU ITEM (LIST CARDS) ---------- */
+      .menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: var(--radius-lg);
+        padding: 18px;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .menu-item-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .menu-item-content h5 {
+        margin: 0 0 6px;
+        font-size: 1.28rem;
+        font-weight: 900;
+        line-height: 1.15;
+      }
+
+      .menu-item-content p {
+        margin: 2px 0;
+        color: rgba(31, 41, 55, 0.78);
+        font-weight: 600;
+      }
+
+      .menu-item-content .text-muted {
+        color: rgba(31, 41, 55, 0.62) !important;
+        font-weight: 600;
+      }
+
+      .menu-item-content .price-tag {
+        margin-top: 6px;
+        font-weight: 900;
+        color: var(--accent-purple-deep);
+        font-size: 1.12rem;
+      }
+
+      /* BIGGER image + elegant frame (no HTML changes needed) */
+      .menu-item-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 196px;
+        height: 196px;
+        flex-shrink: 0;
+        border-radius: 22px;
+        padding: 4px;
+        background:
+          radial-gradient(130% 95% at 10% 0%, rgba(242, 165, 106, 0.30) 0%, rgba(242, 165, 106, 0) 62%),
+          radial-gradient(130% 95% at 90% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+          linear-gradient(
+            160deg,
+            rgba(255, 248, 236, 0.96) 0%,
+            rgba(255, 241, 223, 0.92) 44%,
+            rgba(239, 233, 255, 0.92) 100%
+          );
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+      }
+
+      .menu-item-image-wrapper::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.46), transparent 74%),
+          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.09), transparent 74%);
+      }
+
+      .menu-item-image-wrapper img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--product-image-radius);
+        background: transparent;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        padding: 0;
+        filter: drop-shadow(0 14px 18px rgba(17, 24, 39, 0.12));
+        image-rendering: -webkit-optimize-contrast;
+      }
+
+      /* No-crop image treatment for Fruit Bowls */
+      #fruit-cups-section .menu-item-image-wrapper {
+        position: relative;
+        overflow: visible;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border: 0;
+        box-shadow: none;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper::after {
+        content: none;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        --fruit-bowl-image-radius: 22px;
+        --fruit-bowl-image-border: 2px;
+        padding: 0;
+        border-radius: var(--fruit-bowl-image-radius);
+        border: var(--fruit-bowl-image-border) solid transparent;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)) padding-box,
+          var(--fruit-bowl-frame) border-box;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.16);
+        image-rendering: -webkit-optimize-contrast;
+      }
+
+      #fruit-cups-section .menu-item {
+        padding: 20px 22px;
+        gap: 18px;
+        border-radius: 30px;
+      }
+
+      #fruit-cups-section .menu-item-content {
+        padding: 4px 8px 4px 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #fruit-cups-section .menu-item-content h5 {
+        margin: 0;
+        line-height: 1.24;
+      }
+
+      #fruit-cups-section .menu-item-content .text-muted {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 992px) {
+        .menu-item-image-wrapper {
+          width: 168px;
+          height: 168px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 168px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .menu-item {
+          padding: 14px;
+          border-radius: 20px;
+          gap: 10px;
+        }
+        .menu-item-content h5 {
+          font-size: 1.06rem;
+        }
+        .menu-item-content p {
+          font-size: 0.92rem;
+        }
+        .menu-item-content .price-tag {
+          font-size: 1rem;
+        }
+        .menu-item-image-wrapper {
+          width: 124px;
+          height: 124px;
+          padding: 4px;
+          border-radius: 18px;
+        }
+        .menu-item-image-wrapper img {
+          border-radius: calc(var(--product-image-radius) - 4px);
+          padding: 3px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 124px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          border-radius: 0;
+          padding: 0;
+          background: none;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper img {
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
+          padding: 0;
+        }
+      }
+
+      .row > [class*="col-"] {
+        margin-bottom: 14px;
+      }
+
+      /* ---------- MIRRORED CARD TONES ---------- */
+      .row > [class*="col-"]:nth-child(4n + 1) .menu-item {
+        background: var(--tone-mirror-1);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 2) .menu-item {
+        background: var(--tone-mirror-2);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 3) .menu-item {
+        background: var(--tone-mirror-3);
+      }
+
+      .row > [class*="col-"]:nth-child(4n + 4) .menu-item {
+        background: var(--tone-mirror-4);
+      }
+
+      /* ---------- FRUITS ---------- */
+      .fruit-section {
+        background: rgba(255, 255, 255, 0.52);
+        border: 1px solid rgba(255, 255, 255, 0.70);
+        border-radius: 22px;
+        padding: 64px 0;
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.07);
+      }
+
+      .fruit-section .section-subtitle {
+        margin-bottom: 24px;
+      }
+
+      .fruit-card {
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        padding: 12px;
+        gap: 10px;
+        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+      }
+
+      .fruit-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(17, 24, 39, 0.10);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 1) .fruit-card {
+        background: var(--tone-mirror-1);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 2) .fruit-card {
+        background: var(--tone-mirror-2);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 3) .fruit-card {
+        background: var(--tone-mirror-3);
+      }
+
+      .fruit-section .row > [class*="col-"]:nth-child(4n + 4) .fruit-card {
+        background: var(--tone-mirror-4);
+      }
+
+      .fruit-img {
+        width: 62px;
+        height: 62px;
+        border-radius: 999px;
+        object-fit: cover;
+        flex-shrink: 0;
+        padding: 4px;
+        background: linear-gradient(
+          135deg,
+          rgba(242, 165, 106, 0.90),
+          rgba(168, 164, 199, 0.90)
+        );
+        box-shadow: 0 10px 22px rgba(17, 24, 39, 0.10);
+      }
+
+      .fruit-name {
+        font-weight: 900;
+        font-size: 0.9rem;
+        letter-spacing: 0.06em;
+        flex: 1;
+        min-width: 0;
+      }
+
+      @media (max-width: 480px) {
+        .fruit-img {
+          width: 54px;
+          height: 54px;
+        }
+        .fruit-name {
+          font-size: 0.82rem;
+        }
+      }
+
+      /* ---------- DRINKS GRID ---------- */
+      #menu-drinks.drinks-section {
+        padding: 76px 0;
+      }
+
+      .drinks-header {
+        text-align: center;
+        margin-bottom: 38px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .drinks-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .drink-card {
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .drink-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .drinks-grid .drink-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
+      .drink-image-box {
+        position: relative;
+        isolation: isolate;
+        overflow: visible;
+        padding: 0;
+        background: none;
+        border-bottom: 0;
+      }
+
+      .drink-image-box::after {
+        content: none;
+      }
+
+      .drink-img {
+        width: 100%;
+        aspect-ratio: 1 / 1.05;
+        border-radius: 18px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        padding: 0;
+        border: 1.8px solid transparent;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          linear-gradient(
+            140deg,
+            rgba(242, 165, 106, 0.96),
+            rgba(168, 164, 199, 0.95)
+          ) border-box;
+        box-shadow: 0 10px 22px rgba(17, 24, 39, 0.14);
+        transition: transform 0.35s ease;
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
+      }
+
+      .led-tumbler-image-wrap {
+        width: min(100%, 360px);
+        margin: 0 auto 8px;
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border: 0;
+      }
+
+      .led-tumbler-img {
+        width: min(100%, 330px);
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        border-radius: 18px;
+        border: 1.8px solid transparent;
+        background:
+          linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          linear-gradient(
+            140deg,
+            rgba(242, 165, 106, 0.96),
+            rgba(168, 164, 199, 0.95)
+          ) border-box;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.16);
+        filter: none;
+        transition: transform 0.22s ease;
+      }
+
+      .drink-card:hover .drink-img {
+        transform: scale(1.03);
+      }
+
+      .drink-info {
+        padding: 12px 12px 14px;
+        text-align: center;
+      }
+
+      .drink-name {
+        font-weight: 900;
+        font-size: 1.02rem;
+      }
+
+      @media (max-width: 992px) {
+        .drinks-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .drink-name {
+          font-size: 0.92rem;
+        }
+      }
+
+      /* ---------- TOAST GRID ---------- */
+      #menu-toasts.toast-section {
+        padding: 76px 0;
+      }
+
+      .toast-header {
+        text-align: center;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .toast-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .toast-card {
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .toast-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .toast-grid .toast-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
+      .image-box {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding: 10px;
+        background:
+          radial-gradient(130% 95% at 8% 0%, rgba(242, 165, 106, 0.28) 0%, rgba(242, 165, 106, 0) 62%),
+          radial-gradient(130% 95% at 92% 0%, rgba(168, 164, 199, 0.30) 0%, rgba(168, 164, 199, 0) 62%),
+          linear-gradient(
+            160deg,
+            rgba(255, 248, 236, 0.96) 0%,
+            rgba(255, 241, 223, 0.92) 44%,
+            rgba(239, 233, 255, 0.92) 100%
+          );
+        border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      }
+
+      .image-box::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(90% 72% at 50% 44%, rgba(255, 255, 255, 0.48), transparent 74%),
+          radial-gradient(68% 58% at 50% 102%, rgba(17, 24, 39, 0.10), transparent 74%);
+      }
+
+      .toast-card img {
+        width: 100%;
+        aspect-ratio: 1 / 1.05;
+        border-radius: var(--product-image-radius);
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        padding: 3px;
+        background: linear-gradient(
+          135deg,
+          rgba(242, 165, 106, 0.86),
+          rgba(168, 164, 199, 0.86)
+        );
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+        transition: transform 0.35s ease;
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
+      }
+
+      .toast-card:hover img {
+        transform: scale(1.03);
+      }
+
+      .toast-info {
+        padding: 12px 10px 14px;
+        text-align: center;
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .toast-name {
+        font-size: 0.92rem;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+
+      @media (max-width: 1024px) {
+        .toast-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .toast-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+        .toast-name {
+          font-size: 0.82rem;
+        }
+      }
+
+      /* ---------- CUSTOM GRID ---------- */
+      #menu-custom.custom-section {
+        padding: 76px 0;
+      }
+
+      .custom-header {
+        text-align: center;
+        margin-bottom: 38px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .custom-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .custom-card {
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .custom-card:hover {
+        transform: translateY(-7px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 1) {
+        background: var(--tone-mirror-1);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 2) {
+        background: var(--tone-mirror-2);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 3) {
+        background: var(--tone-mirror-3);
+      }
+
+      .custom-grid .custom-card:nth-child(4n + 4) {
+        background: var(--tone-mirror-4);
+      }
+
+      .highlight-card {
+        border: 1px solid rgba(242, 165, 106, 0.55);
+        box-shadow: 0 22px 62px rgba(242, 165, 106, 0.16);
+      }
+
+      .custom-card img {
+        width: 100%;
+        aspect-ratio: 1 / 1.05;
+        border-radius: var(--product-image-radius);
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        padding: 3px;
+        background: linear-gradient(
+          135deg,
+          rgba(242, 165, 106, 0.86),
+          rgba(168, 164, 199, 0.86)
+        );
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+        transition: transform 0.35s ease;
+        filter: drop-shadow(0 14px 18px rgba(17, 24, 39, 0.10));
+        image-rendering: -webkit-optimize-contrast;
+        position: relative;
+        z-index: 1;
+      }
+
+      .custom-card:hover img {
+        transform: scale(1.02);
+      }
+
+      .custom-info {
+        padding: 12px 10px 14px;
+        text-align: center;
+      }
+
+      .custom-name {
+        font-size: 1.02rem;
+        font-weight: 900;
+      }
+
+      .custom-desc {
+        margin: 4px 0 0;
+        font-size: 0.84rem;
+        line-height: 1.4;
+        font-weight: 600;
+        color: rgba(31, 41, 55, 0.68);
+      }
+
+      @media (max-width: 992px) {
+        .custom-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .custom-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- MERCH ---------- */
+      #menu-merch.merch-section {
+        padding: 76px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      #menu-merch::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: rgba(220, 38, 38, 0.06);
+        z-index: -1;
+      }
+
+      .merch-header {
+        text-align: center;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .merch-grid {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .merch-led-card {
+        border: 2px solid #dc2626;
+        border-radius: 18px;
+        background:
+          radial-gradient(360px 170px at 50% 6%, rgba(255, 214, 214, 0.3), transparent 68%),
+          var(--tone-mirror-2);
+        box-shadow: 0 15px 40px rgba(220, 38, 38, 0.15);
+      }
+
+      /* ---------- BOOSTERS ---------- */
+      #menu-boosters {
+        padding-top: 78px !important;
+        padding-bottom: 78px !important;
+        position: relative;
+        z-index: 1;
+      }
+
+      #menu-boosters::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: rgba(168, 164, 199, 0.10);
+        z-index: -1;
+      }
+
+      .booster-card {
+        background: var(--tone-mirror-1);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      #menu-boosters .booster-grid .booster-card {
+        background: var(--tone-mirror-4);
+      }
+
+      .booster-grid {
+        gap: 12px 12px;
+      }
+
+      .booster-card.tight-card {
+        padding: 16px !important;
+      }
+
+      .wellness-card {
+        border: 2px dashed var(--accent-orange);
+        border-radius: 22px;
+        background:
+          radial-gradient(320px 180px at 50% 0%, rgba(255, 232, 207, 0.62), transparent 70%),
+          var(--tone-mirror-4);
+      }
+
+      .wellness-title {
+        margin: 0 0 8px;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        color: #ca702f;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .wellness-intro {
+        margin: 0 0 14px;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 600;
+        color: rgba(31, 41, 55, 0.82);
+        text-align: center;
+      }
+
+      .wellness-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .wellness-item {
+        margin: 0;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 10px 20px rgba(17, 24, 39, 0.06);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wellness-item-name {
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: rgba(31, 41, 55, 0.92);
+      }
+
+      .wellness-item-note {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: rgba(31, 41, 55, 0.68);
+      }
+
+      .led-tumbler-card {
+        position: relative;
+      }
+
+      .led-tumbler-card:hover .led-tumbler-img {
+        transform: scale(1.06);
+      }
+
+      @media (max-width: 767px) {
+        .booster-grid {
+          gap: 10px;
+        }
+
+        .wellness-item {
+          padding: 11px 12px;
+        }
+
+        .wellness-item-name {
+          font-size: 1rem;
+        }
+
+        .wellness-item-note {
+          font-size: 0.85rem;
+        }
+
+        .led-tumbler-image-wrap {
+          width: min(100%, 300px);
+        }
+
+        .led-tumbler-img {
+          width: min(100%, 270px);
+        }
+      }
+
+      /* ---------- ABOUT ---------- */
+      #about-us {
+        background: rgba(242, 165, 106, 0.10);
+        padding-top: 78px !important;
+        padding-bottom: 78px !important;
+        text-align: center;
+      }
+
+      #about-us h2 {
+        font-size: clamp(2rem, 3vw, 2.55rem);
+        font-weight: 900;
+        color: var(--section-title-base);
+        text-transform: uppercase;
+        margin-bottom: 25px;
+      }
+
+      #about-us .story-content {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      #about-us .story-content p {
+        font-size: 1.1rem;
+        line-height: 1.85;
+        color: rgba(31, 41, 55, 0.78);
+        font-weight: 600;
+        margin: 0;
+        padding: 0 15px;
+      }
+
+      #about-us .story-content strong {
+        color: var(--accent-orange-deep);
+        display: block;
+        margin-top: 25px;
+        font-size: 1.35rem;
+        font-weight: 900;
+        border-top: 2px solid rgba(168, 164, 199, 0.45);
+        padding-top: 20px;
+        font-style: italic;
+      }
+
+      /* ---------- FOOTER ---------- */
+      .footer {
+        background: #1b1a1f;
+        color: rgba(255, 255, 255, 0.88);
+        padding: 44px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer h5 {
+        color: var(--accent-orange);
+        font-family: var(--font-heading);
+        font-weight: 900;
+        margin-bottom: 15px;
+      }
+
+      .footer a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        line-height: 1.8;
+      }
+
+      .footer a:hover {
+        color: var(--accent-orange);
+      }
+
+      .footer .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        display: inline-block;
+      }
+
+      .footer .copyright {
+        margin-top: 20px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 0.9rem;
+      }
+
+      /* Scroll offset for fixed navbar */
+      #hero,
+      #menu-fruits,
+      #menu-snacks,
+      #fruit-cups-section,
+      #refreshers-section,
+      #hot-drinks-section,
+      #menu-merch,
+      #menu-boosters,
+      #about-us {
+        scroll-margin-top: 120px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* ---------- MOBILE POLISH ---------- */
+      @media (max-width: 991.98px) {
+        .navbar {
+          padding: 8px 0;
+        }
+
+        .navbar .container-fluid {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .navbar .navbar-brand {
+          font-size: 1.28rem;
+          letter-spacing: 0.1px;
+        }
+
+        .navbar-collapse {
+          max-height: calc(100svh - 84px);
+          overflow-y: auto;
+          margin-top: 12px;
+          padding: 12px;
+        }
+
+        .navbar-nav {
+          gap: 4px;
+        }
+
+        .navbar .nav-link {
+          display: block;
+          padding: 0.62rem 0.82rem;
+          font-size: 0.85rem;
+          line-height: 1.25;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .container {
+          width: min(100%, calc(100% - 18px));
+        }
+
+        .hero {
+          height: 84svh;
+          min-height: 540px;
+        }
+
+        .hero .overlay {
+          padding: 0 14px;
+        }
+
+        .hero h1 {
+          font-size: clamp(1.7rem, 8.6vw, 2.35rem);
+          letter-spacing: 0.075em;
+          line-height: 1.08;
+        }
+
+        .hero p {
+          font-size: 0.94rem;
+          line-height: 1.56;
+          max-width: 32ch;
+        }
+
+        .hero .cta-button {
+          margin-top: 16px;
+          padding: 10px 20px;
+          font-size: 0.92rem;
+        }
+
+        .menu-section,
+        #menu-drinks.drinks-section,
+        #menu-toasts.toast-section,
+        #menu-custom.custom-section,
+        #menu-merch.merch-section,
+        #menu-boosters,
+        #about-us {
+          padding-top: 56px !important;
+          padding-bottom: 56px !important;
+        }
+
+        .section-title {
+          font-size: clamp(1.26rem, 6.4vw, 1.58rem);
+          letter-spacing: 1.5px;
+          line-height: 1.18;
+        }
+
+        .section-subtitle {
+          font-size: 0.88rem;
+          line-height: 1.42;
+        }
+
+        .drinks-header,
+        .toast-header,
+        .custom-header,
+        .merch-header {
+          margin-bottom: 24px;
+          gap: 8px;
+        }
+
+        .fruit-section .section-subtitle {
+          margin-bottom: 18px;
+        }
+
+        .row.g-3.mt-4 {
+          row-gap: 8px !important;
+        }
+
+        .row > [class*="col-"] {
+          margin-bottom: 10px;
+        }
+
+        .menu-item {
+          padding: 12px;
+          gap: 9px;
+          border-radius: 16px;
+          align-items: flex-start;
+        }
+
+        .menu-item-content h5 {
+          font-size: 0.98rem;
+          line-height: 1.22;
+        }
+
+        .menu-item-content p {
+          font-size: 0.84rem;
+          line-height: 1.35;
+        }
+
+        /* Fruit Bowls & Smoothies: cleaner spacing on small screens */
+        #fruit-cups-section .menu-item {
+          padding: 14px 15px 15px;
+          gap: 12px;
+          border-radius: 22px;
+        }
+
+        #fruit-cups-section .menu-item-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 6px;
+          padding: 2px 6px 2px 2px;
+        }
+
+        #fruit-cups-section .menu-item-content h5 {
+          margin: 0;
+          font-size: 1rem;
+          line-height: 1.25;
+        }
+
+        #fruit-cups-section .menu-item-content .text-muted {
+          margin: 0;
+          font-size: 0.86rem;
+          line-height: 1.4;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 112px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          border-radius: 0;
+          padding: 0;
+          background: none;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper img {
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
+          padding: 0;
+        }
+
+        .menu-item-image-wrapper {
+          width: 104px;
+          height: 104px;
+          border-radius: 14px;
+        }
+
+        .menu-item-image-wrapper img {
+          border-radius: 11px;
+        }
+
+        .fruit-card {
+          padding: 10px;
+          border-radius: 14px;
+        }
+
+        .fruit-img {
+          width: 46px;
+          height: 46px;
+        }
+
+        .fruit-name {
+          font-size: 0.78rem;
+          letter-spacing: 0.04em;
+        }
+
+        /* Fresh Fruit Selection: bigger images + tighter grid spacing */
+        #menu-fruits .row.g-3.mt-4 {
+          --bs-gutter-x: 0.42rem;
+          --bs-gutter-y: 0.42rem;
+          row-gap: 6px !important;
+        }
+
+        #menu-fruits .fruit-card {
+          flex-direction: column;
+          align-items: center !important;
+          justify-content: center;
+          text-align: center;
+          gap: 8px;
+          padding: 9px 8px;
+          border-radius: 15px;
+        }
+
+        #menu-fruits .fruit-img {
+          width: 76px;
+          height: 76px;
+          padding: 3px;
+          box-shadow: 0 14px 26px rgba(17, 24, 39, 0.12);
+        }
+
+        #menu-fruits .fruit-name {
+          font-size: 0.73rem;
+          line-height: 1.2;
+          letter-spacing: 0.03em;
+          text-align: center;
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          gap: 10px;
+        }
+
+        .image-box {
+          padding: 8px;
+        }
+
+        .drink-info,
+        .toast-info,
+        .custom-info {
+          padding: 10px 8px 12px;
+        }
+
+        .drink-name,
+        .custom-name {
+          font-size: 0.9rem;
+        }
+
+        .drink-img {
+          border-radius: 14px;
+        }
+
+        .toast-name {
+          font-size: 0.82rem;
+        }
+
+        .custom-desc {
+          font-size: 0.76rem;
+          line-height: 1.35;
+        }
+
+        .led-tumbler-image-wrap {
+          width: min(100%, 260px);
+          padding: 0;
+        }
+
+        .led-tumbler-img {
+          width: min(100%, 230px);
+          border-radius: 14px;
+        }
+
+        .wellness-title {
+          font-size: 1.08rem;
+          letter-spacing: 0.02em;
+        }
+
+        .wellness-intro {
+          font-size: 0.9rem;
+          margin-bottom: 10px;
+        }
+
+        .wellness-item {
+          padding: 10px;
+          border-radius: 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .wellness-item-name {
+          font-size: 0.95rem;
+        }
+
+        .wellness-item-note {
+          font-size: 0.8rem;
+        }
+
+        .footer {
+          padding: 34px 0 28px;
+        }
+
+        .footer .row > [class*="col-"] {
+          margin-bottom: 18px;
+        }
+
+        .footer h5 {
+          margin-bottom: 10px;
+        }
+
+        .footer a,
+        .footer p {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .hero {
+          height: 80svh;
+          min-height: 500px;
+        }
+
+        .menu-item {
+          flex-direction: column-reverse;
+          align-items: stretch;
+        }
+
+        .menu-item-image-wrapper {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+        }
+
+        .menu-item-image-wrapper img {
+          object-fit: contain;
+        }
+
+        /* Fruit Bowls & Smoothies: keep breathing room on mobile */
+        #fruit-cups-section .menu-item {
+          padding: 14px;
+          border-radius: 20px;
+        }
+
+        #fruit-cups-section .menu-item-content {
+          padding: 0 2px 4px;
+          gap: 7px;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          margin: 0 0 10px;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          padding: 0;
+          border-radius: 0;
+          background: none;
+          box-shadow: none;
+          overflow: visible;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper img {
+          width: 100%;
+          height: 100%;
+          --fruit-bowl-image-radius: 16px;
+          --fruit-bowl-image-border: 1.8px;
+          padding: 0;
+          object-fit: contain;
+          object-position: center;
+          box-shadow: 0 10px 20px rgba(17, 24, 39, 0.14);
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .drink-img {
+          border-radius: 16px;
+        }
+
+        .led-tumbler-img {
+          border-radius: 16px;
+        }
+
+        #hero,
+        #menu-fruits,
+        #menu-snacks,
+        #fruit-cups-section,
+        #refreshers-section,
+        #hot-drinks-section,
+        #menu-merch,
+        #menu-boosters,
+        #about-us {
+          scroll-margin-top: 88px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .navbar .navbar-brand {
+          font-size: 1.12rem;
+        }
+
+        .hero h1 {
+          font-size: 1.32rem;
+          letter-spacing: 0.06em;
+        }
+
+        #menu-fruits .fruit-img {
+          width: 68px;
+          height: 68px;
+        }
+
+        #menu-fruits .fruit-name {
+          font-size: 0.7rem;
+        }
+      }
+
+      /* Fresh Fruit Selection: 3 cols on larger phones, 2 cols on smaller phones */
+      @media (min-width: 560px) and (max-width: 767px) {
+        #menu-fruits .row.g-3.mt-4 > [class*="col-"] {
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+        }
+      }
+
+      @media (max-width: 559.98px) {
+        #menu-fruits .row.g-3.mt-4 > [class*="col-"] {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+
+      /* ---------- PREMIUM MOBILE REFINEMENT OVERRIDES ---------- */
+      :root {
+        --section-space-desktop: 70px;
+        --section-space-mobile: 54px;
+        --premium-card-radius: 20px;
+        --premium-image-radius-desktop: 18px;
+        --premium-image-radius-mobile: 14px;
+        --premium-image-border: 1.8px;
+        --premium-image-frame: linear-gradient(
+          140deg,
+          rgba(242, 165, 106, 0.96),
+          rgba(168, 164, 199, 0.95)
+        );
+      }
+
+      body {
+        line-height: 1.56;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      #menu-fruits,
+      #menu-custom.custom-section,
+      #menu-toasts.toast-section,
+      #fruit-cups-section,
+      #menu-drinks.drinks-section,
+      #menu-merch.merch-section,
+      #menu-boosters,
+      #about-us {
+        padding-top: var(--section-space-desktop) !important;
+        padding-bottom: var(--section-space-desktop) !important;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        line-height: 1.08;
+        letter-spacing: 0.085em;
+        font-family: var(--font-section-title);
+        font-weight: 800;
+        color: #312018;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72), 0 7px 14px rgba(131, 96, 210, 0.16);
+      }
+
+      .section-subtitle {
+        max-width: 52ch;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.55;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 62%;
+        height: 3px;
+        margin: 7px auto 0;
+        border-radius: 999px;
+        background: var(--section-title-vibrant);
+        box-shadow: 0 6px 12px rgba(131, 96, 210, 0.24);
+      }
+
+      #fruit-cups-section .section-title,
+      #menu-boosters .section-title {
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        .section-title {
+          background-image: var(--section-title-vibrant);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          text-shadow: none;
+          filter: drop-shadow(0 5px 8px rgba(49, 32, 24, 0.22));
+        }
+      }
+
+      .drink-card,
+      .toast-card,
+      .custom-card,
+      #fruit-cups-section .menu-item,
+      .fruit-card,
+      .booster-card {
+        border-radius: var(--premium-card-radius);
+      }
+
+      #menu-drinks .drink-image-box,
+      #menu-toasts .image-box,
+      #menu-custom .image-box {
+        overflow: visible !important;
+        padding: 0 !important;
+        background: none !important;
+        border-bottom: 0 !important;
+      }
+
+      #menu-drinks .drink-image-box::after,
+      #menu-toasts .image-box::after,
+      #menu-custom .image-box::after {
+        content: none !important;
+      }
+
+      #menu-drinks .drink-img,
+      #menu-toasts .toast-card img,
+      #menu-custom .custom-card img,
+      #menu-merch .led-tumbler-img,
+      #fruit-cups-section .menu-item-image-wrapper img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0 !important;
+        border-radius: var(--premium-image-radius-desktop) !important;
+        border: var(--premium-image-border) solid transparent;
+        background:
+          linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
+          ) padding-box,
+          var(--premium-image-frame) border-box;
+        box-shadow: 0 10px 22px rgba(17, 24, 39, 0.14) !important;
+        filter: none !important;
+      }
+
+      #menu-drinks .drink-img,
+      #menu-toasts .toast-card img,
+      #menu-custom .custom-card img,
+      #menu-merch .led-tumbler-img,
+      #fruit-cups-section .menu-item-image-wrapper img {
+        object-fit: cover !important;
+        object-position: center !important;
+      }
+
+      #menu-merch .led-tumbler-image-wrap {
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        border: 0 !important;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper {
+        position: relative;
+        overflow: visible !important;
+        width: clamp(124px, 30vw, 168px) !important;
+        height: auto !important;
+        aspect-ratio: 4 / 3 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+      }
+
+      #fruit-cups-section .menu-item-image-wrapper::after {
+        content: none !important;
+      }
+
+      #fruit-cups-section .menu-item {
+        gap: 12px !important;
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar .navbar-brand {
+          font-size: 1.12rem !important;
+          letter-spacing: 0.02em;
+        }
+
+        .navbar-collapse {
+          padding: 10px 10px 12px !important;
+          border-radius: 14px !important;
+        }
+
+        .navbar .nav-link {
+          font-size: 0.84rem !important;
+          border-radius: 12px;
+        }
+
+        #hero,
+        #menu-fruits,
+        #menu-snacks,
+        #fruit-cups-section,
+        #refreshers-section,
+        #hot-drinks-section,
+        #menu-merch,
+        #menu-boosters,
+        #about-us {
+          scroll-margin-top: 88px;
+        }
+
+        #menu-fruits,
+        #menu-custom.custom-section,
+        #menu-toasts.toast-section,
+        #fruit-cups-section,
+        #menu-drinks.drinks-section,
+        #menu-merch.merch-section,
+        #menu-boosters,
+        #about-us {
+          padding-top: var(--section-space-mobile) !important;
+          padding-bottom: var(--section-space-mobile) !important;
+        }
+
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 10px !important;
+        }
+      }
+
+      @media (max-width: 767px) {
+        body::before {
+          opacity: 0.14;
+          filter: none;
+        }
+
+        .section-title {
+          font-size: clamp(1.2rem, 6vw, 1.52rem);
+          letter-spacing: 0.05em;
+          font-weight: 800;
+        }
+
+        .section-subtitle {
+          font-size: 0.9rem;
+        }
+
+        #menu-fruits .fruit-card {
+          min-height: 84px;
+          padding: 10px;
+          gap: 8px;
+        }
+
+        #menu-fruits .fruit-img {
+          width: 56px;
+          height: 56px;
+        }
+
+        #fruit-cups-section .menu-item {
+          padding: 14px !important;
+          border-radius: 18px !important;
+          gap: 10px !important;
+        }
+
+        #fruit-cups-section .menu-item-content {
+          padding: 0 2px 2px !important;
+          gap: 6px !important;
+        }
+
+        #menu-drinks .drink-img,
+        #menu-toasts .toast-card img,
+        #menu-custom .custom-card img,
+        #menu-merch .led-tumbler-img,
+        #fruit-cups-section .menu-item-image-wrapper img {
+          border-radius: var(--premium-image-radius-mobile) !important;
+        }
+
+        .section-title::after {
+          width: 58%;
+          height: 2.5px;
+          margin-top: 6px;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        #fruit-cups-section .menu-item {
+          flex-direction: column-reverse !important;
+          align-items: stretch !important;
+        }
+
+        #fruit-cups-section .menu-item-image-wrapper {
+          width: 100% !important;
+          margin: 0 0 10px !important;
+          aspect-ratio: 4 / 3 !important;
+        }
+
+        #menu-drinks .drink-img,
+        #menu-toasts .toast-card img,
+        #menu-custom .custom-card img,
+        #menu-merch .led-tumbler-img,
+        #fruit-cups-section .menu-item-image-wrapper img {
+          border-radius: 16px !important;
+        }
+      }
+
+      @media (max-width: 379.98px) {
+        .drinks-grid,
+        .toast-grid,
+        .custom-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      @media print {
+        body::before {
+          display: none;
+        }
+        .navbar {
+          display: none;
+        }
+        .footer {
+          background: #fff;
+          color: #111;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bazaar JUICE 🍋🍊</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-fruits">BAZAAR FRUIT SELECTION</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-custom">CRREATE YOUR OWN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-toasts">TOASTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#fruit-cups-section">FRUIT BOWLS & SMOOTHIES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-drinks">DRINKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-merch">MERCH</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu-boosters">BOOSTERS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about-us">ABOUT US</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="video-background-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1135227451?h=4c0c598075&autoplay=1&loop=1&autopause=0&muted=1&background=1"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          playsinline
+          class="hero-video-iframe"
+        ></iframe>
+      </div>
+
+      <div class="overlay d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <h1>THE POWER OF FRESH</h1>
+          <p>
+            Your Daily Boost of Freshness. Crafted with Nature's Best for a
+            Radiant You.
+          </p>
+          <a href="#menu-fruits" class="cta-button">
+            Menu <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRUITS -->
+    <section id="menu-fruits" class="fruit-section" lang="en">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">FRESH FRUIT SELECTION</h2>
+          <p class="section-subtitle">
+            Choose any from our hand-picked fruits to build your perfect bowl
+          </p>
+        </div>
+
+        <div class="row g-3 mt-4">
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/blackberry.png" class="fruit-img" alt="Blackberry"/>
+              <span class="fruit-name">BLACKBERRY</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/blueberry.png" class="fruit-img" alt="Blueberry"/>
+              <span class="fruit-name">BLUEBERRY</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/grapes.png" class="fruit-img" alt="Grapes"/>
+              <span class="fruit-name">GRAPES</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/banana.png" class="fruit-img" alt="Banana"/>
+              <span class="fruit-name">BANANA</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/mangoo.png" class="fruit-img" alt="Mango"/>
+              <span class="fruit-name">MANGO</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/watermeloon.png" class="fruit-img" alt="Watermelon"/>
+              <span class="fruit-name">WATERMELON</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/strawberry.png" class="fruit-img" alt="Strawberry"/>
+              <span class="fruit-name">STRAWBERRY</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/orangee.png" class="fruit-img" alt="Orange"/>
+              <span class="fruit-name">ORANGE</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/kiwi.png" class="fruit-img" alt="Kiwi"/>
+              <span class="fruit-name">KIWI</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/meloon.png" class="fruit-img" alt="Melon"/>
+              <span class="fruit-name">MELON</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/pineapple.png" class="fruit-img" alt="Pineapple"/>
+              <span class="fruit-name">PINEAPPLE</span>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="fruit-card d-flex align-items-center">
+              <img src="src/public/applee.png" class="fruit-img" alt="Apple"/>
+              <span class="fruit-name">APPLE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM -->
+    <section id="menu-custom" class="custom-section" lang="en">
+      <div class="container">
+        <div class="custom-header">
+          <h2 class="section-title">Create Your Own</h2>
+          <p class="section-subtitle">Your favorites, exactly how you like them</p>
+        </div>
+
+        <div class="custom-grid">
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/fruit-bowl.png" alt="Create Your Own Fruit Bowl"></div>
+            <div class="custom-info">
+              <span class="custom-name">Create Your Own Fruit Bowl</span>
+              <p class="custom-desc">Choose any fruit to mix. Freshly sliced and made your way.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/smoothie.png" alt="Smoothie"></div>
+            <div class="custom-info">
+              <span class="custom-name">Smoothie</span>
+              <p class="custom-desc">Fresh organic fruits blended on the spot — clean energy, real taste.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/pancakeF.png" alt="Pancake Fruit Bowl"></div>
+            <div class="custom-info">
+              <span class="custom-name">Pancake Fruit Bowl</span>
+              <p class="custom-desc">Mini pancakes topped with seasonal organic fruit — warm comfort, fresh finish.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/yoghurt2.png" alt="Acai Bowl"></div>
+            <div class="custom-info">
+              <span class="custom-name">Acai Bowl</span>
+              <p class="custom-desc">Pure açaí base + fresh organic fruit + crunchy granola — simple &amp; powerful.</p>
+            </div>
+          </div>
+
+          <div class="custom-card highlight-card">
+            <div class="image-box"><img src="src/public/custom-special-dessert.png" alt="Special Dessert"></div>
+            <div class="custom-info">
+              <span class="custom-name">Special Dessert</span>
+              <p class="custom-desc">Fresh-made dessert with banana &amp; strawberry, cream puffs, Biscoff cream.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/yoghurt.png" alt="Yoghurt Bowl"></div>
+            <div class="custom-info">
+              <span class="custom-name">Yoghurt Bowl</span>
+              <p class="custom-desc">Creamy, refreshing bowl topped with bright organic fruit — feel-good and filling.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/ice-cream-fruit-bowl.png" alt="Ice Cream Fruit Bowl"></div>
+            <div class="custom-info">
+              <span class="custom-name">Ice Cream Fruit Bowl</span>
+              <p class="custom-desc">Light ice cream paired with lots of fresh organic fruit.</p>
+            </div>
+          </div>
+
+          <div class="custom-card">
+            <div class="image-box"><img src="src/public/soft-serve-cone.png" alt="Soft Serve Cone"></div>
+            <div class="custom-info">
+              <span class="custom-name">Soft Serve Cone</span>
+              <p class="custom-desc">Creamy soft serve — smooth, classic, and always fresh.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOASTS -->
+    <section id="menu-toasts" class="toast-section">
+      <div class="container">
+        <div class="toast-header">
+          <h2 class="section-title">Signature Toasts</h2>
+          <p class="section-subtitle">Freshly prepared, premium open-face toasts</p>
+        </div>
+
+        <div class="toast-grid">
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-fig.png" alt="Fig Spread & Cream Cheese"></div>
+            <div class="toast-info"><span class="toast-name">Fig Spread & Cream Cheese</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-berry.png" alt="Blueberry & Pomegranate"></div>
+            <div class="toast-info"><span class="toast-name">Blueberry & Pomegranate</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-avocado.png" alt="Avocado Cream Cheese"></div>
+            <div class="toast-info"><span class="toast-name">Avocado Cream Cheese</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-blueberries.png" alt="Blueberry Chocolate"></div>
+            <div class="toast-info"><span class="toast-name">Blueberry Chocolate</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-tomato.png" alt="Tomato Cream Cheese"></div>
+            <div class="toast-info"><span class="toast-name">Tomato Cream Cheese</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-banana.png" alt="Banana Chocolate"></div>
+            <div class="toast-info"><span class="toast-name">Banana Chocolate</span></div>
+          </div>
+
+          <div class="toast-card">
+            <div class="image-box"><img src="src/public/toast-apple.png" alt="Apple Peanut Butter"></div>
+            <div class="toast-info"><span class="toast-name">Apple Peanut Butter</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRUIT CUPS -->
+    <section id="fruit-cups-section" class="menu-section" style="background-color: #f2fbf7">
+      <div class="container">
+        <div class="p-4" style="border-radius: 14px">
+          <h4 class="section-title text-center mb-2">FRUIT BOWLS & SMOOTHIES</h4>
+          <p class="text-center text-muted mb-2">Choose how you enjoy it</p>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#1 Banana · Mango · Pineapple</h5>
+                  <p class="text-muted">Great for energy, workouts, and natural fuel.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-mango-pineapple.png" alt="Banana Mango Pineapple" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#2 Banana · Strawberry</h5>
+                  <p class="text-muted">Sweet, filling, and kid-friendly.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry.png" alt="Banana Strawberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#3 Banana · Strawberry · Blueberry · Dragon Fruit</h5>
+                  <p class="text-muted">High in antioxidants. Supports immunity.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry-blueberry-dragonfruit.png" alt="Banana Strawberry Blueberry Dragonfruit" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#4 Banana · Strawberry · Apple · Blueberry</h5>
+                  <p class="text-muted">Balanced nutrients for everyday snacking.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry-apple-blueberry.png" alt="Banana Strawberry Apple Blueberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#5 Banana · Strawberry · Apple · Dragon Fruit · Raspberry</h5>
+                  <p class="text-muted">High fiber. Great for digestion.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/banana-strawberry-apple-dragonfruit-raspberry.png" alt="Banana Strawberry Apple Dragonfruit Raspberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#6 Orange · Kiwi · Apple · Blueberry</h5>
+                  <p class="text-muted">Vitamin C rich. Supports skin and immunity.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-kiwi-apple-blueberry.png" alt="Orange Kiwi Apple Blueberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#7 Orange</h5>
+                  <p class="text-muted">Refreshing and hydrating.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange.png" alt="Orange" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#8 Mango · Pineapple · Strawberry</h5>
+                  <p class="text-muted">Sweet tropical blend. Mood booster.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-pineapple-strawberry.png" alt="Mango Pineapple Strawberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#9 Mango</h5>
+                  <p class="text-muted">Naturally sweet. Energy support.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango.png" alt="Mango" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#10 Watermelon</h5>
+                  <p class="text-muted">Ultra-hydrating. Perfect for hot days.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/watermelon.png" alt="Watermelon" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#11 Melon</h5>
+                  <p class="text-muted">Light, refreshing, and easy to digest.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/melon.png" alt="Melon" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#12 Apple · Peach</h5>
+                  <p class="text-muted">Classic fruits. Good for gut health.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple-peach.png" alt="Apple Peach" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#13 Grape · Orange · Kiwi</h5>
+                  <p class="text-muted">Refreshing with a citrus kick.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/grape-orange-kiwi.png" alt="Grape Orange Kiwi" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#14 Orange · Dragon Fruit · Pomegranate</h5>
+                  <p class="text-muted">Antioxidant-rich. Immune support.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/orange-dragonfruit-pomegranate.png" alt="Orange Dragonfruit Pomegranate" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#15 Mango · Strawberry</h5>
+                  <p class="text-muted">Sweet and juicy crowd favorite.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/mango-strawberry.png" alt="Mango Strawberry" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="menu-item">
+                <div class="menu-item-content">
+                  <h5>#16 Apple</h5>
+                  <p class="text-muted">Crunchy and fiber-rich.</p>
+                </div>
+                <div class="menu-item-image-wrapper">
+                  <img src="src/public/apple.png" alt="Apple" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRINKS -->
+    <section id="menu-drinks" class="drinks-section" lang="en">
+      <div class="container">
+        <div class="drinks-header">
+          <h2 class="section-title">DRINKS</h2>
+          <p class="section-subtitle">Food truck favorites — hot & iced</p>
+        </div>
+
+        <div class="drinks-grid">
+          <div class="drink-card">
+            <div class="drink-image-box">
+              <img src="src/public/cofee-iced.png" class="drink-img" alt="Iced Coffee" />
+            </div>
+            <div class="drink-info"><span class="drink-name">Iced Coffee</span></div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image-box">
+              <img src="src/public/drink-hot-chocolate.png" class="drink-img" alt="Hot Chocolate" />
+            </div>
+            <div class="drink-info"><span class="drink-name">Hot Chocolate</span></div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image-box">
+              <img src="src/public/matcha-latte.png" class="drink-img" alt="Iced Matcha Latte" />
+            </div>
+            <div class="drink-info"><span class="drink-name">Iced Matcha Latte</span></div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image-box">
+              <img src="src/public/iced-banana-latte.png" class="drink-img" alt="Banana Latte" />
+            </div>
+            <div class="drink-info"><span class="drink-name">Banana Latte</span></div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image-box">
+              <img src="src/public/icecreamcofee.png" class="drink-img" alt="Ice Cream Coffee" />
+            </div>
+            <div class="drink-info"><span class="drink-name">Ice Cream Coffee</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERCH -->
+    <section id="menu-merch" class="merch-section">
+      <div class="container">
+        <div class="merch-header">
+          <h2 class="section-title">MERCH</h2>
+          <p class="section-subtitle">Take Bazaar Juice with you</p>
+        </div>
+
+        <div class="row merch-grid justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6 mb-0">
+            <div class="booster-card tight-card led-tumbler-card merch-led-card h-100 text-center">
+              <span
+                style="
+                  display:inline-block;
+                  background:#dc2626;
+                  color:#fff;
+                  font-weight:900;
+                  padding:6px 14px;
+                  border-radius:999px;
+                  font-size:0.8rem;
+                  letter-spacing:1px;
+                  margin-bottom:10px;
+                "
+              >
+                LIMITED STOCK
+              </span>
+
+              <h5 class="fw-bold mb-2" style="color:#dc2626;">
+                ✨ LED FLASHING TUMBLER
+              </h5>
+
+              <div class="led-tumbler-image-wrap">
+                <img
+                  src="src/public/as.png"
+                  alt="LED Tumbler"
+                  class="led-tumbler-img"
+                />
+              </div>
+
+              <p class="mb-1 fw-bold">Glow up your drink!</p>
+              <p class="text-muted mb-1">LED • Double Wall • Reusable</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOSTERS -->
+    <section id="menu-boosters">
+      <div class="container py-5">
+        <h3 class="section-title text-center mb-4">BOOSTERS & SPECIAL ADD-ONS</h3>
+
+        <div class="row booster-grid justify-content-center align-items-stretch">
+          <div class="col-12 col-lg-6 mb-0">
+            <div class="booster-card tight-card wellness-card h-100">
+              <h5 class="wellness-title">
+                💪 WELLNESS BOOSTERS
+              </h5>
+
+              <p class="wellness-intro">
+                Add nutrient-rich boosters to your drink for extra power.
+              </p>
+
+              <div class="wellness-list">
+                <p class="wellness-item">
+                  <span class="wellness-item-name">💪 Protein</span>
+                  <span class="wellness-item-note">Recovery support</span>
+                </p>
+                <p class="wellness-item">
+                  <span class="wellness-item-name">🌱 Chia Seeds</span>
+                  <span class="wellness-item-note">Fiber + omega boost</span>
+                </p>
+                <p class="wellness-item">
+                  <span class="wellness-item-name">💙 Blue Spirulina</span>
+                  <span class="wellness-item-note">Antioxidant rich</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about-us">
+      <div class="container">
+        <h2 class="section-title text-center">OUR STORY</h2>
+        <div class="story-content">
+          <p class="mt-4">
+            At Bazaar Juice, we turn the vibrant energy into refreshing, feel
+            good blends. For us, it’s never just about juice. We craft 100%
+            organic, freshly blended drinks that fuel your day, lift your mood
+            and treat your body kindly. Every cup is made to order with fresh,
+            high-quality fruits and a whole lot of love. One sip, and you’ll
+            feel the energy.
+          </p>
+          <strong>"Freshly blended with love, served with energy."</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center text-md-start mb-4">
+            <h5>Bazaar JUICE</h5>
+            <p class="text-white-50">
+              Freshly blended with love, served with energy. We use only the
+              finest organic ingredients to fuel your day.
+            </p>
+          </div>
+
+          <div class="col-md-4 text-center mb-4">
+            <h5>Quick Links</h5>
+            <a href="#hero">Home</a>
+            <a href="#menu-fruits">Bazaar Fruit Selection</a>
+            <a href="#menu-custom">Create Your Own</a>
+            <a href="#menu-toasts">Toasts</a>
+            <a href="#fruit-cups-section">Fruit Bowls & Smoothies</a>
+            <a href="#menu-drinks">Drinks</a>
+            <a href="#menu-merch">Merch</a>
+            <a href="#menu-boosters">Boosters</a>
+            <a href="#about-us">About Us</a>
+          </div>
+
+          <div class="col-md-4 text-center text-md-end mb-4">
+            <h5>Connect</h5>
+            <div class="social-icons">
+              <a
+                href="https://www.facebook.com/profile.php?id=61585994848670"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/bazaarjuicee/"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@bazaarjuice"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+            <p class="text-white-50 mt-3">Los Angeles, CA</p>
+            <p class="text-white-50">bazaarjuicela@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            &copy; <span id="year"></span> Bazaar Juice. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const navbarCollapseEl = document.getElementById("navbarContent");
+      const bsNavbarCollapse = navbarCollapseEl
+        ? new bootstrap.Collapse(navbarCollapseEl, { toggle: false })
+        : null;
+
+      // Optional: highlight active nav link on click (simple)
+      document.querySelectorAll(".navbar .nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.querySelectorAll(".navbar .nav-link").forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+
+          if (
+            bsNavbarCollapse &&
+            window.innerWidth < 992 &&
+            navbarCollapseEl.classList.contains("show")
+          ) {
+            bsNavbarCollapse.hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
